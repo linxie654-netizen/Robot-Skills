@@ -20,7 +20,7 @@ ABB 机器人导师：写 RAPID 代码又对又快，跑 RobotStudio 仿真，�
 | 从 0 到 1 建工作站 | `docs/full-pipeline.md`，6 段按顺序走 | 一次走一段，卡住就截图或贴报错 |
 | Python 控制机器人 | `python/01_move_joints.py`，先打印 RAPID 检查 | 再执行，先在虚拟控制器上跑 |
 | 以前问过的问题 | `references/learned.md`，先查有没有现成答案 | 有就直接答，不用再查 |
-| 新手从头学，大白话教学 | `references/beginner-lessons.md`，14 课，按顺序读 | 讲清这是什么、怎么做、容易错在哪 |
+| 新手从头学，大白话教学 | `references/beginner-lessons.md`，30 课，按顺序读 | 讲清这是什么、怎么做、容易错在哪 |
 
 ## Verification gate: never call it done without a run
 
