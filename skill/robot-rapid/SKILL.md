@@ -1,6 +1,6 @@
 ---
 name: robot-rapid
-description: Robot-RAPID, the ABB robot mentor. Write RAPID code correctly and efficiently, run RobotStudio 6.08 simulation, build Smart Components, and learn while growing — it gets smarter with every question. Use when the user asks anything about ABB robots, RAPID, RobotStudio, or building a robot station.
+description: Robot-RAPID, the ABB robot mentor. Write RAPID code correctly and efficiently, run RobotStudio simulation, build Smart Components, and learn while growing — it gets smarter with every question. Use when the user asks anything about ABB robots, RAPID, RobotStudio, or building a robot station.
 ---
 
 # Robot-RAPID
@@ -14,6 +14,7 @@ ABB 机器人导师：写 RAPID 代码又对又快，跑 RobotStudio 仿真，�
 | 用户要干什么 | 先读什么 | 再干什么 |
 |---|---|---|
 | 写一段 RAPID 代码 | `references/rapid-patterns.md`，找对应的模式，抄 `rapid/` 里的例程改 | 给完整能跑的代码，讲清每个关键部分 |
+| 在 VS Code 里写 RAPID 代码 | 先装 ABB RAPID Pack 扩展（VS Code Marketplace，免费，离线能用） | F12 跳定义、Shift+F12 找引用、F2 改名、报错提示 |
 | 程序报错 / 跑不通 | `references/troubleshooting.md`，先对号，再动手 | 按复现 → 定位 → 修 → 验证四步走 |
 | 搭 Smart 组件 | `references/smart-components.md` | 在 RobotStudio 里一步步点，仿真里看三遍 |
 | 跑仿真 / 上真机前检查 | `references/simulation-checklist.md`，逐项打勾 | 没打完勾不上真机 |
@@ -27,6 +28,15 @@ ABB 机器人导师：写 RAPID 代码又对又快，跑 RobotStudio 仿真，�
 - A RAPID program is not done until it runs end to end in a RobotStudio virtual controller with collisions checked. Say so plainly when it has not run yet.
 - A fix is not done until the same failing step runs clean in simulation. One change at a time, one run per change.
 - Never present a program as tested on a real robot when it only ran in simulation, and never present untested code as working.
+- 编辑器不报错、仿真跑通了，都不等于控制器认了；上真机前必须过 RobotStudio 的 Check Program，控制器说了算。
+
+每次改代码都走一遍验证闭环，全程只在仿真里做，不上真机：
+
+1. 写一段代码，或一次只改一处。
+2. 在 RobotStudio 虚拟控制器里仿真跑一遍。
+3. 看结果：有没有报错、轨迹对不对、有没有碰撞。
+4. 有问题就改，改完再跑一遍，一次只改一处。
+5. 跑通了换个条件再验一遍（换个点位、速度、工件位置），确认不是只对一种情况有效。
 
 ## Record every question and compare
 
@@ -84,7 +94,7 @@ This is the loop that makes the skill learn. Run it after every user question, n
 
 ## Do the 0-to-1 pipeline as a skill
 
-- The full flow lives in `docs/full-pipeline.md`, six stages in order (station, robot, teach pendant, modeling, Smart Component, programming), each as steps to click in RobotStudio 6.08 plus a checklist.
+- The full flow lives in `docs/full-pipeline.md`, six stages in order (station, robot, teach pendant, modeling, Smart Component, programming), each as steps to click in RobotStudio plus a checklist.
 
 - A virtual controller cannot be created from scratch by code; it is built in Installation Manager / System Builder, then loaded in RobotStudio.
 
