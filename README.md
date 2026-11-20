@@ -33,6 +33,11 @@
   - `cheatsheet.md` — RAPID 速查表
   - `comparison.md` — 网上 APP / 库对比学习表
   - `connectors.md` — 连接器怎么搞：MCP + RWS + PC SDK，3 条路
+  - `mcp-install-6.08.md` — MCP 服务器 + 插件安装（RobotStudio 6.08）
+  - `other-ai-prompt.md` — 给另一个 AI 的安装指令（可复制）
+- `skill/` — 可安装的 Skill（通用版，任何人都能装）
+  - `SKILL.md` — ABB 编程 Skill
+  - `INSTALL.md` — 安装方法（Muse / Claude Code / 其他助手）
 - `learning-log.md` — 每次提问记录，按用户要求持续记
 - `vendor/` — 拉取的开源参考源（别人的项目，保留原仓库和协议）
   - `abb_motion_program_exec/` — rpiRobotics，Apache-2.0
@@ -53,7 +58,7 @@
 - EGM、真机联动要按 ABB 手册开选项，不要在真机上直接试没仿真过的程序。
 - 本库例程里的点位、速度都是教学值，换到你的工件和夹具上必须重新示教。
 
-## 自定义 Skill
+## 安装 Skill
 
-`~/workspace/custom-skills/abb_robot_programming/SKILL.md`
-以后在这个窗口问 ABB 问题，我会先按这个 Skill 的方法查库、给代码、做对比。
+`skill/SKILL.md` 是通用版 Skill，任何人都能装，安装方法见 `skill/INSTALL.md`。
+以后问 ABB 问题，助手会先按这个 Skill 的方法查库、给代码、做对比。

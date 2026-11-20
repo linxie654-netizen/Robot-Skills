@@ -85,6 +85,12 @@
 - 机器人型号：报告未给，只给了工作站和控制器名，仍未确认。
 - 本次加深内容：docs/mcp-install-6.08.md 补实际安装结果、未通过项根因、未修 bug、启动注意事项；同步 GitHub。
 
+### Q16 — 2026-11-20 13:44
+- 问题：能不能做一个所有人都可以安装的 skill 和 mcp
+- 回答要点：能，分两件。Skill：原来只存在本机，路径写死 ~/workspace/...，别人装不了；改成通用相对路径，放进公开仓库 skill/ 目录，加 INSTALL.md，任何人 clone 就能装。MCP：服务器是别人开源的项目（PMinhDuc204，MIT 协议），不能直接说成自己的；做法是 fork 到用户账号，合入另一 AI 在用户电脑上改的 3 个文件补丁，再修报告里未修的 #5、#6，加一键安装脚本。
+- 本次加深内容：新增 skill/SKILL.md（通用版，相对路径，加 MCP 一节）、skill/INSTALL.md（Muse / Claude Code / 其他助手三种装法，中英双语）、README 补 skill/ 目录和安装说明。
+- 待办：MCP fork 需用户把补丁文件发过来（D:\mcp_server\mcp-robotstudio\abb-robotstudio-mcp-changes.patch，261 行），没有它只能按报告描述重写改动，容易改错。
+
 ## 待用户确认的学习方向
 - 机器人型号：未定（IRB 120 / 140 / 6700 / YuMi？）
 - RobotStudio 是否已安装：已装，6.08；MCP 服务器 + ClaudeBridge 插件已通（2026-11-20，见 Q15）
