@@ -1,6 +1,6 @@
 # 安装 robot-rapid Skill / Install the robot-rapid Skill
 
-这是唯一的 ABB 技能，叫 `robot-rapid`。Skill 文件在 `SKILL.md`，配合本仓库的 ABB 编程库使用（RAPID 例程、RobotStudio 教程、Python 联动、新手路线、0 到 1 全流程都在仓库里）。`scripts/` 是 Windows 上操作 RobotStudio 桥的脚本，`references/recipes.md` 是 C# 片段。
+这是唯一的 ABB 技能，叫 `robot-rapid`。Skill 文件在 `SKILL.md`，配合本仓库的 ABB 编程库使用（RAPID 例程、RobotStudio 教程、Python 联动、新手路线、0 到 1 全流程都在仓库里）。
 
 ## 这个技能有什么用
 
@@ -37,18 +37,17 @@ cp -r abb-robot-programming/skill/robot-rapid ~/.claude/skills/robot-rapid
 
 - 不需要装任何软件，只需要本仓库（RAPID 例程和教程都在里面）。
 - 要在 RobotStudio 里跑仿真：装 RobotStudio（ABB 官网免费下载），见 `robotstudio/tutorial.md`。
-- 要在 Windows 电脑上用 HTTP 桥操作 RobotStudio：需要 ClaudeBridge 插件，见 `docs/bridge-merged-v1.md`（RobotStudio 6.08，只在虚拟控制器上操作）。
 
 ## 版本
 
-- Skill 与本仓库同步更新：每次提问都会记入 `learning-log.md`、加深一点、同步到 GitHub。
+- Skill 与本仓库同步更新：每次提问都会记入 `learning-log.md`、加深一点；同步到 GitHub 前先问用户，同意了再同步。
 - 本 Skill 不是 ABB 官方出品，是按官方语法和网上多家新手教程共识写的教学版，点位是教学值，真机要重新示教。
 
 ---
 
 ## Install (English)
 
-The only ABB skill, named `robot-rapid`. Skill file: `SKILL.md` in this folder. It works together with the ABB programming library in this repository (RAPID examples, RobotStudio tutorial, Python integration, beginner roadmap, 0-to-1 pipeline). `scripts/` holds the Windows scripts for operating RobotStudio through the bridge; `references/recipes.md` holds C# snippets.
+The only ABB skill, named `robot-rapid`. Skill file: `SKILL.md` in this folder. It works together with the ABB programming library in this repository (RAPID examples, RobotStudio tutorial, Python integration, beginner roadmap, 0-to-1 pipeline).
 
 ### Muse (recommended)
 
@@ -79,9 +78,8 @@ Send the full text of `skill/robot-rapid/SKILL.md` to your assistant, or save it
 
 - No extra software: the library is in this repository.
 - To run simulations: install RobotStudio (free download from ABB), see `robotstudio/tutorial.md`.
-- To operate RobotStudio through the HTTP bridge on Windows: the ClaudeBridge add-in is needed, see `docs/bridge-merged-v1.md` (RobotStudio 6.08, virtual controller only).
 
 ### Version
 
-- The skill is updated together with this repository: every question is recorded in `learning-log.md`, the skill deepens a little, and the library is synced to GitHub.
+- The skill is updated together with this repository: every question is recorded in `learning-log.md` and the skill deepens a little; sync to GitHub only after asking the user first.
 - This skill is not an official ABB product. It is a teaching version written from official syntax and the consensus of several beginner tutorials. Positions are teaching values; reteach them before running on real hardware.
