@@ -19,6 +19,20 @@
 
 **本库技能的改名**：2026-11-20，用户说 `abbrobotstudio` 不好听——三个词拼在一起，只说了软件名，没说能干什么。先改成 `rapid-mentor`，用户随即纠正，定名 **`Robot-RAPID`**（文件夹名按技能规范用小写 `robot-rapid`）：短、直接说出机器人 + RAPID 语言，符合上面热门技能的命名规律。备选曾考虑 `abb-robot-mentor`、`robot-code-craftsman`、`rapid-mentor`，用户最后定的是 Robot-RAPID。
 
+## 工科类 Skill 对比（2026-11-20 查，学它们的结构）
+
+用户说我们的 skill 跟别的比还是太少。薄的不是 SKILL.md 本身（Anthropic 的 frontend-design 只有 71 行、9.4KB，照样 110 万安装），薄的是配套的东西：工科 skill 都有报错手册、按任务分流、检查清单和版本钉死。我们按这个补。
+
+| 工科 Skill | 是什么 | 结构上有什么 | 学到什么，用在哪 |
+|---|---|---|---|
+| SmailG/plc-programming（PLC，离我们最近） | Siemens TIA / Schneider / CODESYS 等 PLC 编程插件 | 不止一个 skill：develop（立项→需求→设计→代码→验证→测试）、debug（先取证再修 + 故障模式目录）、convert、siemens、schneider、iec-61131-3；还带 stdlib 校验器、离线工程文件读取器 | 按任务分流 + 故障模式目录 → 已补：SKILL.md 开头加“要干什么先读什么”分流表，`references/troubleshooting.md` 就是故障模式目录 |
+| robot-validator（ROS 2 机器人） | 机器人系统健康检查 skill | 7 步工作流（定范围 → 验 URDF → 验 TF 树 → … → 出报告），frontmatter 带 version / keywords / category | 固定步骤 + 出报告 → 已补：`references/simulation-checklist.md` 逐项打勾，修好要说清验证结果 |
+| pixel-robotics/bt-rosbag-analysis（ROS 2） | ROS 2 行为树排障 skill + MCP | skill 本身就是一份可执行手册：标准查询都写好了（常坏节点、时间线），配好 MCP 就能跑 | 手册要能直接照着跑 → 已补：`references/rapid-patterns.md` 每个模式配代码和对应例程 |
+| RavenClaude robotics 插件 | 机器人与自主系统工程插件 | 3 个专家 agent + 决策树知识库 + 模板 + 最佳实践；版本号、日期都钉死，写明“用前再核实” | 版本钉死 + 用前核实 → 已补：README 加版本行（RobotStudio 6.08、RobotWare 6、IRC5），数字都标核实日期 |
+| awesome-gamedev-agent-skills | 79 个游戏开发 skill + 路由器 | 按引擎/学科/类型/流程分类编目，路由器按项目文件自动挑 skill；每个 skill 按官方文档写、钉死引擎版本、有 validator 和 evals | 编目 + 路由 → 本库只有一个 skill，不拆；改成 SKILL.md 内的分流表，相当于一个小路由器 |
+
+**补完后的本库结构**：SKILL.md（11.8KB）+ references 6 个文件（learned、recipes、troubleshooting、rapid-patterns、smart-components、simulation-checklist）+ scripts 4 个 + INSTALL.md；库里另有 RAPID 例程 10 个、Python 2 个、docs 8 个。跟 PLC 那个插件比还是少（人家是多 skill + 校验器），下一步可补的是一个 RAPID 语法自查清单，但那要先有真机验证，暂时不写。
+
 ## 对比表
 
 | APP / 库 | 是什么 | 语言 / 入口 | 能干什么 | 适合谁 | 费用 / 协议 | 核实 |
