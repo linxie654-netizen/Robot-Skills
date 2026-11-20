@@ -232,7 +232,20 @@
 - 库里对应：`docs/beginner-roadmap.md`（12 课新手路线）
 - 对比：**库里缺这几个模块的内容**：碰撞检查深入（模块 9）、Pack and Go 与 Add-ins（模块 12）、RobotStudio Cloud（模块 13）、录制/包络/AR（模块 15）、信号分析仪（模块 10）。只核实了大纲，这些模块要学深得看具体视频，列进待学。
 
-## 三、部分学完
+## 三、第三批：已学完（第三阶段，进行中）
+
+### H8 ✅ How to Easy Program ABB Robots to Follow a Path by Using RAPID Programming Language
+
+- 作者：Aleksandar Haber PhD
+- 链接：https://www.youtube.com/watch?v=zZXk-TW2iCE
+- 时长：未核实
+- 讲什么：导机器人/工件模型、装末端执行器、点动到各点记下目标点、建路径、用 RAPID 写程序让机器人沿路径走。
+- 学法：视频未逐帧看；流程按 Haber 视频顺序，步骤用 CMU Future CNC 官方教程、ITAR《RobotStudio Handbook》、卡尔加里大学 YuMi 指南、plcprogramming.io RAPID 教程交叉核对。
+- 对应新手课：L4（示教点）、L6（路径与程序）
+- 库里对应：`rapid/01_move_basics.mod`（MoveJ / MoveL 概念）
+- 对比：**库里缺完整操作链**：建站 → 记点 → 建路径 → 同步到控制器 → 跑仿真，草稿在 `docs/youtube-study/drafts/paths-targets-rapid.md`。
+
+## 四、部分学完
 
 ### R1 ⚠️ ABB ROBOT PROGRAMMING TUTORIAL PART 1
 
@@ -249,7 +262,7 @@
 - 只有一句解说词片段：“还是手动加载……按播放，仿真在跑，重力是生效的……启动机器人”——讲的是仿真里重力生效、手动加载后启动。
 - 状态：只有片段，不够算学完，**未逐段拆解**。
 
-## 四、目录：待学（只核实了标题/链接/时长）
+## 五、目录：待学（只核实了标题/链接/时长）
 
 ### RAPID 入门
 
@@ -268,7 +281,7 @@
 | H8 | How to Easy Program ABB Robots to Follow a Path by Using RAPID Programming Language | Aleksandar Haber PhD | https://www.youtube.com/watch?v=zZXk-TW2iCE | 未核实 | L4、L6 | `rapid/01_move_basics.mod` |
 
 - H5/H6 说明（第二阶段新核实）：这两个是 Haber《Homework Assignment 2》的配套视频，和 H1、H3 同批。作业内容：建一个旋转立方体、建一个圆锥末端执行器、装到机器人法兰上、定义工具坐标系、定义工件坐标系；做之前先看这 4 个视频。各自标题仍未核实。
-- H8 说明（第二阶段新发现）：Haber 还有一个视频不在第一阶段目录里——导机器人模型、装末端执行器、点动到各点记下目标点、建路径、用 RAPID 写程序让机器人沿路径走。已补进目录。
+- H8 说明（第三阶段已学完）：Haber 沿路径走 RAPID，见上面第三批 H8 一节，草稿 `drafts/paths-targets-rapid.md`，待在 RobotStudio 里照做跑通后再进技能。
 
 ### 课程包与播放清单
 
@@ -280,9 +293,9 @@
 | P5 | Patino 推荐播放清单（英语） | Patino 笔记推荐 | https://youtube.com/playlist?list=PL2R1JB3M1MkSZiqPzbhG92LY6UbQRnNn5 | 标题未核实 | 待学 |
 | P6 | Patino 推荐播放清单（英语） | Patino 笔记推荐 | https://youtube.com/playlist?list=PLE1CU6EebvTAA2FVjCcvMgkqXY8OtvDPd | 标题未核实 | 待学 |
 
-**目录总计：32 条**（学完 19 条：第一阶段 9 条 H1、H2、H4、P1、A1、C1–C4，第二阶段 10 条 H3、R3–R8、C5、A2、E1；部分学完 2 条 R1、R9；待学 11 条 R2、R10、H5–H8、P2–P6；其中 H3、A2 在第一阶段只列目录、第二阶段学完；H8 是第二阶段新发现补进目录的）。
+**目录总计：32 条**（学完 20 条：第一阶段 9 条 H1、H2、H4、P1、A1、C1–C4，第二阶段 10 条 H3、R3–R8、C5、A2、E1，第三阶段 1 条 H8；部分学完 2 条 R1、R9；待学 10 条 R2、R10、H5–H7、P2–P6；其中 H3、A2 在第一阶段只列目录、第二阶段学完；H8 是第二阶段新发现、第三阶段学完）。
 
-## 五、库里缺什么（两阶段结论）
+## 六、库里缺什么（三阶段结论）
 
 第一阶段的 10 样：
 
@@ -305,3 +318,7 @@
 14. World Zone 可视化做法：工作站里直接显示、WorldZones Add-in、手工画透明盒子 + 碰撞集（A2）→ 草稿 `drafts/world-zones-visualization.md`
 15. EDWartens 模块里库里没有的内容：碰撞检查深入（模块 9）、Pack and Go 与 Add-ins（模块 12）、RobotStudio Cloud（模块 13）、录制/包络/AR（模块 15）、信号分析仪（模块 10）→ 待学深（只核实了大纲）
 16. R1 多版本问题：4h36m / 2h58m / 1h36m / 4h22m 几个剪辑是否为同一课未核实 → 待核实
+
+第三阶段新发现的缺口：
+
+17. 沿路径走 RAPID 的完整操作链：导模型 → 装末端执行器 → 点动记点 → 建路径 → 同步到控制器 → 跑仿真（H8）→ 草稿 `drafts/paths-targets-rapid.md`
