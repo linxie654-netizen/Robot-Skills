@@ -28,7 +28,7 @@
 | SmailG/plc-programming（PLC，离我们最近） | Siemens TIA / Schneider / CODESYS 等 PLC 编程插件 | 不止一个 skill：develop（立项→需求→设计→代码→验证→测试）、debug（先取证再修 + 故障模式目录）、convert、siemens、schneider、iec-61131-3；还带 stdlib 校验器、离线工程文件读取器 | 按任务分流 + 故障模式目录 → 已补：SKILL.md 开头加“要干什么先读什么”分流表，`references/troubleshooting.md` 就是故障模式目录 |
 | robot-validator（ROS 2 机器人） | 机器人系统健康检查 skill | 7 步工作流（定范围 → 验 URDF → 验 TF 树 → … → 出报告），frontmatter 带 version / keywords / category | 固定步骤 + 出报告 → 已补：`references/simulation-checklist.md` 逐项打勾，修好要说清验证结果 |
 | pixel-robotics/bt-rosbag-analysis（ROS 2） | ROS 2 行为树排障 skill | skill 本身就是一份可执行手册：标准查询都写好了（常坏节点、时间线） | 手册要能直接照着跑 → 已补：`references/rapid-patterns.md` 每个模式配代码和对应例程 |
-| RavenClaude robotics 插件 | 机器人与自主系统工程插件 | 3 个专家 agent + 决策树知识库 + 模板 + 最佳实践；版本号、日期都钉死，写明“用前再核实” | 版本钉死 + 用前核实 → 已补：README 加版本行（RobotStudio 6.08、RobotWare 6、IRC5），数字都标核实日期 |
+| RavenClaude robotics 插件 | 机器人与自主系统工程插件 | 3 个专家 agent + 决策树知识库 + 模板 + 最佳实践；版本号、日期都钉死，写明“用前再核实” | 版本钉死 + 用前核实 → 曾补 README 版本行，2026-11-21 用户要求删掉（公开仓库内容按通用写，不钉死版本） |
 | awesome-gamedev-agent-skills | 79 个游戏开发 skill + 路由器 | 按引擎/学科/类型/流程分类编目，路由器按项目文件自动挑 skill；每个 skill 按官方文档写、钉死引擎版本、有 validator 和 evals | 编目 + 路由 → 本库只有一个 skill，不拆；改成 SKILL.md 内的分流表，相当于一个小路由器 |
 
 **补完后的本库结构**：SKILL.md + references 5 个文件（learned、troubleshooting、rapid-patterns、smart-components、simulation-checklist）+ INSTALL.md；库里另有 RAPID 例程 10 个、Python 2 个、docs 根目录 6 个文件。跟 PLC 那个插件比还是少（人家是多 skill + 校验器），下一步可补的是一个 RAPID 语法自查清单，但那要先有真机验证，暂时不写。
@@ -63,6 +63,84 @@
 - CMU Future CNC RobotStudio 教程：10 步建基础程序（Jog Joint、Teach Target、建 Path、同步到虚拟控制器、仿真播放），另有加工具的 10 步。【8932007933019643557†L19-L29】
 - AYE Tech Hub Lesson 04：IRB 系列、IRC5、RobotStudio、RAPID、MoveL/MoveJ、IO、速度/区域/工件/工具。【4507421519131795109†L15-L17】
 - 共识路线已写进 `docs/beginner-roadmap.md`，共 12 课 + 6 个新手常犯错。
+
+## 2026-11-20 别的 AI 搜到的 7 个相关项目（对比学习）
+
+背景：别的 AI 在 GitHub 上按 "SKILL.md + ABB/RAPID/RobotStudio" 搜，没找到我们的仓库，只找到下面 7 个。2026-11-20 晚逐个打开 GitHub 页面核实。各项目最近更新时间页面没显示，一律写未核实。
+
+| 项目 | 是什么 | 星数 | 是 Agent Skill（SKILL.md）吗 | 有 ABB 内容吗 |
+|---|---|---|---|---|
+| zhou-zhichao/robotstudio-mcp（另一 AI 给的地址） | 地址不存在（404） | — | — | — |
+| PMinhDuc204/abb-robotstudio-mcp6.08（真正的 RobotStudio MCP 服务） | RobotStudio MCP 服务，63 个工具 | 0 | 不是 | 有 |
+| Hollis36/abb-offline-coder | 离线 AI 助手，中文需求生成 RAPID 喷涂程序 | 0 | 不是 | 有 |
+| dtpisanty/abblender | Blender 插件，动画导出 RAPID .mod | 7 | 不是 | 有 |
+| ABB-RARO/rapid-modbus-tcp | OmniCore 的 Modbus TCP RAPID 库 | 3 | 不是 | 有 |
+| ABB RAPID Pack（VS Code 扩展） | RAPID 语法、跳转、引用、重构、诊断 | 约 2.3K 安装 | 不是 | 有 |
+| graph-robots/open-robot-skills | Anthropic Agent Skills 格式的操作技能集 | 74 | 是 | 没有 |
+| arpitg1304/robotics-agent-skills | Agent Skills 格式的机器人技能集 | 404 | 是 | 没有 |
+
+### 1. robotstudio-mcp —— 另一 AI 给的地址是错的
+
+**是什么**：`zhou-zhichao/robotstudio-mcp` 打开是 404，仓库不存在。另一 AI 把名字记混了：Zhichao Zhou 是论文《Retrieval-grounded robot program generation and simulation-based correction via Model Context Protocol》（arXiv:2505.03275）的作者，讲的是 RAG + MCP 生成并仿真验证 ABB RAPID 程序，论文里没有这个仓库地址。真正的 RobotStudio MCP 服务是 `PMinhDuc204/abb-robotstudio-mcp6.08`：TypeScript MCP 服务 + ClaudeBridge C# 插件，63 个工具（33 个 `rs_*` + 30 个 `rws_*`），v3.1.0，面向 RobotStudio 6.08，0 星、15 提交、建于 2026-10-26，MIT 协议。
+
+**跟我们有什么关系**：就是用户 Windows 机上装过的那个 MCP（63 个工具），用户 2026-11-20 14:40 已拍板停掉 MCP 路线、改做 Skill，20:27 又让把桥和 MCP 的东西全删了。它不是 Agent Skill（根目录没有 SKILL.md）。
+
+**借鉴点**：① `rs_validate_rapid` 先做结构校验再上传的思路；② 工具按风险分级（工具名后缀 A/B/C/D 标危险程度）。但 MCP 路线用户已拍板停掉，这些不往技能里加。
+
+### 2. Hollis36/abb-offline-coder —— 离线 AI 助手，专做喷涂
+
+**是什么**：本地 LLM（Qwen2.5-Coder-7B + Ollama）+ 官方手册 RAG，用中文描述需求生成 ABB 喷涂机器人 RAPID 程序，约 25 秒/程序，IRC5/IRC5P 双模式（IRC5P 用 PaintL/PaintC + brushdata 原生工艺），Pack&Go 一键交付可直接上控制器的目录，0 星、24 提交、建于 2026-05-16。许可证：README 写 MIT，GitHub 未检测到许可证类型（NOASSERTION）。不是 Agent Skill，是命令行工具，无 SKILL.md。
+
+**跟我们有什么关系**：思路最近的一个 ABB AI 项目，但只做喷涂一个场景，不教新手、不讲 RobotStudio 操作。
+
+**借鉴点**：① 喷涂是我们的空白——30 课大白话教学里只有第 24 课基础焊接，喷涂一个字没有；PaintL/PaintC、brushdata 是可补的方向；② 手册做 RAG 知识库的思路值得学；③ 它也要求生成代码必须先在 RobotStudio 里仿真验证再上机，跟我们的红线一致；④ Pack&Go 一键交付的思路好。
+
+### 3. dtpisanty/abblender —— Blender 插件，动画导出 RAPID
+
+**是什么**：Blender 插件，在 Blender 里给 ABB 机器人做动画，导出成 RAPID 模块（.mod，jointtarget），只在 6 轴 IRB-1600/10Kg/145 上测过，7 星、3 fork、30 提交、建于 2020-02-19，MIT。不是 Agent Skill。
+
+**跟我们有什么关系**：另一条“生成 RAPID”的路子——先在别处把轨迹画出来，再转成 RAPID。但 Blender 不是用户在学的工具，跟新手主线关系不大。
+
+**借鉴点**：“轨迹先可视化、再转代码”的思路；我们的技能没有 Blender 导出这一块，也不必补。
+
+### 4. ABB-RARO/rapid-modbus-tcp —— OmniCore 的 Modbus TCP 库
+
+**是什么**：ABB 机器人控制器用的 Modbus/TCP 客户端/服务端 RAPID 库，分 Server、Client、夹爪模板三部分，要求 RobotWare 7.13+、Server 需 3114-1 多任务选项，带西门子 PLC（SCL）对接示例，3 星、1 fork、35 提交、建于 2025-09-08，MIT，1 个 Release。不是 Agent Skill。
+
+**跟我们有什么关系**：PLC 联动是用户的目标（Python + PLC + ABB 结合），Modbus TCP 是 PLC 和机器人联动的一种现实做法；但它是 OmniCore 专属，我们的技能钉死的是 RobotStudio 6.08 / IRC5。
+
+**借鉴点**：① 可在技能里提一句 Modbus TCP 联动、给个链接，不必展开；② 它的中英双语 README、SCL 示例值得学。
+
+### 5. ABB RAPID Pack —— VS Code 扩展，写 RAPID 的好帮手
+
+**是什么**：VS Code 扩展，作者 Maxime Cesare-Zurek（Maxzurek.abb-rapid-pack），约 2.3K 安装量，免费；RAPID 语法高亮、跳转定义、查引用、重构、诊断、格式化、文档，全部本地处理、无遥测；独立社区项目，与 ABB 无关。不是 Agent Skill。
+
+**跟我们有什么关系**：不教编程，只让写 RAPID 的编辑器更好用。
+
+**借鉴点**：写 RAPID 时在 VS Code 里装它，比记事本强得多；可写进技能的工具推荐里（INSTALL.md 或 troubleshooting）。我们的技能没有编辑器层面的支持，这是可补的一小块。
+
+### 6. graph-robots/open-robot-skills —— 真 Skill 格式，但无 ABB
+
+**是什么**：Anthropic Agent Skills 格式的操作技能集（skills/ 下每个包一个 SKILL.md，31 个技能 + 8 个工具包），74 星、9 fork、64 提交、建于 2026-06-11，Apache-2.0。内容是 GaP（graph as policy）操作技能：抓取、线缆布线、感知、VLA 策略——没有 ABB、没有 RAPID、没有 RobotStudio。
+
+**跟我们有什么关系**：格式上是同类（SKILL.md 封装），内容上完全不重叠。
+
+**借鉴点**：① “一个包一个 SKILL.md、一个 PR”的贡献规范；② 技能带 exit_conditions（退出条件）的设计——我们的技能可以借鉴，给每课加“做到什么样算会”；③ 工具包与技能分离（tools/ vs skills/）的结构。
+
+### 7. arpitg1304/robotics-agent-skills —— 真 Skill 格式，ROS 方向，借鉴最多
+
+**是什么**：Agent Skills 格式的机器人技能集（skills/ 17 个技能 + 一个 agent harness），404 星、51 fork、25 提交、建于 2026-02-26，Apache-2.0。ROS1/ROS2 方向：节点、QoS、生命周期、测试、Docker、bringup、安全等，没有 ABB。
+
+**跟我们有什么关系**：格式上是同类，内容上是 ROS，没有 ABB；但它是 7 个里星数最高的，结构最值得学。
+
+**借鉴点**：① evals/ 对比：同一提示，有技能 vs 无技能的效果对比（带数据）；② harness 闭环：写代码 → 仿真里跑 → 看评估报告 → 改 → 用没见过的种子验证——这正是我们的“验证关口”缺的闭环形式，RobotStudio 验证跑通后可以照着做；③ install.sh 按需安装单个技能；④ “What Good Skills Contain”清单：触发描述、工作示例、失败模式、生产默认值、反模式。
+
+## 对比结论（2026-11-20 晚核实）
+
+1. 7 个项目里，**没有一个是“SKILL.md 格式的 ABB 技能”**。两个真正的 Agent Skill 仓库（open-robot-skills、robotics-agent-skills）都是 ROS / 通用操作方向，无 ABB；四个 ABB 项目（MCP 服务、离线喷涂助手、Blender 插件、Modbus 库、VS Code 扩展）都不是 Skill 格式。
+2. 按本次核实的 7 个项目 + 此前搜索（2026-11-20），**我们的 Robot-RAPID 是核实范围内唯一一个按 SKILL.md 格式封装的 ABB 技能**。但“GitHub 上第一个”无法穷尽证实——GitHub 全量检索做不到，只能说“目前核实到的范围内没有第二个，‘第一个’未核实”。
+3. 值得补进我们技能的三样（按优先级）：① harness 式验证闭环（写代码 → 仿真跑 → 看报告 → 改 → 换种子再验），等 RobotStudio 验证跑通后做；② 喷涂内容（PaintL/PaintC、brushdata），我们的 30 课里没有；③ VS Code 里装 ABB RAPID Pack 的工具推荐，一句话就能写。
+4. 另一 AI 的报告本身有一处错：`zhou-zhichao/robotstudio-mcp` 这个地址不存在，真正的 MCP 服务是 PMinhDuc204/abb-robotstudio-mcp6.08。
 
 ## 下次对比要补的
 - 每个库的最近更新时间、是否还在维护。
