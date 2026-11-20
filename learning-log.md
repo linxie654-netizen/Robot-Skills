@@ -35,10 +35,58 @@
 
 ### Q6 — 2026-11-20 08:53
 - 问题：网上不是有很多编程吗？你去看一下有哪些需要新手学习的，都学习一下，写进去
-- 执行：已上网查完新手必学内容，写进库里。新增 `docs/beginner-roadmap.md`（12 课路线 + 6 个常犯错），新增 RAPID 例程 07 圆弧、08 TEST/CASE+函数、09 报错处理、10 模拟量 IO+WaitUntil；对比表补了 5 家新手教程来源。GitHub 上传仍在准备，vendor 不直接上传，改放链接清单，待用户确认仓库名后建仓库上传。
+- 执行：已上网查完新手必学内容，写进库里。新增 `docs/beginner-roadmap.md`（12 课路线 + 6 个常犯错），新增 RAPID 例程 07 圆弧、08 TEST/CASE+函数、09 报错处理、10 模拟量 IO+WaitUntil；对比表补了 5 家新手教程来源。GitHub 已上传完成：公开仓库 https://github.com/linxie654-netizen/abb-robot-programming ，21 个文件，5 次提交，已复核仓库主页能打开、README 正常渲染。
+
+### Q7 — 2026-11-20 10:16
+- 问题：这一个有什么用啊
+- 回答要点：指 GitHub 上的 ABB 编程库。它是你的 ABB 学习仓库：RAPID 例程、RobotStudio 教程、Python 联动、新手路线、速查、对比表、提问记录都在里面；换电脑、换手机也能打开，不会丢；每次提问都往里面加深，越学越全。
+- 本次加深内容：README 开头加“这个库有什么用”一节，说清用途；下次同步时一起传到 GitHub。
+
+### Q8 — 2026-11-20 10:18
+- 问题：能不能接入 robotstudio 6.08 里面帮我操作
+- 回答要点：不能直接接入用户电脑上的 RobotStudio 6.08 操作。Muse 在云端，没有 RobotStudio 连接器，RobotStudio 是本地 Windows 桌面软件、不是网页，不能远程点鼠标。能做的：一步步带操作、给可导入的 RAPID / 工作站文件、看截图和报错帮改。
+- 本次加深内容：教程补 RobotStudio 6.08 说明（RobotWare 6 时代、IRC5，本库 RAPID 例程兼容；Wizard / OmniCore 是更新版本的功能，6.08 没有）；Skill 补“不能直连本地 RobotStudio，改用文件 + 截图指导”一条。
+
+### Q9 — 2026-11-20 10:21
+- 问题：连接器怎么搞
+- 回答要点：RobotStudio 本身没有给 Muse 的现成连接器，但有 3 条路：1）MCP 服务器 + ClaudeBridge 插件，直接对 6.08（PMinhDuc204/abb-robotstudio-mcp6.08，63 个工具）；2）RWS（控制器内置 Web API，http://localhost:80，Default User / robotics），本库 Python 例程就是走这条路，最简单；3）ABB PC SDK（C#，官方）。
+- 本次加深内容：新增 `docs/connectors.md`，写清 3 条路的原理、安装步骤、能干什么、不能干什么；对比表补 MCP 服务器一项。注意：MCP 是给支持 MCP 的 AI 客户端用的，Muse 这个聊天不能直接接你电脑上的 stdio MCP；先在虚拟控制器上试，别上真机。
+
+### Q10 — 2026-11-20 10:23
+- 问题：1（选了连接器第 1 条路：MCP 服务器 + ClaudeBridge 插件）
+- 执行：新增 `docs/mcp-install-6.08.md`，按项目 README 原步骤写清检查、安装、启动、验证 4 步；先让用户在自己电脑上跑检查命令（node、dotnet、RobotStudio 路径），报结果再往下装，不跳步。
+
+### Q11 — 2026-11-20 10:27
+- 问题：我叫别的 ai 装，有什么说的
+- 回答要点：给了一段可直接复制给另一个 AI 的安装指令：项目、路径、检查、安装、启动、验证、只在虚拟控制器上试、不碰真机、装完报结果和报错原文。
+- 本次加深内容：新增 `docs/other-ai-prompt.md`，放可复制的完整指令。
+
+### Q12 — 2026-11-20 12:37
+- 问题：检查结果：Node.js v24.16.0（不是 20）、npm 11.13.0、.NET SDK 未安装（只有 8.0.22 运行时）、RobotStudio 6.08 找到、Newtonsoft.Json.dll 找到、git/网络正常、RobotStudio 未运行
+- 回答要点：只差 .NET SDK 一项，其他都通。Node 24 先试，不行再降到 20；.NET 运行时不等于 SDK，必须装 .NET 8 SDK，net461 引用程序集靠 NuGet 恢复或装 4.6.1 Developer Pack。
+- 本次加深内容：`docs/mcp-install-6.08.md` 补检查结果诊断和 .NET SDK 安装步骤。
+
+### Q13 — 2026-11-20 13:10
+- 问题：githup有这个mcp吗
+- 回答要点：有，PMinhDuc204/abb-robotstudio-mcp6.08，Glama 页源码链接指向该仓库；直接打开 GitHub 页时报网络错误、不是 404，未能直接拉到仓库页，已如实说明。
+- 本次加深内容：`docs/mcp-install-6.08.md` 补 GitHub 仓库地址和 clone 命令。
+
+### Q14 — 2026-11-20 13:29
+- 问题：用户发来本地路径 C:/Users/xie/Documents/Trae-CN/default/ABB-RobotStudio-MCP-安装报告.md
+- 回答要点：我这边读不到用户 Windows 电脑本地文件，只能请用户把报告内容贴过来或在聊天里上传文件，再复核安装结果。
+
+### Q15 — 2026-11-20 13:34
+- 问题：用户把另一 AI（Trae CN）做的《ABB RobotStudio MCP Server 安装报告》全文贴过来，请复核。
+- 复核结论：安装、构建、桥接、MCP 配置全部完成；6 项只读验证通过 5 项。Node 20.20.2（便携）+ .NET SDK 8.0.428（便携），系统 Node 24 未动；npm ci/build/test 5/5 通过；ClaudeBridge 插件编好、RobotStudio 带 /addin 加载成功，ping 通（stationOpen=true，ABB1115）；Trae CN 的 MCP 配置已写好；63 个工具可列。工作站 ABB1115.rsstn，虚拟控制器 ABB1，任务 T_ROB1，状态 motoron / AUTO / stopped。
+- 未通过项 rs_read_module：不是安装问题，是控制器上没装载 RAPID 程序。诊断可信：SDK 直连测得 SaveProgramToFile 报 C0049004（程序名未设置）、RWS 文本端点 404（该 VC 未实现）；上游 README 也写了 6.08 模块端点不匹配是已知问题。要过这一项须在 RobotStudio 里给 ABB1 装载程序（改控制器状态，不产生运动），建议直接装库里的 01_move_basics.mod 再重试。
+- 未修 bug（报告第 7 节）：#5 高——rws_get_modules 用的 RWS 端点在该 VC 返回 404，可用端点是 /rw/rapid/modules?task=T_ROB1；#6 中——rws_list_files 传 "$HOME" 被判非法；#7–#9 低——版本号三处不一致、npm audit 3 漏洞、TS 依赖放错位置。
+- 启动注意事项：RWS 端口每次启动 VC 都会变（本次 19404），须跑 refresh-rws-url.ps1 刷新；脚本启动 RobotStudio 须用 WMI 脱离进程树，否则几十秒后被回收；释放 mastership 后约 3 秒内 rws_controller_status 会短暂 503，属控制器行为；TIA Administrator V3 服务崩溃重启循环（77+ 次）与安装无关，但干扰日志排查；强杀 RobotStudio 会遗留 RobVC.exe 锁工作站，须同时结束。
+- 报告小出入：第 3 节说改了 3 个文件，第 9 节说“仅涉及 2 个源文件”，数对不上，不影响结论。
+- 机器人型号：报告未给，只给了工作站和控制器名，仍未确认。
+- 本次加深内容：docs/mcp-install-6.08.md 补实际安装结果、未通过项根因、未修 bug、启动注意事项；同步 GitHub。
 
 ## 待用户确认的学习方向
 - 机器人型号：未定（IRB 120 / 140 / 6700 / YuMi？）
-- RobotStudio 是否已安装：未确认
+- RobotStudio 是否已安装：已装，6.08；MCP 服务器 + ClaudeBridge 插件已通（2026-11-20，见 Q15）
 - 当前水平：Python 初学；ABB 基础操作、J1-J6、空间坐标系正在学
 - 下一步建议：先跑通 RobotStudio 虚拟控制器 + `abb_motion_program_exec` 的 MoveJ/MoveL 例子，再学纯 RAPID 搬运、IO、循环。

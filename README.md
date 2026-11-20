@@ -3,6 +3,12 @@
 给 elonjack 的 ABB 学习库。中文，拆步骤，完整代码，重要代码逐段讲。
 目标：Python + PLC + ABB 机器人联动，做工业自动化。
 
+## 这个库有什么用
+- 学 ABB 不用每次从零找资料：RAPID 例程、RobotStudio 教程、Python 联动、新手 12 课路线、速查表都在里面，照着练就行。
+- 每次提问都往里面加：你问一个问题，我就记一条、加深一点，库越学越全。
+- 放 GitHub 上不会丢：换电脑、换手机，打开 https://github.com/linxie654-netizen/abb-robot-programming 就能看，也能发给别人看。
+- 不是 ABB 官方教程，是按官方语法和网上多家新手教程共识重写的教学版，点位是教学值，真机要重新示教。
+
 ## 目录
 
 - `rapid/` — RAPID 教学例程（我按官方语法重写的，不是抄别人的）
@@ -26,6 +32,7 @@
   - `beginner-roadmap.md` — 新手必学 12 课路线（网上教程共识版）
   - `cheatsheet.md` — RAPID 速查表
   - `comparison.md` — 网上 APP / 库对比学习表
+  - `connectors.md` — 连接器怎么搞：MCP + RWS + PC SDK，3 条路
 - `learning-log.md` — 每次提问记录，按用户要求持续记
 - `vendor/` — 拉取的开源参考源（别人的项目，保留原仓库和协议）
   - `abb_motion_program_exec/` — rpiRobotics，Apache-2.0
