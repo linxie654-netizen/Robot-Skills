@@ -40,6 +40,14 @@ Install instructions: see `INSTALL.md` in this folder.
 
 - Tell the user to run simulation and check collisions before trying code on a real robot, and to validate at low speed in manual mode first.
 
+## Do the 0-to-1 pipeline as a skill, not MCP tools
+
+- The user decided on 2026-11-20 that building MCP tools for the pipeline is too hard, so do it as a skill instead: the full flow lives in `docs/full-pipeline.md`, six stages in order (station, robot, teach pendant, modeling, Smart Component, programming), each as steps to click in RobotStudio 6.08 plus a checklist.
+
+- Do not write or test new C# plugin tools for the pipeline (station-tool and pipeline-tools drafts are archived, not to be built). A virtual controller cannot be created from scratch by code; it is built in Installation Manager / System Builder, then loaded in RobotStudio.
+
+- Work one stage at a time in RobotStudio with the user, give them the RAPID files from the library, and fix problems from their screenshots and error messages.
+
 ## Connect to RobotStudio with MCP (optional)
 
 - The recommended route for RobotStudio 6.08 is the MCP server plus ClaudeBridge add-in: see `docs/mcp-install-6.08.md` for the full install, and `docs/connectors.md` for the three connection routes (MCP, RWS, PC SDK).
