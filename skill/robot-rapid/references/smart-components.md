@@ -2,7 +2,7 @@
 
 Smart 组件是 RobotStudio 里会自己动的零件：信号进来 → 逻辑跑 → 动作出去。传送带、夹爪、传感器、气缸都用它搭。
 
-## 搭一个 Smart 组件的步骤（在 RobotStudio 6.08 里点）
+## 搭一个 Smart 组件的步骤（在 RobotStudio 里点）
 
 1. **建组件**：建模 → Smart Component，新建一个，起个名字，比如 `Gripper_SC`。
 2. **加信号**：组件属性里加输入输出信号。输入：`diClose`（夹紧命令）；输出：`doClosed`（夹紧到位）。
