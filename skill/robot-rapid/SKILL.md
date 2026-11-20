@@ -33,7 +33,9 @@ ABB 机器人导师：写 RAPID 代码又对又快，跑 RobotStudio 仿真，�
 
 - Update `docs/comparison.md` when a question touches a new app, library, or programming technique, and compare it against the apps and libraries already listed instead of treating it in isolation.
 
-- Deepen the skill a little with every question, and sync the library to its GitHub repo after each deepening, so the skill and the public library grow together instead of staying local.
+- Deepen the skill a little with every question. Whether to sync the library to its GitHub repo is the user's call: ask first, sync only if they agree, so the skill and the public library grow together instead of staying local.
+
+- 学习材料只放本地，不进仓库：视频目录、进度表、草稿是学习过程；只有理解后转化成的东西（例程、模式、规则）才进仓库。上传的是理解，不是整个学习。
 
 - Keep the comparison honest by marking anything unverified as unverified and never inventing star counts, versions, or features.
 
@@ -49,7 +51,7 @@ This is the loop that makes the skill learn. Run it after every user question, n
    - 新的工具、APP、库 → 加进 `docs/comparison.md` 对比表
    - 用户纠正过一次的 → 写成一条铁规矩，标上日期，以后永远照办
 4. **问一句学会没**：答完问用户“这一步懂了吗？还有哪里卡住？”用户的回答决定下一步是继续往下走，还是停下来再讲一遍。把用户的回答也记下来。
-5. **同步出去**：改完技能就同步到 GitHub，这样换电脑、换手机，技能还是最新的；别人装到的也是学会了的版本。
+5. **同步出去**：改完技能先问用户要不要同步到 GitHub，同意了再同步；别人装到的也是学会了的版本。
 
 判断技能是不是真变聪明了，就看三点：同样的问题第二次不用再查就能答；用户纠正过的错不再犯第二次；新手按技能走能自己跑通 01 例程。做不到，就说明第 2 步没找对缺口，重来一遍。
 
@@ -79,27 +81,13 @@ This is the loop that makes the skill learn. Run it after every user question, n
 
 - Tell the user to run simulation and check collisions before trying code on a real robot, and to validate at low speed in manual mode first.
 
-## Do the 0-to-1 pipeline as a skill, not MCP tools
+## Do the 0-to-1 pipeline as a skill
 
-- The user decided on 2026-11-20 that building MCP tools for the pipeline is too hard, so do it as a skill instead: the full flow lives in `docs/full-pipeline.md`, six stages in order (station, robot, teach pendant, modeling, Smart Component, programming), each as steps to click in RobotStudio 6.08 plus a checklist. No new MCP tools are to be written for the pipeline.
+- The full flow lives in `docs/full-pipeline.md`, six stages in order (station, robot, teach pendant, modeling, Smart Component, programming), each as steps to click in RobotStudio 6.08 plus a checklist.
 
-- Do not write or test new C# plugin tools for the pipeline. A virtual controller cannot be created from scratch by code; it is built in Installation Manager / System Builder, then loaded in RobotStudio.
+- A virtual controller cannot be created from scratch by code; it is built in Installation Manager / System Builder, then loaded in RobotStudio.
 
 - Work one stage at a time in RobotStudio with the user, give them the RAPID files from the library, and fix problems from their screenshots and error messages.
-
-## Operate RobotStudio through the local HTTP bridge (Windows PC only)
-
-- On the user's Windows PC, RobotStudio 6.08 can be operated through the ClaudeBridge add-in HTTP bridge at `http://127.0.0.1:58080`. Use `127.0.0.1`, never `localhost` (it goes to IPv6 and times out). The bridge only works on that PC, in Trae CN or another local client; a cloud assistant cannot reach it directly.
-
-- Start RobotStudio with `scripts/start-robotstudio.ps1` (it launches detached through WMI, a plain Start-Process child gets reclaimed by its caller). Then check `scripts/bridge-call.ps1 -Path /ping`; it must return `stationOpen` and `stationName`.
-
-- Common endpoints: GET `/ping`, GET `/station`, POST `/station/save`, POST `/station/new`, POST `/station/create`, POST `/station/save-as`, POST `/station/add-component` (`.rslib` path for a robot or Smart Component), GET `/rapid/tasks`, GET `/rapid/modules?task=T_ROB1`, POST `/screenshot`, POST `/simulation/start`, POST `/simulation/stop`, GET `/simulation/status`, POST `/exec` (run C# in the RobotStudio process; the body is a `Func<object>` that ends with `return new { ... };`).
-
-- Call POST endpoints with `scripts/bridge-call.ps1 -Path <path> -Method POST -BodyFile <json file>`. Do not inline JSON with quotes on the command line; PowerShell strips them and the server returns 500. C# snippets go through `scripts/exec-cs.ps1 -File <file.cs>`; ready-made snippets are in `references/recipes.md`.
-
-- Known pitfalls: a window squashed to about 157×25 pixels is fixed with `scripts/fix-window.ps1`; creating a virtual controller from scratch fails on this PC (RIM layer fault, do not retry, clone an existing system or build it in the interface); `rs_read_module` fails with C0049004 when no RAPID program is loaded on the controller; `Station.Load` deadlocks on the UI thread, so load a station by restarting RobotStudio with the station path; save before restarting or changes are lost; kill `RobVC.exe` together with RobotStudio or it keeps the station locked.
-
-- Safety: only work on a virtual controller, never a real robot. Explain a write (save, module change, signal change) to the user before doing it. Never modify the RobotStudio install directory.
 
 ## Check GitHub before claiming a library exists
 
@@ -110,8 +98,6 @@ This is the loop that makes the skill learn. Run it after every user question, n
 ## Available connectors
 
 - Use `muse.connector_search` to find other connectors and `muse.skill_search` to find related skills.
-
-- If nothing here fits, look on the web for a maintained API or MCP server and set it up with [Custom Connectors and MCPs](/opt/muse/skills/custom-connector-setup/SKILL.md), or build a custom connector.
 
 ## Websites
 
