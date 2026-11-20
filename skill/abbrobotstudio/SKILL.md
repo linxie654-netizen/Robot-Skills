@@ -19,6 +19,22 @@ description: The only ABB skill. Teach and write ABB RAPID code, run RobotStudio
 
 - Keep the comparison honest by marking anything unverified as unverified and never inventing star counts, versions, or features.
 
+## Learn while the user asks: the skill gets smarter every time
+
+This is the loop that makes the skill learn. Run it after every user question, no exceptions:
+
+1. **记下来**：把问题原话、日期、回答要点写进 `learning-log.md`。答错了、用户纠正了，也原样记下来，不要只记对的。
+2. **找缺口**：问自己三个问题——用户卡在哪一步？技能里缺哪条规则、例子或检查清单？下次同样的问题能不能直接答，不用再查？
+3. **补进技能**：把答案变成技能里的一条，写进下面对应的地方，不要只留在聊天记录里：
+   - 新的知识点或常犯错 → 加进 `SKILL.md` 相关一节，或 `docs/beginner-roadmap.md`
+   - 反复问的同一个问题 → 加进 `references/learned.md`，写清问题、正确答案、为什么
+   - 新的工具、APP、库 → 加进 `docs/comparison.md` 对比表
+   - 用户纠正过一次的 → 写成一条铁规矩，标上日期，以后永远照办
+4. **问一句学会没**：答完问用户“这一步懂了吗？还有哪里卡住？”用户的回答决定下一步是继续往下走，还是停下来再讲一遍。把用户的回答也记下来。
+5. **同步出去**：改完技能就同步到 GitHub，这样换电脑、换手机，技能还是最新的；别人装到的也是学会了的版本。
+
+判断技能是不是真变聪明了，就看三点：同样的问题第二次不用再查就能答；用户纠正过的错不再犯第二次；新手按技能走能自己跑通 01 例程。做不到，就说明第 2 步没找对缺口，重来一遍。
+
 ## Teach RAPID for a beginner
 
 - Answer in Chinese, use few technical terms, split complex work into steps, and give complete runnable code with a short explanation for each important part.
