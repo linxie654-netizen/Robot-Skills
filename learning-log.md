@@ -108,6 +108,11 @@
 - 回答要点：4 处核实完——建模 ✅（Part.Load 导 CAD + Body.CreateSolidCone 建几何，ABB 官方示例和论坛实例）；Smart 组件 ✅（GraphicComponentLibrary.Load + RootComponent.CopyInstance + GraphicComponents.Add，ABB 论坛标准写法，CopyInstance 必须调）；点动 ⚠️（手动点动命令 SDK 里没有，ABB 工程师亲口确认；仿真侧用 Mechanism.SetJointValues 改关节角代替）；建 VC ❌（从 0 新建系统没找到 SDK 调用，建系统是 Installation Manager / System Builder 的活；启动已有 VC 已核实 RsIrc5Controller.StartAsync / RobVcFactory.StartVC）。核实结论写进 abb-mcp-fork/verification-notes.md；4 个新工具草稿写进 abb-mcp-fork/pipeline-tools/（rs_import_cad、rs_create_solid、rs_add_smart_component、rs_jog_joint），未测试。
 - 本次加深内容：verification-notes.md + pipeline-tools/（handlers.cs、tools.ts、README.md）。
 
+### Q21 — 2026-11-20 15:49（微信任务）
+- 问题：微信发来 ABB RAPID 练习“牛刀小试”图片（rYuan 画圆、rFang 画方，nCount=1,3,5,7,9 画 100×60 方形，=2,4,6,8,10 画 R=40 圆，>10 停止）
+- 回答要点：完整程序 mod_NiuDaoXiaoShi——main 用 WHILE nCount<=10 + MOD 2 判奇偶；rFang 用 MoveL+Offs 画 100×60 方形；rYuan 用两次 MoveC 拼 R=40 整圆；点位注明为示教值、需在 RobotStudio 重示教。文字结果 + .mod 文件已发回微信，文件在 wechat-bridge/results/7529454543215009160.mod。
+- 本次加深内容：记录在案，未进 RAPID 例程库（微信任务，按需再入库）。
+
 ### Q18 — 2026-11-20 14:04
 - 问题：怎么做（指补建站、加机器人、Smart 组件这三件）。
 - 回答要点：三层套路，和现有工具一样——C# 插件加新端点（照 CreatePath/CreateTarget 的写法）→ MCP 服务器加新工具（调插件 HTTP 端点）→ 另一 AI 在用户电脑上编插件 + npm run build + 实测。建工作站已写出草稿 rs_create_station（new Station() + ActiveTask = DefaultTask + Project.ActiveProject，ABB 论坛实例写法，包在 UndoContext 里），未测试，待另一 AI 编测；已知坑：新工作站可能没 3D 图形窗口，论坛里的解法是加 GraphicControl + Camera（需 Stations.Forms 引用）。加机器人须先定型号，机器人库 .rslib 默认在 C:\ProgramData\ABB\DistributionPackages2，新型号要先在 RobotStudio 里下载。Smart 组件须对 SDK API 参考核实实例化调用，没编具体的调用名。顺序：工作站 → 机器人 → Smart 组件。
@@ -149,3 +154,55 @@
 - 问题：这个 skill 用户可以边问，技能可以边学习，越来越懂，怎么做
 - 回答要点：靠一个 5 步学习循环，每次提问都跑一遍：1 记下来（learning-log，原话 + 纠正也记）；2 找缺口（用户卡在哪、技能缺什么）；3 补进技能（新知识进 SKILL.md 或路线图、反复问的进 references/learned.md、新工具进 comparison.md、纠正过的写成铁规矩）；4 问一句学会没（用户回答决定继续还是再讲一遍）；5 同步 GitHub。判断标准三条：同样问题第二次不用再查、纠正过的错不再犯、新手能自己跑通 01 例程。
 - 本次加深内容：SKILL.md（本地与公开版）新增“边问边学”一节；新建 skill/abbrobotstudio/references/learned.md，把 Q1–Q26 学到的东西（只留一个技能、MCP 停掉、虚拟控制器不能代码建、点动无 SDK 命令、RWS 端点、localhost 走 IPv6 等）按“问题 → 答案 → 为什么”写进去；新文件待下次同步 GitHub（当前正在跑的同步任务传的是改之前的版本）。
+
+### Q27 — 2026-11-20 15:33
+- 问题：怎么改 giithup 的头像
+- 回答要点：GitHub 网页右上角点头像 → Settings → Public profile → Profile picture 点 Upload new picture，选正方形图片、裁剪、保存；直达链接 github.com/settings/profile。改完全站生效要等几分钟。
+- 本次加深内容：无（与 ABB 技能无关的操作问题，只记问题与答案，不改技能）。
+
+### Q28 — 2026-11-20 15:35
+- 问题：你帮我改，就这个头像
+- 回答要点：这条消息里没收到图片，助手查了上传目录也没有新图片文件，已请用户把想用的头像图发过来，收到后用浏览器在 GitHub 设置里上传更换。
+- 本次加深内容：无。
+
+### Q29 — 2026-11-20 15:35
+- 问题：doraemon（接在换 GitHub 头像的话题后）
+- 回答要点：按“用哆啦A梦当 GitHub 头像”理解。第一张图用户说不好看，又画了两张（经典动画脸、3D 立体版），用户选第 1 张；已转 PNG（1600×1600）经浏览器上传到 GitHub 设置更换，主页大头像已从粉色 identicon 变成哆啦A梦，右上角小头像因缓存仍显示旧图，等几分钟就同步。
+- 本次加深内容：无。
+
+### Q30 — 2026-11-20 18:01（微信）
+- 问题：跟哪种语言比较像（接上一条“这种编程属于什么语言”，已答 RAPID）。
+- 回答要点：最像 Pascal——结构化、强类型，MODULE/PROC、VAR 先声明类型、IF…ENDIF、WHILE…ENDWHILE、分号结尾；已核实 TryPLC 的说法“Pascal-like，closer to Pascal than to BASIC”。跟 Python 对比：逻辑相通（if/while/for/函数），差别在 Python 靠缩进、不用声明类型，RAPID 靠关键字收尾、必须声明类型；例子 nCount := nCount + 1;、IF…THEN…ENDIF。KUKA 的 KRL 作用一样但语法不同，不能通用。
+- 本次加深内容：skill/abbrobotstudio/references/learned.md 新增“RAPID 最像 Pascal”一条。
+
+### Q31 — 2026-11-20 18:13（本窗口）
+- 问题：ABB编程是什么语言
+- 回答要点：主语言是 RAPID，ABB 自家给 IRC5/OmniCore 控制器用的高级语言，语法像 Pascal/C 混合，在 RobotStudio 里写、下载到控制器跑；Python/C# 只能通过 RWS、EGM、PC SDK 联动，不能替代 RAPID。注：微信窗口 18:01 已有同类问题记为 Q30（RAPID 最像 Pascal），本次是本窗口重复提问，编号 Q31。
+- 本次加深内容：技能已覆盖 RAPID 教学（01–10 例程），本次只补记录，不改技能；用户仍在给技能改名（rapid-mentor / abb-robot-mentor / robot-code-craftsman 三选一），未定。
+
+### Q32 — 2026-11-20 18:12（本窗口）
+- 问题：技能名不要叫 abbrobotstudio，一点都不好听，这个技能我想的是可以正确而且高效率地写出机器人编程代码，仿真问题 Smart 组件，边学习边成长的，项目能不能做好看一点，封面标准做好看，对比一下各大热门 skill
+- 回答要点：查了热门技能（skills.sh 2026-11-10 数据）：find-skills 430 万、grill-me 150 万、tdd 120 万、frontend-design 110 万，规律是名字短（1–2 词）、一看就知道干什么、只做一件事；README 封面标准是居中标题 + 图 + 一句话 + 3–5 个徽章 + 第一屏给证据 + 30 秒上手。给了三个候选名（rapid-mentor / abb-robot-mentor / robot-code-craftsman），用户回“那就叫这个吧”，按第一个 rapid-mentor 改（用户没点选项卡，第一个是我排第一的推荐；若不是，改名后可一句话纠正）。已改：本地 custom-skills 与公开库 skill 目录重命名，SKILL.md/skill.yaml/INSTALL.md/README 里的名字全改，README 封面按热门标准重做（居中标题 + 机器人封面图 assets/cover.png + 一句话 + 徽章 + 四格功能表），comparison.md 补热门技能对比表。
+- 本次加深内容：SKILL.md 与 skill.yaml 的定位改成“ABB 机器人导师：写 RAPID 又对又快，仿真、Smart 组件、边学边长大”；comparison.md 新增热门 Skill 对比一节与改名原因；learned.md 补改名教训。
+
+### Q33 — 2026-11-20 18:16（本窗口）
+- 问题：Robot-RAPID / 这个
+- 回答要点：用户纠正技能名：不要 rapid-mentor，定名 Robot-RAPID。已改：本地 custom-skills/robot-rapid 与公开库 skill/robot-rapid（文件夹名按技能规范用小写 robot-rapid，对外显示名 Robot-RAPID），SKILL.md 标题与描述、skill.yaml 的 title、README 徽章与“叫 Robot-RAPID”、comparison.md 改名段落都已改。注意：当时正在跑的 GitHub 同步传的是 rapid-mentor 版，须等它跑完再同步一次 Robot-RAPID 版，不能中途掐断（会留半截仓库）。
+- 本次加深内容：learned.md 补一条——用户定名时按用户原话，文件夹小写是规范，显示名用用户原话。
+
+### Q34 — 2026-11-20 18:17（本窗口）
+- 问题：全部核对到我这个 Robot-RAPID 仓库里，然后其他仓库就可以删掉了，然后还有一些虚拟的文件夹，还有一些重复的文件夹也全部删掉
+- 回答要点：已核查账号仓库共 4 个：abb-robot-programming（留，Robot-RAPID 仓库）、abb-robotstudio-mcp6.08（fork，删的候选）、dian-gong-2026（留，电工公开站在跑）、desktop-tutorial（私有教程仓库，删的候选）。本地：abb-library 与 custom-skills 干净，skill/ 只剩 robot-rapid；github-upload/ 是空文件夹可删；abb-mcp-fork/ 是 MCP 本地稿子，含 station-tool/、pipeline-tools/ 两个封存草稿文件夹可删。删仓库不可逆，已列删单请用户点选确认，未动手删。
+- 本次加深内容：无，待用户确认删单后执行。
+
+### Q34 续 — 2026-11-20 18:18（本窗口）
+- 用户点选：删 MCP fork 和 desktop-tutorial，留 ABB 和电工。
+- 执行：本地 github-upload/（空文件夹）与 abb-mcp-fork/（MCP 本地稿子，含 station-tool/、pipeline-tools/ 草稿）已移进回收站，30 天内可恢复（trash_id：github-upload 为 20261120-101846-f005e7eccc304b7d80be3569ca2cc04a，abb-mcp-fork 为 20261120-101846-ef89e99ea3b440c5b76dbab09b1264c0）。GitHub 上删 abb-robotstudio-mcp6.08 与 desktop-tutorial 两个仓库已交浏览器执行，待回执核对。
+
+### Q34 续 — 2026-11-20 18:21（本窗口）
+- 删仓库完成：abb-robotstudio-mcp6.08 与 desktop-tutorial 均已删除，仓库清单核对只剩 abb-robot-programming 与 dian-gong-2026。删第一个仓库时 GitHub 要求 sudo 模式重验证，用户发来邮箱验证码 26044234 完成验证，未用密码。本地 github-upload/ 与 abb-mcp-fork/ 已进回收站（30 天可恢复）。
+
+### Q32/Q33 续 — 2026-11-20 18:23（同步半失败，教训）
+- rapid-mentor 版同步半失败：9 次提交已上（4 个脚本移到 skill/rapid-mentor/scripts/、旧 skill/abbrobotstudio 已删、assets/cover.png 已传，仓库 21→30 次提交），但 7 个文本文件（SKILL.md、INSTALL.md、recipes.md、learned.md、README.md、comparison.md、learning-log.md）上传全部失败。
+- 失败原因（我的错）：文件交给浏览器后，我又在本地把 rapid-mentor 改名成 robot-rapid、还改了 README 等文件，浏览器那边按旧路径、旧大小找不到文件了（source_not_found / input_grant_size_mismatch）。教训：文件交给浏览器同步后，在它跑完之前绝不改名、绝不改内容。
+- 当前仓库状态：skill/ 只剩 rapid-mentor，且只有 scripts/，缺 SKILL.md、INSTALL.md、references/；README 等仍是旧版。已重开一次同步，直接做 Robot-RAPID 版：删 skill/rapid-mentor，重建 skill/robot-rapid（8 个文件全传），换 README、comparison.md、learning-log.md；这次本地文件不再动。
