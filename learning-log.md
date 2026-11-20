@@ -244,3 +244,13 @@
 - 用户要求三条：只有 30 天的不要写进去；你别管 24 还是 08，全部通用写进去；不会的就去查。
 - 执行：已按要求改：youtube-tutorials.md 删了 E1 的 30 天试用提醒，A2 的 World Zone 可视化改成通用写法（三种可视化做法任选），A1 的 RW7 版本说明和 C1–C4 的 6.08 界面说明改成通用表述；PROGRESS.md 的 A2 行、草稿表、方法第 6 条改通用；草稿 world-zones-visualization-2024.md 改名 world-zones-visualization.md 并重写成通用做法。核查：World Zone 是 RobotWare 老选项（608-1），WZBoxDef 等指令在 RobotWare 5/6 手册里就有，通用写法有依据。
 - 规则：库里不写 30 天试用相关内容；内容按通用写，不按版本（2024.1 / 6.08）分开写；不会的先查再写。
+
+### Q42 — 2026-11-20 19:01（本窗口）
+- 用户问：怎么没有 MTI 认证？给我搞多点认证啊，可以开源的。
+- 执行：查了中英文，没找到叫“MTI 认证”的机器人行业认证（MTI 常见指制造技术学院、Xsens MTi 传感器、MTI Motion 电机），已在新文件里写明没找到，请用户确认是不是指别的。按“可以开源的”理解为免费学、证书免费或便宜，核实后写了 docs/certifications.md：免费拿证 4 个（UR Academy 每课一张证、EDWartens ABB £19 自选、EDWartens FANUC £19 自选、学堂在线 1+X 配套课免费学）、国家认的证 3 个（1+X 应用编程、1+X 操作与运维、工业机器人系统运维员四级）、ABB 官方付费班 3 项（线上班、教育包 STEM.org、2026-11 刚发布的物理 AI 项目，报名办法未核实）、只免费学没证书的 2 类（MIT OCW、Coursera/edX 旁听）。没写 30 天试用相关内容。
+- 待确认：用户说的 MTI 是不是指 MIT 或别的认证，等用户回。
+
+### YouTube 学习第三阶段（进行中，2026-11-20 19:00）
+- 学完 H8（Haber 沿路径走 RAPID，zZXk-TW2iCE），累计 20/32 条；新草稿 1 篇 `drafts/paths-targets-rapid.md`（草稿共 11 篇），补的缺口：沿路径走 RAPID 的完整操作链（导模型 → 装末端执行器 → 点动记点 → 建路径 → 同步到控制器 → 跑仿真）。
+- 学法：视频未逐帧看，流程按 Haber 视频顺序，步骤用 CMU Future CNC 官方教程、ITAR 手册、卡尔加里 YuMi 指南、plcprogramming.io RAPID 教程交叉核对；未核实的写“未核实”。
+- 下一步：R1 分段学 → H5/H6 作业视频 → R2 → R10 → H7 → P2–P6。草稿仍按 Q38 规则：待在 RobotStudio 里照做跑通后再进正式技能文件。本批只改了本地文件，未同步 GitHub。
