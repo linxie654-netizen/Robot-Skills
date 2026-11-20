@@ -8,6 +8,7 @@
 
 ## 新手安装：3 步
 
+0. 一条命令装技能（跟别的 skill 一样，推荐）：`npx skills add linxie654-netizen/abb-robot-programming`（需要 Node.js 22.20 以上；命令会找到仓库里的 `robot-rapid`，让你选装到哪个助手；2026-11-20 已实测，`--list` 能找到 1 个技能，`--skill robot-rapid -a claude-code -g -y` 能装到 `.claude/skills/robot-rapid/`）。装完直接跳到第 3 步。
 1. 下载本仓库：`git clone https://github.com/linxie654-netizen/abb-robot-programming.git`（没装 git 就在网页上点 `Code` → `Download ZIP`）。
 2. 把 `skill/robot-rapid` 复制到你的 Skill 目录（下面按助手分开写）。
 3. 问第一个问题，比如“我是新手，从哪开始学 ABB？”，助手就带你从 `rapid/01_move_basics.mod` 开始练。
