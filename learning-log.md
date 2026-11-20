@@ -98,8 +98,28 @@
 - 回答要点：按 fork README 的工具表（63 个：33 个 rs_* + 30 个 rws_*）逐项核对。创建工作站：没有创建工具，只有 rs_get_station / rs_get_station_objects / rs_save_station，不行。添加机器人：没有任何加机器人工具，不行。添加编程：可以，rs_write_module、rs_validate_rapid、rs_create_path、rs_create_target、rws_write_module、rws_load_module_from_file、rws_load_program。Smart 组件：没有任何相关工具，不行。结论：MCP 只能操作已经打开的工作站，不能从 0 到 1 建站；要补建站、加机器人、Smart 组件这三件，须在 ClaudeBridge 插件（C# 端）新开发工具，不是改配置能解决的。
 - 还差什么：#5/#6 修复尚未在真控制器上跑过验证；rs_read_module 仍需装载程序后验证；install.ps1 未在实机上跑过；机器人型号仍未确认；Muse 聊天仍接不进用户电脑本地的 MCP，只能由 Trae CN / Claude Code 在那台电脑上用。
 
+### Q19 — 2026-11-20 14:19
+- 问题：是从 0 到 1，从工作站创建，到机器人到示教器，到建模，组件到编程的一个全流程
+- 回答要点：全流程 6 段，按顺序——工作站创建（rs_create_station 草稿已写未测）、加机器人（无工具，须先定型号；另涉虚拟控制器创建，论坛反映工作站加载后加 VC 是难点，待核实）、示教器（教目标点已有 rs_create_target、读位置已有，jog 点动无工具；虚拟示教器本身是界面，MCP 开不出来，只能做它对应的操作）、建模（无工具，SDK 可建几何/导 CAD，须核实调用）、组件（Smart 组件无工具，实例化调用待 PC 核实）、编程（已有，写模块/校验/路径/目标点/加载）。阶段图写进 docs/mcp-full-pipeline.md。
+- 本次加深内容：docs/mcp-full-pipeline.md（6 段全流程，每段现有工具/缺失/待核实）。
+
+### Q20 — 2026-11-20 14:24
+- 问题：用户把“加机器人里建虚拟控制器、Smart 组件实例化、点动、建模的调用——这几处我还没核实，其中建虚拟控制器论坛上有人说做不出来”这句话贴回来，要核实
+- 回答要点：4 处核实完——建模 ✅（Part.Load 导 CAD + Body.CreateSolidCone 建几何，ABB 官方示例和论坛实例）；Smart 组件 ✅（GraphicComponentLibrary.Load + RootComponent.CopyInstance + GraphicComponents.Add，ABB 论坛标准写法，CopyInstance 必须调）；点动 ⚠️（手动点动命令 SDK 里没有，ABB 工程师亲口确认；仿真侧用 Mechanism.SetJointValues 改关节角代替）；建 VC ❌（从 0 新建系统没找到 SDK 调用，建系统是 Installation Manager / System Builder 的活；启动已有 VC 已核实 RsIrc5Controller.StartAsync / RobVcFactory.StartVC）。核实结论写进 abb-mcp-fork/verification-notes.md；4 个新工具草稿写进 abb-mcp-fork/pipeline-tools/（rs_import_cad、rs_create_solid、rs_add_smart_component、rs_jog_joint），未测试。
+- 本次加深内容：verification-notes.md + pipeline-tools/（handlers.cs、tools.ts、README.md）。
+
+### Q18 — 2026-11-20 14:04
+- 问题：怎么做（指补建站、加机器人、Smart 组件这三件）。
+- 回答要点：三层套路，和现有工具一样——C# 插件加新端点（照 CreatePath/CreateTarget 的写法）→ MCP 服务器加新工具（调插件 HTTP 端点）→ 另一 AI 在用户电脑上编插件 + npm run build + 实测。建工作站已写出草稿 rs_create_station（new Station() + ActiveTask = DefaultTask + Project.ActiveProject，ABB 论坛实例写法，包在 UndoContext 里），未测试，待另一 AI 编测；已知坑：新工作站可能没 3D 图形窗口，论坛里的解法是加 GraphicControl + Camera（需 Stations.Forms 引用）。加机器人须先定型号，机器人库 .rslib 默认在 C:\ProgramData\ABB\DistributionPackages2，新型号要先在 RobotStudio 里下载。Smart 组件须对 SDK API 参考核实实例化调用，没编具体的调用名。顺序：工作站 → 机器人 → Smart 组件。
+- 本次加深内容：station-tool/ 草稿（ClaudeBridgeAddIn.cs、index.ts、README，含编测步骤和已知不确定点）。
+
 ## 待用户确认的学习方向
 - 机器人型号：未定（IRB 120 / 140 / 6700 / YuMi？）
 - RobotStudio 是否已安装：已装，6.08；MCP 服务器 + ClaudeBridge 插件已通（2026-11-20，见 Q15）
 - 当前水平：Python 初学；ABB 基础操作、J1-J6、空间坐标系正在学
 - 下一步建议：先跑通 RobotStudio 虚拟控制器 + `abb_motion_program_exec` 的 MoveJ/MoveL 例子，再学纯 RAPID 搬运、IO、循环。
+
+### Q21 — 2026-11-20 14:40
+- 问题：做的这个 MCP 太难了，做 Skill 好一些
+- 回答要点：停掉 MCP 工具开发，改做 Skill。全流程 6 段（工作站、机器人、示教器、建模、组件、编程）写成 Skill 版步骤，见 docs/full-pipeline.md：人照着在 RobotStudio 6.08 里点，助手给 RAPID 文件、检查清单、看截图改错，不用编 C# 插件、不用 Node/.NET 构建。建虚拟控制器只能走 Installation Manager / System Builder 界面建系统再加载，不能用代码从 0 建。station-tool/、pipeline-tools/ 的 MCP 草稿封存留档，不再编测。
+- 本次加深内容：docs/full-pipeline.md（Skill 版 0 到 1 全流程）+ Skill 两处（本地与公开版）新增“0 到 1 全流程做 Skill、不做 MCP 工具”一节。
