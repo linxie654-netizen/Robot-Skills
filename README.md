@@ -1,11 +1,23 @@
+<div align="center">
+
 # 🤖 ABB 机器人编程学习库
+
+<img src="assets/cover.png" alt="ABB 工业机器人" width="720">
+
+**写对 RAPID 代码，在 RobotStudio 里仿真跑通，再上真机。**
 
 ![RAPID](https://img.shields.io/badge/RAPID-10%E4%BE%8B%E7%A8%8B-blue)
 ![RobotStudio](https://img.shields.io/badge/RobotStudio-6.08-green)
-![Skill](https://img.shields.io/badge/Skill-abbrobotstudio-orange)
+![Skill](https://img.shields.io/badge/Skill-Robot--RAPID-orange)
 ![Language](https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-%E4%B8%AD%E6%96%87-red)
 
-**从 0 开始学 ABB 机器人：写 RAPID 代码 → 在 RobotStudio 里仿真 → 再上真机。**
+[🚀 30 秒上手](#-新手安装3-步) · [📖 新手路线](docs/beginner-roadmap.md) · [⚡ 速查表](docs/cheatsheet.md) · [🔍 对比学习](docs/comparison.md)
+
+</div>
+
+| 写代码 | 仿真 | Smart 组件 | 边学边长大 |
+|---|---|---|---|
+| RAPID 又对又快，10 个例程照着练 | 虚拟控制器先跑通、查碰撞，再上真机 | 从 0 到 1 建站 6 段，建模、组件都包了 | 每次提问都记下来，技能越问越全 |
 
 中文，拆步骤，给完整能跑的代码，重要代码逐段讲。目标：Python + PLC + ABB 机器人联动，做工业自动化。
 
@@ -13,7 +25,7 @@
 
 ## ✨ 这个技能有什么用
 
-就一个技能，叫 **`abbrobotstudio`**，装上它，助手就按这套方法教你：
+就一个技能，叫 **Robot-RAPID**（文件夹名 `robot-rapid`），装上它，助手就按这套方法教你：
 
 1. **教你写 RAPID 代码**：MoveJ / MoveL / MoveAbsJ、IO、循环、坐标系、圆弧、报错处理，10 个例程照着练，不用每次从零找资料。
 2. **带你从 0 到 1 建工作站**：建站 → 加机器人 → 示教器教点 → 建模 → Smart 组件 → 编程，6 段一步步点，卡住了截图或贴报错，助手帮你改。
@@ -39,9 +51,9 @@ git clone https://github.com/linxie654-netizen/abb-robot-programming.git
 
 | 你用的助手 | 复制命令 |
 |---|---|
-| Muse | `cp -r abb-robot-programming/skill/abbrobotstudio ~/workspace/custom-skills/abbrobotstudio` |
-| Claude Code | `cp -r abb-robot-programming/skill/abbrobotstudio ~/.claude/skills/abbrobotstudio` |
-| 其他助手 | 把 `skill/abbrobotstudio/SKILL.md` 的全文发给它，或存到它支持的 Skill 目录 |
+| Muse | `cp -r abb-robot-programming/skill/robot-rapid ~/workspace/custom-skills/robot-rapid` |
+| Claude Code | `cp -r abb-robot-programming/skill/robot-rapid ~/.claude/skills/robot-rapid` |
+| 其他助手 | 把 `skill/robot-rapid/SKILL.md` 的全文发给它，或存到它支持的 Skill 目录 |
 
 **第 3 步：问第一个问题**
 
@@ -82,7 +94,7 @@ git clone https://github.com/linxie654-netizen/abb-robot-programming.git
   - `connectors.md` — 连接器怎么搞：MCP + RWS + PC SDK，3 条路
   - `mcp-install-6.08.md` — MCP 服务器 + 插件安装（RobotStudio 6.08）
   - `other-ai-prompt.md` — 给另一个 AI 的安装指令（可复制）
-- `skill/abbrobotstudio/` — 唯一的 ABB Skill，叫 `abbrobotstudio`（通用版，任何人都能装）
+- `skill/robot-rapid/` — 唯一的 ABB Skill，叫 Robot-RAPID（通用版，任何人都能装）
   - `SKILL.md` — Skill 正文（RAPID、0 到 1 全流程、桥操作）
   - `INSTALL.md` — 安装方法（Muse / Claude Code / 其他助手）
   - `scripts/`、`references/` — 桥操作脚本和 C# 片段
