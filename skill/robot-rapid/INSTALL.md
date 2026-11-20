@@ -37,6 +37,7 @@ cp -r abb-robot-programming/skill/robot-rapid ~/.claude/skills/robot-rapid
 
 - 不需要装任何软件，只需要本仓库（RAPID 例程和教程都在里面）。
 - 要在 RobotStudio 里跑仿真：装 RobotStudio（ABB 官网免费下载），见 `robotstudio/tutorial.md`。
+- 写 RAPID 代码推荐装 ABB RAPID Pack（VS Code 扩展，Marketplace 里搜名字装，免费）：离线就能用，F12 跳定义、Shift+F12 找引用、F2 改名、报错提示。
 
 ## 版本
 
