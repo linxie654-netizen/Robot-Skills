@@ -54,15 +54,23 @@
 
 ## 🚀 新手安装：3 步
 
-**第 1 步：把库下载下来**
+**第 1 步：一条命令装技能（跟别的 skill 一样）**
+
+```bash
+npx skills add linxie654-netizen/abb-robot-programming
+```
+
+需要 Node.js 22.20 以上。命令会找到仓库里的 `robot-rapid`，让你选装到哪个助手（Claude Code、Cursor 等）。2026-11-20 已实测能装上。
+
+**第 2 步：不用命令行？手动装也行**
+
+先把库下载下来：
 
 ```bash
 git clone https://github.com/linxie654-netizen/abb-robot-programming.git
 ```
 
-没装 git？直接打开上面这个链接，点绿色的 `Code` → `Download ZIP`，解压就行。
-
-**第 2 步：把技能装上**
+没装 git？直接打开上面这个链接，点绿色的 `Code` → `Download ZIP`，解压就行。再按下面把技能复制到你的助手里：
 
 | 你用的助手 | 复制命令 |
 |---|---|
