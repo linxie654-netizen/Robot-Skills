@@ -26,6 +26,12 @@
 4. Grasshopper / Maya / C++ 都是旁支：除非你本来就用 Rhino 或 Maya，否则先不动。
 5. 不要抄别人的代码当自己的：上面仓库都是别人的开源项目，本库只引用、学习思路，RAPID 例程是我按官方语法重写的教学版。
 
+## 连接器：MCP 服务器（2026-11-20 查的，Q9）
+- ABB RobotStudio MCP Server（PMinhDuc204/abb-robotstudio-mcp6.08，v3.1.0）：TypeScript MCP 服务器 + ClaudeBridge C# 插件，63 个工具（33 个 `rs_*` + 30 个 `rws_*`），明确针对 Windows 上 RobotStudio 6.08【6070933143947009701†L7-L11】。`rs_*` 经 HTTP 到插件 127.0.0.1:58080 再调 RobotStudio SDK，能查工作站、读/写 RAPID、控制仿真、截图；`rws_*` 到控制器 RWS，能启停程序、读写变量和 IO【6070933143947009701†L36-L41】。
+- 另两个同类：zhou-zhichao/robotstudio-mcp（论文里的桥，16 个工具，插件本地 HTTP API 走 8080 端口）【3692441608099880613†L48-L54】；Lagun271 RobotStudioMCP（55 个工具，针对 RobotStudio 2026，不是 6.08）。
+- RWS 本身：IRC5/RobotWare 6 是 RWS 1.0，HTTP Digest，端口 80；OmniCore/RobotWare 7 是 RWS 2.0，HTTPS，端口 443；默认账号 Default User / robotics【6070933143947009701†L129-L136】。
+- 结论：想让 AI 操作 6.08，路 1 的 MCP 是唯一对口 6.08 的；但它是给支持 MCP 的 AI 客户端用的，Muse 这个聊天不能直接接你电脑上的 stdio MCP。最简单的连接器仍是 RWS，本库 Python 例程已在用。
+
 ## 新手教程来源（2026-11-20 查的，Q6）
 - plcprogramming.io《ABB Robot Programming Tutorial 2026》：RAPID 结构、4 种编程方法、RobotStudio 离线流程、MoveJ/MoveL、工具/工件。【9018129499109220005†L9-L16】
 - RobotIndus3 RAPID 教程：15 课、6 小时+，从 MODULE、变量、IF/FOR/WHILE/TEST、MoveJ/MoveL/MoveC/MoveAbsJ、IO、函数、报错处理到生产程序；免费、带浏览器 3D 模拟器。【9018129499109220005†L78-L86】
