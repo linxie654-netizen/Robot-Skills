@@ -144,3 +144,8 @@
 - 问题：然后封面的话要搞好看点，然后要教怎么安装新手，技能有什么用
 - 回答要点：封面指公开库 README 顶部。已重排：标题 + 徽章（RAPID 10 例程、RobotStudio 6.08、Skill abbrobotstudio、中文）+ 一句话说明，新增“这个技能有什么用”5 条、“新手安装：3 步”（下载库、装技能、问第一个问题，附 Muse / Claude Code / 其他助手三种装法和没装 git 时的 ZIP 下载办法），INSTALL.md 顶部也补了同样两节。
 - 本次加深内容：README.md 封面重排；skill/abbrobotstudio/INSTALL.md 补“有什么用”与“新手安装 3 步”；同步 GitHub 待浏览器结果。
+
+### Q26 — 2026-11-20 15:27
+- 问题：这个 skill 用户可以边问，技能可以边学习，越来越懂，怎么做
+- 回答要点：靠一个 5 步学习循环，每次提问都跑一遍：1 记下来（learning-log，原话 + 纠正也记）；2 找缺口（用户卡在哪、技能缺什么）；3 补进技能（新知识进 SKILL.md 或路线图、反复问的进 references/learned.md、新工具进 comparison.md、纠正过的写成铁规矩）；4 问一句学会没（用户回答决定继续还是再讲一遍）；5 同步 GitHub。判断标准三条：同样问题第二次不用再查、纠正过的错不再犯、新手能自己跑通 01 例程。
+- 本次加深内容：SKILL.md（本地与公开版）新增“边问边学”一节；新建 skill/abbrobotstudio/references/learned.md，把 Q1–Q26 学到的东西（只留一个技能、MCP 停掉、虚拟控制器不能代码建、点动无 SDK 命令、RWS 端点、localhost 走 IPv6 等）按“问题 → 答案 → 为什么”写进去；新文件待下次同步 GitHub（当前正在跑的同步任务传的是改之前的版本）。
