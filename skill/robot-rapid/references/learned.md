@@ -38,3 +38,8 @@
 - **技能改名要短、要说得出干什么**（2026-11-20，用户说 abbrobotstudio 不好听） → 改成 `robot-rapid`。热门技能（find-skills、grill-me、tdd）都是 1–2 个词，名字本身就是功能；三个词拼软件名既长又没说清用途。改名时本地 custom-skills、公开库 skill 目录、SKILL.md、skill.yaml、INSTALL.md、README、comparison.md 要一起改，只改一处会留尾巴。
 
 - **用户定名按原话，文件夹小写是规范**（2026-11-20，用户纠正 rapid-mentor → Robot-RAPID） → 显示名、标题、徽章都用用户原话 Robot-RAPID，文件夹和 skill name 用小写 `robot-rapid`。改名中途已有同步在跑时不要掐断，等它跑完再同步一次新名字，否则仓库留半截。
+
+## 码垛：只教 2 个点，12 个箱子全靠 Offs 算
+- 问题：用户要做叠码垛仿真，托盘 2 列×2 行×3 层，怎么写程序？
+- 答案：`rapid/11_palletizing.mod`——规格（列/行/层、箱子尺寸、间隙）全放开头 CONST 里改；`main` 用 WHILE TRUE + 三层 FOR 循环码一托，满托报数、等 `diNewPallet` 换托盘再码；`PickBox` 等 `diBoxReady` 再取；`PlaceBox` 用 `Offs()` 在 `Move` 指令里当场算位置，偶数层换转 90 度的基准点交错码放。
+- 为什么：12 个箱子的位置全是基准点加偏移算出来的，只教 2 个基准点，托盘挪地方只改 `wobjPallet` 一个坐标系。注意：`Offs()` 必须写在 `Move` 指令里，别先算出来存变量再用，不然偏移的坐标系会错。
