@@ -114,13 +114,10 @@ git clone https://github.com/linxie654-netizen/abb-robot-programming.git
   - `cheatsheet.md` — RAPID 速查表
   - `comparison.md` — 网上 APP / 库对比学习表
   - `full-pipeline.md` — 从 0 到 1 全流程 6 段（Skill 版）
-  - `connectors.md` — 连接器怎么搞：MCP + RWS + PC SDK，3 条路
-  - `mcp-install-6.08.md` — MCP 服务器 + 插件安装（RobotStudio 6.08）
-  - `other-ai-prompt.md` — 给另一个 AI 的安装指令（可复制）
 - `skill/robot-rapid/` — 唯一的 ABB Skill，叫 Robot-RAPID（通用版，任何人都能装）
-  - `SKILL.md` — Skill 正文（RAPID、0 到 1 全流程、桥操作）
+  - `SKILL.md` — Skill 正文（RAPID、0 到 1 全流程）
   - `INSTALL.md` — 安装方法（Muse / Claude Code / 其他助手）
-  - `scripts/`、`references/` — 桥操作脚本和 C# 片段
+  - `references/` — 学到的东西、报错手册、常用模式、Smart 组件、仿真检查清单
 - `learning-log.md` — 每次提问记录，按用户要求持续记
 - `vendor/` — 拉取的开源参考源（别人的项目，保留原仓库和协议）
   - `abb_motion_program_exec/` — rpiRobotics，Apache-2.0
