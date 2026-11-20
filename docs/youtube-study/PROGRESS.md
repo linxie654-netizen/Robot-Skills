@@ -1,8 +1,8 @@
 # YouTube 视频学习进度
 
-更新：2026-11-20（第二阶段完成）。总目录见 `../youtube-tutorials.md`（32 条，比第一阶段多 1 条 H8）。
+更新：2026-11-20（第三阶段进行中：已学 H8，累计 20/32）。总目录见 `../youtube-tutorials.md`（32 条，比第一阶段多 1 条 H8）。
 
-## 已学完（19 条）
+## 已学完（20 条）
 
 ### 第一阶段（9 条：H1、H2、H4、P1、A1、C1–C4）
 
@@ -30,6 +30,12 @@
 | A2 | ABB 官方 Visualize World Zones | 官方发布说明核实 | `youtube-tutorials.md` 第二批 + 草稿 `drafts/world-zones-visualization.md` |
 | E1 | EDWartens 免费课 16 模块 | 官网大纲全文已读 | `youtube-tutorials.md` 第二批 |
 
+### 第三阶段（1 条：H8）
+
+| 编号 | 标题 | 学法 | 要点已写到哪 |
+|---|---|---|---|
+| H8 | Haber 沿路径走 RAPID | 视频流程 + CMU / ITAR / 卡尔加里 YuMi 指南 / plcprogramming.io 交叉核对 | `youtube-tutorials.md` 第三批 + 草稿 `drafts/paths-targets-rapid.md` |
+
 ## 部分学完（2 条）
 
 | 编号 | 标题 | 状态 | 下一步 |
@@ -37,21 +43,20 @@
 | R1 | ABB ROBOT PROGRAMMING TUTORIAL PART 1（4h36m） | 只核实了课程简介和多版本情况（还有 2h58m / 1h36m / 4h22m 剪辑，是否为同一课未核实），未逐段拆解 | 分段学 |
 | R9 | General Robot Studio Routines（20 分钟） | 只有一句解说词片段，不够算学完 | 找更多材料再学 |
 
-## 只列目录，待学（11 条）
+## 只列目录，待学（10 条）
 
 下一阶段优先顺序：
 
 1. **R1 PART 1（4h36m）** — 分段学，先确认看哪个剪辑
-2. **H8 Haber 沿路径走 RAPID（zZXk-TW2iCE）** — 第二阶段新发现：导模型、装末端执行器、点动记点、建路径、写 RAPID 沿路径走
-3. **H5/H6 Haber 作业 2 配套视频** — 角色已核实（作业：旋转立方体 + 圆锥末端执行器 + 工具/工件坐标系），各自标题仍未核实
-4. **R2（2h58m）** — 简介与 R1 相同，先核实是不是同一课的不同剪辑
-5. **R10 PART 1/PART 2（5:37 / 11:44）** — 其余 RAPID 入门
-6. **H7 TCP 方向** — Patino 笔记引用，内容未核实
-7. **P2–P6 播放清单** — Patino 推荐，3 个西班牙语 + 2 个英语，只列了链接
+2. **H5/H6 Haber 作业 2 配套视频** — 角色已核实（作业：旋转立方体 + 圆锥末端执行器 + 工具/工件坐标系），各自标题仍未核实
+3. **R2（2h58m）** — 简介与 R1 相同，先核实是不是同一课的不同剪辑
+4. **R10 PART 1/PART 2（5:37 / 11:44）** — 其余 RAPID 入门
+5. **H7 TCP 方向** — Patino 笔记引用，内容未核实
+6. **P2–P6 播放清单** — Patino 推荐，3 个西班牙语 + 2 个英语，只列了链接
 
 ## 草稿（待核对后正式进 Robot-RAPID）
 
-`docs/youtube-study/drafts/` 下 10 篇，核对方式：按草稿在 RobotStudio 6.08 里照做一遍，跑通了再进 `skill/robot-rapid/references/`。
+`docs/youtube-study/drafts/` 下 11 篇，核对方式：按草稿在 RobotStudio 6.08 里照做一遍，跑通了再进 `skill/robot-rapid/references/`。
 
 | 草稿 | 来源 | 状态 |
 |---|---|---|
@@ -65,6 +70,7 @@
 | `multiple-workobjects.md` | Domer R8 | 待实操核对（第二阶段新增） |
 | `create-system-from-layout.md` | cnctrain C5 | 待实操核对（第二阶段新增） |
 | `world-zones-visualization.md` | ABB 官方 A2 | 待实操核对（第二阶段新增） |
+| `paths-targets-rapid.md` | Haber H8 | 待实操核对（第三阶段新增） |
 
 ## 方法记录（后面轮次照这个做）
 
