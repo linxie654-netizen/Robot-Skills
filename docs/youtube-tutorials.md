@@ -249,11 +249,28 @@
 
 ### R1 ⚠️ ABB ROBOT PROGRAMMING TUTORIAL PART 1
 
-- 链接、作者：未核实
-- 时长：4 小时 36 分（多处来源一致）
-- 课程简介（已核实）：“这门课教：机器人、点动；基础程序结构；怎么创建、修改、保存、加载程序；用 ABB Flex（后半截被截断，应为 FlexPendant）……”
-- 多版本情况（已核实有多个剪辑，是否为同一课未核实）：同名课程还有 2 小时 58 分版（R2）、1 小时 36 分版、4 小时 22 分版。学的时候先确认看的是哪个剪辑，别按错时长做计划。
-- 状态：只核实了课程简介和版本情况，**未逐段拆解**。这课最长，下阶段分段学。
+- 频道：Automation Academy
+- 链接：https://www.youtube.com/watch?v=hGGkzsT8WEU
+- 时长：4 小时 36 分
+- 课程简介（已核实，照抄 Wolf Robotics《ABB BASIC ROBOTIC PROGRAMMING》4 天线下班手册原文，已读核实）：“这门课教：机器人、点动；基础程序结构；怎么创建、修改、保存、加载程序；用 ABB Flex（后半截被截断，应为 FlexPendant）……基础焊接指令；10% 课堂、90% 动手；对象是写新生产程序的编程员／操作员。”
+- 多版本对照（已核实）：同一频道、同一时期（5 年前直播）、同一门课的不同剪辑／上传，课程简介一字不差；是否为同一段录像、内容是否完全相同，未核实（没拿到字幕，无法逐句比对）。
+
+| 版本 | 视频 ID | 时长 | 播放量 |
+|---|---|---|---|
+| PART 1（R1，本课） | hGGkzsT8WEU | 4:36:34 | 25K |
+| TUTORIAL（R2） | DsQu6AXvcgg | 2:58:07 | 17K |
+| TUTORIAL（短版） | _l7buBX1DFk | 1:33:02 | 244 |
+| TUTORIAL.（又一版） | 未核实 | 未核实 | 835 |
+| TUTORIAL ---- PART 2（续集） | 未核实 | 未核实 | 2,807 |
+
+- 注意：之前目录写的短版“1 小时 36 分”有出入，实测是 1:33:02，已按 1:33:02 更正。4h22m、4h13m 两个版本只在搜索镜像里出现过，上传者未核实，这次没在 Invidious 第一页找到，记“未核实”。
+- 学法：字幕拿不到，YouTube 播放页只返回标题和一句话简介；视频内章节时间点未核实。分段按 Wolf 手册大纲 + ABB 官方 RU011／IN-RB02 课程大纲拆（两份都在 ABB 官方资料库读过原文），顺序一致。
+- 已学完段 1–4（第三阶段）：
+  - 段 1 安全开场：上锁挂牌、急停、安全链、进单元前确认安全装置 → 草稿 `drafts/safety-lockout-tagout.md`
+  - 段 2 认识 FlexPendant：主菜单、快捷菜单、使能按钮、摇杆、操作模式、速度档 → 草稿 `drafts/flexpendant-navigation.md`
+  - 段 3 点动：轴／线性／重定向三种模式、坐标系选择、速度；库里已有（H1／H2、例程 06、L2），这段主要是印证，不写新草稿
+  - 段 4 工具 TCP 标定＋工件坐标系：示教器四点法标 TCP、标完验证、工件坐标系定义 → 草稿 `drafts/tcp-calibration-flexpendant.md`
+- 状态：部分学完，已学到第 4 段；段 5 起待续（程序结构＋创建／保存／加载程序）。
 
 ### R9 ⚠️ General Robot Studio Routines
 
@@ -268,7 +285,7 @@
 
 | 编号 | 标题 | 作者/频道 | 链接 | 时长 | 对应新手课 | 库里对应 |
 |---|---|---|---|---|---|---|
-| R2 | ABB ROBOT PROGRAMMING TUTORIAL | 未核实 | 未核实 | 2 小时 58 分（简介与 R1 相同，是否为同一课的不同剪辑未核实） | L3–L12 | 全部例程 |
+| R2 | ABB ROBOT PROGRAMMING TUTORIAL | Automation Academy | https://www.youtube.com/watch?v=DsQu6AXvcgg | 2:58:07（与 R1 同一频道、同一时期、简介一字不差，是否为同一段录像未核实） | L3–L12 | 全部例程 |
 | R10 | ABB ROBOT PROGRAMMING PART 1 / PART 2 (PLAYLIST IN DESCRIPTION) | 未核实 | 未核实 | 5 分 37 秒 / 11 分 44 秒 | L1 | 未核实 |
 
 ### 建站与系统
@@ -317,8 +334,11 @@
 13. 多个工件坐标系复用讲法：一个程序多处用，换工位只改工件不改程序（R8）→ 草稿 `drafts/multiple-workobjects.md`
 14. World Zone 可视化做法：工作站里直接显示、WorldZones Add-in、手工画透明盒子 + 碰撞集（A2）→ 草稿 `drafts/world-zones-visualization.md`
 15. EDWartens 模块里库里没有的内容：碰撞检查深入（模块 9）、Pack and Go 与 Add-ins（模块 12）、RobotStudio Cloud（模块 13）、录制/包络/AR（模块 15）、信号分析仪（模块 10）→ 待学深（只核实了大纲）
-16. R1 多版本问题：4h36m / 2h58m / 1h36m / 4h22m 几个剪辑是否为同一课未核实 → 待核实
+16. R1 多版本已核实：PART 1 hGGkzsT8WEU 4:36:34、R2 DsQu6AXvcgg 2:58:07、短版 _l7buBX1DFk 1:33:02（之前目录写的 1h36m 已更正）；是否为同一段录像未核实；4h22m/4h13m 版未核实 → 见上面 R1 一节
 
 第三阶段新发现的缺口：
 
 17. 沿路径走 RAPID 的完整操作链：导模型 → 装末端执行器 → 点动记点 → 建路径 → 同步到控制器 → 跑仿真（H8）→ 草稿 `drafts/paths-targets-rapid.md`
+18. 安全开场：上锁挂牌＋急停＋安全恢复（R1 段 1）→ 草稿 `drafts/safety-lockout-tagout.md`
+19. FlexPendant 导航：主菜单／快捷菜单／操作模式／使能与速度（R1 段 2）→ 草稿 `drafts/flexpendant-navigation.md`
+20. 示教器四点法标 TCP＋验证（R1 段 4）→ 草稿 `drafts/tcp-calibration-flexpendant.md`
