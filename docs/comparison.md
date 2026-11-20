@@ -107,7 +107,7 @@
 
 **是什么**：ABB 机器人控制器用的 Modbus/TCP 客户端/服务端 RAPID 库，分 Server、Client、夹爪模板三部分，要求 RobotWare 7.13+、Server 需 3114-1 多任务选项，带西门子 PLC（SCL）对接示例，3 星、1 fork、35 提交、建于 2025-09-08，MIT，1 个 Release。不是 Agent Skill。
 
-**跟我们有什么关系**：PLC 联动是用户的目标（Python + PLC + ABB 结合），Modbus TCP 是 PLC 和机器人联动的一种现实做法；但它是 OmniCore 专属，我们的技能钉死的是 RobotStudio 6.08 / IRC5。
+**跟我们有什么关系**：PLC 联动是用户的目标（Python + PLC + ABB 结合），Modbus TCP 是 PLC 和机器人联动的一种现实做法；但它是 OmniCore 专属，我们的技能按通用写、不钉死版本。
 
 **借鉴点**：① 可在技能里提一句 Modbus TCP 联动、给个链接，不必展开；② 它的中英双语 README、SCL 示例值得学。
 
@@ -139,7 +139,7 @@
 
 1. 7 个项目里，**没有一个是“SKILL.md 格式的 ABB 技能”**。两个真正的 Agent Skill 仓库（open-robot-skills、robotics-agent-skills）都是 ROS / 通用操作方向，无 ABB；四个 ABB 项目（MCP 服务、离线喷涂助手、Blender 插件、Modbus 库、VS Code 扩展）都不是 Skill 格式。
 2. 按本次核实的 7 个项目 + 此前搜索（2026-11-20），**我们的 Robot-RAPID 是核实范围内唯一一个按 SKILL.md 格式封装的 ABB 技能**。但“GitHub 上第一个”无法穷尽证实——GitHub 全量检索做不到，只能说“目前核实到的范围内没有第二个，‘第一个’未核实”。
-3. 值得补进我们技能的三样（按优先级）：① harness 式验证闭环（写代码 → 仿真跑 → 看报告 → 改 → 换种子再验），等 RobotStudio 验证跑通后做；② 喷涂内容（PaintL/PaintC、brushdata），我们的 30 课里没有；③ VS Code 里装 ABB RAPID Pack 的工具推荐，一句话就能写。
+3. 值得补进我们技能的三样（按优先级）：① harness 式验证闭环（写代码 → 仿真跑 → 看报告 → 改 → 换种子再验）→ 已补：2026-11-21 SKILL.md 验证关口 + simulation-checklist.md，只在仿真里做，不上真机（用户 2026-11-21 定）；② 喷涂内容（PaintL/PaintC、brushdata），我们的 30 课里没有；③ VS Code 里装 ABB RAPID Pack 的工具推荐 → 已补：2026-11-21 SKILL.md 分流表 + INSTALL.md 已推荐安装。
 4. 另一 AI 的报告本身有一处错：`zhou-zhichao/robotstudio-mcp` 这个地址不存在，真正的 MCP 服务是 PMinhDuc204/abb-robotstudio-mcp6.08。
 
 ## 下次对比要补的
