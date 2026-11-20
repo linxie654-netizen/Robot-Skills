@@ -7,7 +7,7 @@
 **写对 RAPID 代码，在 RobotStudio 里仿真跑通，再上真机。**
 
 ![RAPID](https://img.shields.io/badge/RAPID-10%E4%BE%8B%E7%A8%8B-blue)
-![RobotStudio](https://img.shields.io/badge/RobotStudio-6.08-green)
+![RobotStudio](https://img.shields.io/badge/RobotStudio-green)
 ![Skill](https://img.shields.io/badge/Skill-Robot--RAPID-orange)
 ![Language](https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-%E4%B8%AD%E6%96%87-red)
 
