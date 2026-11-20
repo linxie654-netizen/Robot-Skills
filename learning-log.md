@@ -260,3 +260,8 @@
 - 补 3 个缺口，新草稿 3 篇（草稿共 14 篇）：上锁挂牌＋急停＋安全恢复 `drafts/safety-lockout-tagout.md`、FlexPendant 主菜单／快捷菜单／操作模式／使能与速度 `drafts/flexpendant-navigation.md`、示教器四点法标 TCP＋验证 `drafts/tcp-calibration-flexpendant.md`。
 - 学法：字幕拿不到，分段按 Wolf 手册大纲 + ABB 官方 RU011／IN-RB02 课程大纲拆；视频内章节时间点未核实，各剪辑内容是否完全相同未核实，PART 2 内容未核实。
 - 下一步：R1 段 5 起（程序结构＋创建／保存／加载程序）→ H5/H6 作业视频 → R2 → R10 → H7 → P2–P6。草稿仍按 Q38 规则：待在 RobotStudio 里照做跑通后再进正式技能文件。研究笔记 R1-research-note.md 内容已并入 youtube-tutorials.md、PROGRESS.md 与 3 篇草稿，本文件已删除。
+
+### Q43 — 2026-11-20 20:08（本窗口）
+- 用户问：我要做一个叠码垛的仿真，你看一下需要做什么，全部给我说成文字，编成你给我写出来。
+- 执行：新写 `rapid/11_palletizing.mod`（IRB 120 + 传送带供料 + 托盘 2 列×2 行×3 层 = 12 箱，箱子 120×80×60 mm，偶数层转 90 度交错码放，规格全在开头 CONST 里改；只教 2 个基准点，其余位置 Offs 当场算；满托报数、等 diNewPallet 换托盘后循环再码）与 `docs/palletizing-simulation.md`（文字版全流程：方案、建站 10 步、信号接法、Smart 组件简版与完整版、程序讲解、跑仿真、常见问题、进阶）。依据：库里 02 取放、04 循环、05 坐标系与 Patino 码垛 Part 1–3 草稿（传送带物理、真空夹爪、取放叠放偏移）。
+- 未验证：程序没在 RobotStudio 里跑过，点位全是教学值，pPalletBaseR 转 90 度的姿态是算出来的，仿真里要核对朝向；已在文件里写明。
