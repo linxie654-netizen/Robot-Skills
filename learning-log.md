@@ -211,3 +211,36 @@
 - 问题：感觉跟别的 skill 还是比较太少了 / 你去看看别的工科类 skill 怎么做的，学习一下 / 多添加一点内容，多优化美化一下
 - 回答要点：查了工科类 skill：SmailG/plc-programming（PLC 插件，多 skill 分工：develop/debug/convert + 故障模式目录 + 校验器）、robot-validator（ROS 2，7 步工作流）、pixel-robotics/bt-rosbag-analysis（skill 就是可执行手册）、RavenClaude 机器人插件（3 专家 agent + 版本钉死）、awesome-gamedev-agent-skills（79 skill + 路由器 + 版本钉死）。结论：薄的不是 SKILL.md 本身（frontend-design 只有 71 行、9.4KB，110 万安装），薄的是配套：报错手册、按任务分流、检查清单、版本钉死。已补：references 新增 troubleshooting.md（报错对号表 + 四步排查）、rapid-patterns.md（9 种模式配代码和例程）、smart-components.md（搭组件 6 步 + 常用组合）、simulation-checklist.md（逐项打勾）；SKILL.md 加“要干什么先读什么”分流表和验证关口；README 加能力地图与版本钉死行；INSTALL.md 加装完自查 4 步；comparison.md 补工科 skill 对比一节。
 - 本次加深内容：以上 4 个新参考文件 + SKILL.md 分流表与验证关口 + README 能力地图；均待同步 GitHub。
+
+### Q36 — 2026-11-20 18:39（本窗口）
+- 问题：Youtube 上面不是有 Abb robotstudio 新手教程吗？你能不能花几天时间去查看，一个个视频一帧一帧地去学习？然后把它们做成 skill 上传到我的仓库
+- 回答要点：已接，派了视频学习员分阶段做。先找的起点：Aleksandar Haber 系列（点动、工具坐标系、工件坐标系三点法）、Maurilio Patino 码垛 4 部分（真空夹爪 Smart 组件、传送带、取放、安全）、ABB 官方频道教程、4.5 小时 RAPID 入门课、37 分钟取放 RAPID 教程、Ryan Bliss 取放 RAPID、CMU Future CNC 官方 4 步教程。学习方法：字幕 + 作者文字版按步骤拆解，对照库里已有内容标出缺口；不谎称逐帧看过，没看的部分不写。成果先写 docs/youtube-tutorials.md（总目录 + 步骤拆解）与 docs/youtube-study/PROGRESS.md（进度表），值得进技能的先打草稿，核对后再正式进 Robot-RAPID、统一同步 GitHub。另注：Q35 扩内容同步已完成（41 次提交，见下）。
+- 本次加深内容：Q35 扩内容已同步 GitHub（9 个文件、4 次提交：6cd7f88 新参考文件 4 个、69afd0d SKILL.md 与 INSTALL.md、d901737 README 与 learning-log、329ed80 comparison.md；仓库 37→41 次提交，已核对 references 6 个文件、README 能力地图、Q35 记录均在）。
+- 第一阶段完成（2026-11-20 18:43）：目录共 31 条（第一批 11 条、待学 20 条）；学完 9 条（Haber 点动 2 条、三点法 1 条、Patino 码垛 4 部分、ABB 官方 RW7 改安装、CMU 官方 4 步）；发现库里缺 10 样，按先学顺序：三点法工件坐标系、工具标定、真空夹爪 Smart 组件、传送带物理仿真、叠放偏移 + 传感器分拣、QuickStop + World Zone + PowerOn、RW7 改安装、单机器人系统 + I/O 配置、仿真初始状态保存、EDWartens 16 模块课程包。草稿 5 篇在 docs/youtube-study/drafts/（真空夹爪、传送带物理、取放叠放分拣、安全 World Zone、三点法工件坐标系），均标“待在 RobotStudio 6.08 照做跑通后再进正式文件”。下一步建议：H3 工具坐标系 → R4 Ryan Bliss 取放 → R3 Easy 取放（时长 37/20 分钟两说，先核实）→ R7/R6 运动指令与 RAPID 基础 → R8 多工件 → C5 cnctrain 单机器人系统 → R1 四个半小时课分段学。注意：没逐帧看视频，学的是作者文字版 + 字幕/描述；播放页抓不到标题的都写“未核实”，没硬编。
+
+### Q37 — 2026-11-20 18:46（本窗口）
+- 用户拍板：全部都是以这个仓库（abb-robot-programming），不管以后什么技能都放在这里。
+- 规则：以后任何新技能（ABB 以外也一样）都放进这个仓库的 skill/ 下，不另开仓库。本地与 GitHub 同步仍走同一仓库。
+
+### Q38 — 2026-11-20 18:46（本窗口）
+- 用户要求：你先学习，学好后转化成技能。
+- 规则：YouTube 教程先学完、学透，草稿在 RobotStudio 6.08 里照做跑通后，再正式转化进技能（Robot-RAPID 的 SKILL.md / references），不要边学边往正式文件里塞。
+
+### Q39 — 2026-11-20 18:46（本窗口）
+- 问题：别人怎么用我这个 skill？不需要 ZIP 吗？
+- 回答要点：三条路：git clone、网页 Code → Download ZIP、或把 SKILL.md 全文发给助手；ZIP 和 clone 拿到的东西一样，没装 git 才用 ZIP。
+
+### Q40 — 2026-11-20 18:47（本窗口）
+- 用户要求：那你都搞一下，跟其他 skill 都一样。
+- 做法：按热门 skill 的标准安装方式补了一条命令安装：`npx skills add linxie654-netizen/abb-robot-programming`（skills.sh / vercel-labs/skills CLI，Node.js 22.20 以上）。2026-11-20 已实测：`--list` 找到 1 个技能 robot-rapid；`--skill robot-rapid -a claude-code -g -y` 装到 `.claude/skills/robot-rapid/SKILL.md`，端到端跑通。README 与 INSTALL.md 已加这条命令，git clone 和 ZIP 两种手动方式保留。
+
+### YouTube 学习第二阶段完成（2026-11-20 18:47）
+- 累计学完 19/32 条：第二阶段新学 10 条（H3 工具坐标系、R4 Ryan Bliss 取放 19 分钟、R3 Easy 取放、R6 RAPID Basics 7:52、R7 Motion Instructions 7:06、R8 多工件 30 分钟、R5 第一行代码 14:16、C5 cnctrain 单机器人系统、A2 ABB 官方 World Zones 可视化、E1 EDWartens 免费课）。
+- 新发现库里缺 5 样，草稿 5 篇新（草稿共 10 篇）：工具坐标系三种方法 + Create Tool 向导、PLC 程序号调度 + Pounce 点、 多工件复用讲法、从已有布局建系统 + Configuration Editor 配 I/O、World Zone 可视化做法。关键发现：World Zone 的写法（WZBoxDef/WZDOSet、挂 PowerOn 事件）通用，可视化有三种做法：工作站里直接显示、WorldZones Add-in、手工画透明盒子 + 碰撞集。
+- 部分学完：R1 PART 1（4h36m，只核实简介和多版本情况，未逐段拆解）、R9（只有一句解说词片段）。下一步：R1 分段学 → H8 沿路径走 → H5/H6 作业视频 → R2 → R10 → H7 → P2–P6。
+- 草稿仍按 Q38 规则：待在 RobotStudio 6.08 照做跑通后再进正式技能文件。
+
+### Q41 — 2026-11-20 18:52（本窗口）
+- 用户要求三条：只有 30 天的不要写进去；你别管 24 还是 08，全部通用写进去；不会的就去查。
+- 执行：已按要求改：youtube-tutorials.md 删了 E1 的 30 天试用提醒，A2 的 World Zone 可视化改成通用写法（三种可视化做法任选），A1 的 RW7 版本说明和 C1–C4 的 6.08 界面说明改成通用表述；PROGRESS.md 的 A2 行、草稿表、方法第 6 条改通用；草稿 world-zones-visualization-2024.md 改名 world-zones-visualization.md 并重写成通用做法。核查：World Zone 是 RobotWare 老选项（608-1），WZBoxDef 等指令在 RobotWare 5/6 手册里就有，通用写法有依据。
+- 规则：库里不写 30 天试用相关内容；内容按通用写，不按版本（2024.1 / 6.08）分开写；不会的先查再写。
