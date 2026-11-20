@@ -27,11 +27,11 @@
 |---|---|---|---|
 | SmailG/plc-programming（PLC，离我们最近） | Siemens TIA / Schneider / CODESYS 等 PLC 编程插件 | 不止一个 skill：develop（立项→需求→设计→代码→验证→测试）、debug（先取证再修 + 故障模式目录）、convert、siemens、schneider、iec-61131-3；还带 stdlib 校验器、离线工程文件读取器 | 按任务分流 + 故障模式目录 → 已补：SKILL.md 开头加“要干什么先读什么”分流表，`references/troubleshooting.md` 就是故障模式目录 |
 | robot-validator（ROS 2 机器人） | 机器人系统健康检查 skill | 7 步工作流（定范围 → 验 URDF → 验 TF 树 → … → 出报告），frontmatter 带 version / keywords / category | 固定步骤 + 出报告 → 已补：`references/simulation-checklist.md` 逐项打勾，修好要说清验证结果 |
-| pixel-robotics/bt-rosbag-analysis（ROS 2） | ROS 2 行为树排障 skill + MCP | skill 本身就是一份可执行手册：标准查询都写好了（常坏节点、时间线），配好 MCP 就能跑 | 手册要能直接照着跑 → 已补：`references/rapid-patterns.md` 每个模式配代码和对应例程 |
+| pixel-robotics/bt-rosbag-analysis（ROS 2） | ROS 2 行为树排障 skill | skill 本身就是一份可执行手册：标准查询都写好了（常坏节点、时间线） | 手册要能直接照着跑 → 已补：`references/rapid-patterns.md` 每个模式配代码和对应例程 |
 | RavenClaude robotics 插件 | 机器人与自主系统工程插件 | 3 个专家 agent + 决策树知识库 + 模板 + 最佳实践；版本号、日期都钉死，写明“用前再核实” | 版本钉死 + 用前核实 → 已补：README 加版本行（RobotStudio 6.08、RobotWare 6、IRC5），数字都标核实日期 |
 | awesome-gamedev-agent-skills | 79 个游戏开发 skill + 路由器 | 按引擎/学科/类型/流程分类编目，路由器按项目文件自动挑 skill；每个 skill 按官方文档写、钉死引擎版本、有 validator 和 evals | 编目 + 路由 → 本库只有一个 skill，不拆；改成 SKILL.md 内的分流表，相当于一个小路由器 |
 
-**补完后的本库结构**：SKILL.md（11.8KB）+ references 6 个文件（learned、recipes、troubleshooting、rapid-patterns、smart-components、simulation-checklist）+ scripts 4 个 + INSTALL.md；库里另有 RAPID 例程 10 个、Python 2 个、docs 8 个。跟 PLC 那个插件比还是少（人家是多 skill + 校验器），下一步可补的是一个 RAPID 语法自查清单，但那要先有真机验证，暂时不写。
+**补完后的本库结构**：SKILL.md + references 5 个文件（learned、troubleshooting、rapid-patterns、smart-components、simulation-checklist）+ INSTALL.md；库里另有 RAPID 例程 10 个、Python 2 个、docs 根目录 6 个文件。跟 PLC 那个插件比还是少（人家是多 skill + 校验器），下一步可补的是一个 RAPID 语法自查清单，但那要先有真机验证，暂时不写。
 
 ## 对比表
 
@@ -55,12 +55,6 @@
 3. EGM 是进阶：实时控制要开 EGM 选项（RobotWare 选项），先别碰，等 MoveJ/MoveL 跑通再说。
 4. Grasshopper / Maya / C++ 都是旁支：除非你本来就用 Rhino 或 Maya，否则先不动。
 5. 不要抄别人的代码当自己的：上面仓库都是别人的开源项目，本库只引用、学习思路，RAPID 例程是我按官方语法重写的教学版。
-
-## 连接器：MCP 服务器（2026-11-20 查的，Q9）
-- ABB RobotStudio MCP Server（PMinhDuc204/abb-robotstudio-mcp6.08，v3.1.0）：TypeScript MCP 服务器 + ClaudeBridge C# 插件，63 个工具（33 个 `rs_*` + 30 个 `rws_*`），明确针对 Windows 上 RobotStudio 6.08【6070933143947009701†L7-L11】。`rs_*` 经 HTTP 到插件 127.0.0.1:58080 再调 RobotStudio SDK，能查工作站、读/写 RAPID、控制仿真、截图；`rws_*` 到控制器 RWS，能启停程序、读写变量和 IO【6070933143947009701†L36-L41】。
-- 另两个同类：zhou-zhichao/robotstudio-mcp（论文里的桥，16 个工具，插件本地 HTTP API 走 8080 端口）【3692441608099880613†L48-L54】；Lagun271 RobotStudioMCP（55 个工具，针对 RobotStudio 2026，不是 6.08）。
-- RWS 本身：IRC5/RobotWare 6 是 RWS 1.0，HTTP Digest，端口 80；OmniCore/RobotWare 7 是 RWS 2.0，HTTPS，端口 443；默认账号 Default User / robotics【6070933143947009701†L129-L136】。
-- 结论：想让 AI 操作 6.08，路 1 的 MCP 是唯一对口 6.08 的；但它是给支持 MCP 的 AI 客户端用的，Muse 这个聊天不能直接接你电脑上的 stdio MCP。最简单的连接器仍是 RWS，本库 Python 例程已在用。
 
 ## 新手教程来源（2026-11-20 查的，Q6）
 - plcprogramming.io《ABB Robot Programming Tutorial 2026》：RAPID 结构、4 种编程方法、RobotStudio 离线流程、MoveJ/MoveL、工具/工件。【9018129499109220005†L9-L16】
