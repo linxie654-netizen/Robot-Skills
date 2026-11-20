@@ -254,3 +254,9 @@
 - 学完 H8（Haber 沿路径走 RAPID，zZXk-TW2iCE），累计 20/32 条；新草稿 1 篇 `drafts/paths-targets-rapid.md`（草稿共 11 篇），补的缺口：沿路径走 RAPID 的完整操作链（导模型 → 装末端执行器 → 点动记点 → 建路径 → 同步到控制器 → 跑仿真）。
 - 学法：视频未逐帧看，流程按 Haber 视频顺序，步骤用 CMU Future CNC 官方教程、ITAR 手册、卡尔加里 YuMi 指南、plcprogramming.io RAPID 教程交叉核对；未核实的写“未核实”。
 - 下一步：R1 分段学 → H5/H6 作业视频 → R2 → R10 → H7 → P2–P6。草稿仍按 Q38 规则：待在 RobotStudio 里照做跑通后再进正式技能文件。本批只改了本地文件，未同步 GitHub。
+
+### YouTube 学习第三阶段（续，2026-11-20 19:40）
+- R1 段 1–4 学完：R1 定为 Automation Academy 的 PART 1（视频 ID hGGkzsT8WEU，4:36:34）；多版本已核实对照表（R2 DsQu6AXvcgg 2:58:07、短版 _l7buBX1DFk 1:33:02，之前目录写的 1h36m 已更正；4h22m/4h13m 版未核实；是否为同一段录像未核实）；课程简介出自 Wolf Robotics 的 ABB 基础编程 4 天班手册（已读原文核实）。段 1 安全开场、段 2 FlexPendant 导航、段 3 点动（库里已有，只印证）、段 4 示教器四点法标 TCP。
+- 补 3 个缺口，新草稿 3 篇（草稿共 14 篇）：上锁挂牌＋急停＋安全恢复 `drafts/safety-lockout-tagout.md`、FlexPendant 主菜单／快捷菜单／操作模式／使能与速度 `drafts/flexpendant-navigation.md`、示教器四点法标 TCP＋验证 `drafts/tcp-calibration-flexpendant.md`。
+- 学法：字幕拿不到，分段按 Wolf 手册大纲 + ABB 官方 RU011／IN-RB02 课程大纲拆；视频内章节时间点未核实，各剪辑内容是否完全相同未核实，PART 2 内容未核实。
+- 下一步：R1 段 5 起（程序结构＋创建／保存／加载程序）→ H5/H6 作业视频 → R2 → R10 → H7 → P2–P6。草稿仍按 Q38 规则：待在 RobotStudio 里照做跑通后再进正式技能文件。研究笔记 R1-research-note.md 内容已并入 youtube-tutorials.md、PROGRESS.md 与 3 篇草稿，本文件已删除。
