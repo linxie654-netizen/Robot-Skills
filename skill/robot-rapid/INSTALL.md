@@ -67,6 +67,13 @@ cp -r abb-robot-programming/skill/robot-rapid ~/.claude/skills/robot-rapid
 
 Send the full text of `skill/robot-rapid/SKILL.md` to your assistant, or save it in your assistant's skill directory.
 
+### Check the install worked
+
+1. Ask the assistant: “我是新手，从哪开始学 ABB？”
+2. It should answer from `rapid/01_move_basics.mod` and offer the 12-lesson roadmap in `docs/beginner-roadmap.md`.
+3. Ask it something that is already learned, for example: “RAPID 最像哪种语言？” — it should answer Pascal straight away, without searching again.
+4. If it gives generic robot advice instead of RAPID code, the skill is not loaded: check the folder is in the right skills directory and the folder name is exactly `robot-rapid`.
+
 ### Requirements
 
 - No extra software: the library is in this repository.

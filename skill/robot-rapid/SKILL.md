@@ -9,6 +9,24 @@ ABB 机器人导师：写 RAPID 代码又对又快，跑 RobotStudio 仿真，�
 
 配合本仓库的 ABB 编程库使用（仓库根目录 = 库根目录）：RAPID 例程在 `rapid/`，Python 联动在 `python/`，RobotStudio 教程在 `robotstudio/tutorial.md`，速查表在 `docs/cheatsheet.md`，新手路线在 `docs/beginner-roadmap.md`，0 到 1 全流程在 `docs/full-pipeline.md`。
 
+## When to use this skill, and where to look
+
+| 用户要干什么 | 先读什么 | 再干什么 |
+|---|---|---|
+| 写一段 RAPID 代码 | `references/rapid-patterns.md`，找对应的模式，抄 `rapid/` 里的例程改 | 给完整能跑的代码，讲清每个关键部分 |
+| 程序报错 / 跑不通 | `references/troubleshooting.md`，先对号，再动手 | 按复现 → 定位 → 修 → 验证四步走 |
+| 搭 Smart 组件 | `references/smart-components.md` | 在 RobotStudio 里一步步点，仿真里看三遍 |
+| 跑仿真 / 上真机前检查 | `references/simulation-checklist.md`，逐项打勾 | 没打完勾不上真机 |
+| 从 0 到 1 建工作站 | `docs/full-pipeline.md`，6 段按顺序走 | 一次走一段，卡住就截图或贴报错 |
+| Python 控制机器人 | `python/01_move_joints.py`，先打印 RAPID 检查 | 再执行，先在虚拟控制器上跑 |
+| 以前问过的问题 | `references/learned.md`，先查有没有现成答案 | 有就直接答，不用再查 |
+
+## Verification gate: never call it done without a run
+
+- A RAPID program is not done until it runs end to end in a RobotStudio virtual controller with collisions checked. Say so plainly when it has not run yet.
+- A fix is not done until the same failing step runs clean in simulation. One change at a time, one run per change.
+- Never present a program as tested on a real robot when it only ran in simulation, and never present untested code as working.
+
 ## Record every question and compare
 
 - Record every question from the user in `learning-log.md` before answering the next one, with the date, the question in the user's words, and what was answered.
@@ -39,7 +57,7 @@ This is the loop that makes the skill learn. Run it after every user question, n
 
 - Answer in Chinese, use few technical terms, split complex work into steps, and give complete runnable code with a short explanation for each important part.
 
-- Reuse the library's RAPID files in `rapid/` and Python files in `python/` before writing new code from scratch.
+- Reuse the library's RAPID files in `rapid/` and Python files in `python/` before writing new code from scratch. Common patterns (pick and place, wait for signals, loops, error handling, MoveC, TEST/CASE) live in `references/rapid-patterns.md` with the matching routine for each.
 
 - Explain MoveJ as joint interpolation for fast free moves, MoveL as linear interpolation for work near a part, MoveAbsJ as direct J1 to J6 angles for homing and posture changes, and fine as an exact stop while z50 and larger zones blend the path.
 
@@ -109,4 +127,4 @@ This is the loop that makes the skill learn. Run it after every user question, n
 
 - When the user has no robot model yet, start with IRB 120 in RobotStudio for practice and switch models only after the first program runs in simulation.
 
-- When a RAPID error mentions an unreachable target, check the wrist configuration and the work object first instead of changing the position at random.
+- When a RAPID error mentions an unreachable target, check the wrist configuration and the work object first instead of changing the position at random. For any error, open `references/troubleshooting.md` first and match the message before changing code.
