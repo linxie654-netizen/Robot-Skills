@@ -206,3 +206,8 @@
 - rapid-mentor 版同步半失败：9 次提交已上（4 个脚本移到 skill/rapid-mentor/scripts/、旧 skill/abbrobotstudio 已删、assets/cover.png 已传，仓库 21→30 次提交），但 7 个文本文件（SKILL.md、INSTALL.md、recipes.md、learned.md、README.md、comparison.md、learning-log.md）上传全部失败。
 - 失败原因（我的错）：文件交给浏览器后，我又在本地把 rapid-mentor 改名成 robot-rapid、还改了 README 等文件，浏览器那边按旧路径、旧大小找不到文件了（source_not_found / input_grant_size_mismatch）。教训：文件交给浏览器同步后，在它跑完之前绝不改名、绝不改内容。
 - 当前仓库状态：skill/ 只剩 rapid-mentor，且只有 scripts/，缺 SKILL.md、INSTALL.md、references/；README 等仍是旧版。已重开一次同步，直接做 Robot-RAPID 版：删 skill/rapid-mentor，重建 skill/robot-rapid（8 个文件全传），换 README、comparison.md、learning-log.md；这次本地文件不再动。
+
+### Q35 — 2026-11-20 18:35（本窗口）
+- 问题：感觉跟别的 skill 还是比较太少了 / 你去看看别的工科类 skill 怎么做的，学习一下 / 多添加一点内容，多优化美化一下
+- 回答要点：查了工科类 skill：SmailG/plc-programming（PLC 插件，多 skill 分工：develop/debug/convert + 故障模式目录 + 校验器）、robot-validator（ROS 2，7 步工作流）、pixel-robotics/bt-rosbag-analysis（skill 就是可执行手册）、RavenClaude 机器人插件（3 专家 agent + 版本钉死）、awesome-gamedev-agent-skills（79 skill + 路由器 + 版本钉死）。结论：薄的不是 SKILL.md 本身（frontend-design 只有 71 行、9.4KB，110 万安装），薄的是配套：报错手册、按任务分流、检查清单、版本钉死。已补：references 新增 troubleshooting.md（报错对号表 + 四步排查）、rapid-patterns.md（9 种模式配代码和例程）、smart-components.md（搭组件 6 步 + 常用组合）、simulation-checklist.md（逐项打勾）；SKILL.md 加“要干什么先读什么”分流表和验证关口；README 加能力地图与版本钉死行；INSTALL.md 加装完自查 4 步；comparison.md 补工科 skill 对比一节。
+- 本次加深内容：以上 4 个新参考文件 + SKILL.md 分流表与验证关口 + README 能力地图；均待同步 GitHub。

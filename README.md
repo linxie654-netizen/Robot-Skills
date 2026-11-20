@@ -21,6 +21,21 @@
 
 中文，拆步骤，给完整能跑的代码，重要代码逐段讲。目标：Python + PLC + ABB 机器人联动，做工业自动化。
 
+**版本钉死（2026-11-20 核实）**：RobotStudio 6.08、RobotWare 6、IRC5 控制器、RAPID 例程按官方语法重写。
+
+## 🗺️ 能力地图：要干什么，找什么
+
+| 你要干什么 | 打开什么 | 得到什么 |
+|---|---|---|
+| 写一段 RAPID 代码 | `skill/robot-rapid/references/rapid-patterns.md` + `rapid/` | 9 种常用模式，照着抄，改点位就能跑 |
+| 程序报错、跑不通 | `skill/robot-rapid/references/troubleshooting.md` | 报错对号表，先定位再动手 |
+| 搭 Smart 组件 | `skill/robot-rapid/references/smart-components.md` | 一步步搭，信号、逻辑、动作都写清了 |
+| 跑仿真、上真机前检查 | `skill/robot-rapid/references/simulation-checklist.md` | 逐项打勾，没打完不上真机 |
+| 从 0 到 1 建工作站 | `docs/full-pipeline.md` | 6 段全流程，照着点 |
+| 新手从哪开始 | `docs/beginner-roadmap.md` | 12 课路线 + 6 个常犯错 |
+| Python 控制机器人 | `python/01_move_joints.py` | 先打印 RAPID 检查再执行 |
+| 以前问过的问题 | `skill/robot-rapid/references/learned.md` | 问题 → 答案 → 为什么，现成的 |
+
 ---
 
 ## ✨ 这个技能有什么用
