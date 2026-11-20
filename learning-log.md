@@ -89,7 +89,14 @@
 - 问题：能不能做一个所有人都可以安装的 skill 和 mcp
 - 回答要点：能，分两件。Skill：原来只存在本机，路径写死 ~/workspace/...，别人装不了；改成通用相对路径，放进公开仓库 skill/ 目录，加 INSTALL.md，任何人 clone 就能装。MCP：服务器是别人开源的项目（PMinhDuc204，MIT 协议），不能直接说成自己的；做法是 fork 到用户账号，合入另一 AI 在用户电脑上改的 3 个文件补丁，再修报告里未修的 #5、#6，加一键安装脚本。
 - 本次加深内容：新增 skill/SKILL.md（通用版，相对路径，加 MCP 一节）、skill/INSTALL.md（Muse / Claude Code / 其他助手三种装法，中英双语）、README 补 skill/ 目录和安装说明。
-- 待办：MCP fork 需用户把补丁文件发过来（D:\mcp_server\mcp-robotstudio\abb-robotstudio-mcp-changes.patch，261 行），没有它只能按报告描述重写改动，容易改错。
+- MCP 进展（13:48–13:53）：补丁文件已收到（261 行，3 个文件，+122/-42，与报告一致）；本地克隆上游仓库触发执行风险检查，已删本地克隆，不在本地跑补丁和构建；fork 已建（linxie654-netizen/abb-robotstudio-mcp6.08，15 次提交，HEAD a782f78）；一键安装脚本 install.ps1 与 fork 说明草稿已写好（Node / .NET 下载链接核实 200）；#5、#6 修复方案已定位代码位置并写好（FIX-5-6.md）。
+- MCP 完成（14:00–14:03）：用户发来 zip（3 个改好的文件），逐项核对通过——#5 端点在 index.ts 491 行、#6 正则在 538 行、补丁关键改动（SyncModuleToStation、mastership、RWS 兜底、`$HOME/*` 已清、Content-Type）全在；另一 AI 在用户电脑上 npm run build 已通过。5 个文件传到 fork：3f7529d（addin）、8a3eccd（src 两个）、eac9090（install.ps1 + README），仓库现 18 次提交，README 顶部“本 fork 的说明”已验证。
+- 未验证项：#5/#6 修复尚未在真控制器上跑过；rs_read_module 仍需装载程序后验证；install.ps1 未在实机上跑过。
+
+### Q17 — 2026-11-20 14:02
+- 问题：现在 MCP 还差什么？还能从 0 到 1 创建工作站、添加机器人、添加编程、Smart 组件吗？
+- 回答要点：按 fork README 的工具表（63 个：33 个 rs_* + 30 个 rws_*）逐项核对。创建工作站：没有创建工具，只有 rs_get_station / rs_get_station_objects / rs_save_station，不行。添加机器人：没有任何加机器人工具，不行。添加编程：可以，rs_write_module、rs_validate_rapid、rs_create_path、rs_create_target、rws_write_module、rws_load_module_from_file、rws_load_program。Smart 组件：没有任何相关工具，不行。结论：MCP 只能操作已经打开的工作站，不能从 0 到 1 建站；要补建站、加机器人、Smart 组件这三件，须在 ClaudeBridge 插件（C# 端）新开发工具，不是改配置能解决的。
+- 还差什么：#5/#6 修复尚未在真控制器上跑过验证；rs_read_module 仍需装载程序后验证；install.ps1 未在实机上跑过；机器人型号仍未确认；Muse 聊天仍接不进用户电脑本地的 MCP，只能由 Trae CN / Claude Code 在那台电脑上用。
 
 ## 待用户确认的学习方向
 - 机器人型号：未定（IRB 120 / 140 / 6700 / YuMi？）
