@@ -40,9 +40,9 @@
 
 ---
 
-## ✨ 这两个技能有什么用
+## ✨ 这个技能有什么用
 
-现在有两个技能：**Robot-RAPID**（ABB 机器人，文件夹名 `robot-rapid`）和 **Python-Expert**（Python 编程，文件夹名 `python-expert`）。装上它们，助手就按这套方法教你：
+就一个技能，叫 **Robot-RAPID**（文件夹名 `robot-rapid`），装上它，助手就按这套方法教你：
 
 1. **教你写 RAPID 代码**：MoveJ / MoveL / MoveAbsJ、IO、循环、坐标系、圆弧、报错处理，10 个例程照着练，不用每次从零找资料。
 2. **带你从 0 到 1 建工作站**：建站 → 加机器人 → 示教器教点 → 建模 → Smart 组件 → 编程，6 段一步步点，卡住了截图或贴报错，助手帮你改。
@@ -109,6 +109,7 @@ git clone https://github.com/linxie654-netizen/Robot-Skills.git
   - `01_move_joints.py` — Python 发 MoveAbsJ
   - `02_pick_place.py` — Python 发 MoveJ/MoveL 搬运
   - `requirements.txt` — `abb-motion-program-exec`
+  - `README.md` — Python 怎么用（辅助：生成 RAPID、批量、自动化）
 - `robotstudio/` — RobotStudio 教程
   - `tutorial.md` — 建站、选机器人、虚拟控制器、示教、仿真，一步步来
 - `docs/` — 速查和对比
