@@ -10,6 +10,10 @@
 ![RobotStudio](https://img.shields.io/badge/RobotStudio-green)
 ![Skill](https://img.shields.io/badge/Skill-Robot--RAPID-orange)
 ![Language](https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-%E4%B8%AD%E6%96%87-red)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-green)](https://agentskills.io)
+[![skills.sh](https://img.shields.io/badge/skills.sh-Compatible-blue)](https://skills.sh)
+[![Runtime](https://img.shields.io/badge/Runtime-Claude%20Code%20·%20Muse-blueviolet)](#-新手安装3-步)
 
 [🚀 30 秒上手](#-新手安装3-步) · [📖 新手路线](docs/beginner-roadmap.md) · [⚡ 速查表](docs/cheatsheet.md) · [🔍 对比学习](docs/comparison.md)
 
