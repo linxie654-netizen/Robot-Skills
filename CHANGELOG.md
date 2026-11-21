@@ -6,7 +6,7 @@ All notable changes to this repo are recorded here. Dates are in the user's loca
 
 ### Added
 
-- Python-Expert skill (`skill/python-expert/`): Python programming mentor for beginners — write code, debug, automation scripts, GUI (tkinter first), small tools, and ABB robot control with Python. Ships with `SKILL.md`, `INSTALL.md`, `skill.yaml`, and `references/` (learned lessons, error handbook).
+- `python/README.md`: how to use Python with the robot — auxiliary only (Python generates RAPID and automates; RAPID is the main subject).
 - `skill/robot-rapid/skill.yaml`: skill metadata for Robot-RAPID, matching its `SKILL.md` frontmatter.
 - `README_EN.md`: full English version of the README.
 - `CONTRIBUTING.md`: how to ask questions and suggest content.
