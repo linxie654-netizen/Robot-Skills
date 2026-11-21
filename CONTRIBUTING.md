@@ -5,7 +5,7 @@
 ## 提问（最常用）
 
 - 遇到问题直接开 Issue：写清楚卡在哪一步，贴上报错原话（截图或复制），再贴上你改过的代码或点位。
-- 问之前可以先看 `skill/robot-rapid/references/learned.md`（ABB）和 `skill/python-expert/references/learned.md`（Python），同样的问题可能已经有现成答案。
+- 问之前可以先看 `skill/robot-rapid/references/learned.md`，同样的问题可能已经有现成答案。
 
 ## 提建议、补内容
 
