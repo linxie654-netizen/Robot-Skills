@@ -40,9 +40,9 @@
 
 ---
 
-## ✨ 这个技能有什么用
+## ✨ 这两个技能有什么用
 
-就一个技能，叫 **Robot-RAPID**（文件夹名 `robot-rapid`），装上它，助手就按这套方法教你：
+现在有两个技能：**Robot-RAPID**（ABB 机器人，文件夹名 `robot-rapid`）和 **Python-Expert**（Python 编程，文件夹名 `python-expert`）。装上它们，助手就按这套方法教你：
 
 1. **教你写 RAPID 代码**：MoveJ / MoveL / MoveAbsJ、IO、循环、坐标系、圆弧、报错处理，10 个例程照着练，不用每次从零找资料。
 2. **带你从 0 到 1 建工作站**：建站 → 加机器人 → 示教器教点 → 建模 → Smart 组件 → 编程，6 段一步步点，卡住了截图或贴报错，助手帮你改。
@@ -59,7 +59,7 @@
 **第 1 步：一条命令装技能（跟别的 skill 一样）**
 
 ```bash
-npx skills add linxie654-netizen/abb-robot-programming
+npx skills add linxie654-netizen/Robot-Skills
 ```
 
 需要 Node.js 22.20 以上。命令会找到仓库里的 `robot-rapid`，让你选装到哪个助手（Claude Code、Cursor 等）。2026-11-20 已实测能装上。
@@ -69,15 +69,15 @@ npx skills add linxie654-netizen/abb-robot-programming
 先把库下载下来：
 
 ```bash
-git clone https://github.com/linxie654-netizen/abb-robot-programming.git
+git clone https://github.com/linxie654-netizen/Robot-Skills.git
 ```
 
 没装 git？直接打开上面这个链接，点绿色的 `Code` → `Download ZIP`，解压就行。再按下面把技能复制到你的助手里：
 
 | 你用的助手 | 复制命令 |
 |---|---|
-| Muse | `cp -r abb-robot-programming/skill/robot-rapid ~/workspace/custom-skills/robot-rapid` |
-| Claude Code | `cp -r abb-robot-programming/skill/robot-rapid ~/.claude/skills/robot-rapid` |
+| Muse | `cp -r Robot-Skills/skill/robot-rapid ~/workspace/custom-skills/robot-rapid` |
+| Claude Code | `cp -r Robot-Skills/skill/robot-rapid ~/.claude/skills/robot-rapid` |
 | 其他助手 | 把 `skill/robot-rapid/SKILL.md` 的全文发给它，或存到它支持的 Skill 目录 |
 
 **第 3 步：问第一个问题**
