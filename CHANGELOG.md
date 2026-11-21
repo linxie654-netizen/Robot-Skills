@@ -2,7 +2,7 @@
 
 All notable changes to this repo are recorded here. Dates are in the user's local time (Asia/Shanghai).
 
-## [Unreleased]
+## [2.0.0] — 2026-11-22
 
 ### Added
 
@@ -12,10 +12,17 @@ All notable changes to this repo are recorded here. Dates are in the user's loca
 - `CONTRIBUTING.md`: how to ask questions and suggest content.
 - `SECURITY.md`: safety notes for teaching code and real hardware.
 - MIT License (`LICENSE`).
+- `docs/advanced-topics.md`: 进阶三课——EGM、多任务、外轴，大白话教学；三课都没在 RobotStudio 里跑过，全部标“未核实”。
+- `docs/comparison.md`: 2.0 对比（2026-11-22 实查五家 GitHub 页面），“值得抄的清单”14 条，每条注明出处和目标文件。
+- `docs/evals.md`: “同一提示，有技能 vs 没技能”对照（RAPID 版 evals），4 个纸面例子，没跑过对照实验，不算基准测试。
+- `skill/robot-rapid/SKILL.md`: 常见借口和反驳（rationalizations）、危险信号（red flags）两节；每课 / 每个模式“做到什么样算会”（exit_conditions）；跑通要拿三样证据，感觉对了不算数。
+- `skill/robot-rapid/references/simulation-checklist.md`: 验证前先写清这次看什么（seams：轨迹、IO、速度、碰撞）；跑通的证据要求（报错截图或“无报错”、轨迹、碰撞检查结果），缺一样不算跑通。
+- `docs/beginner-roadmap.md`: 每课末尾加一句“算会：……”，标准从现有内容提炼，没编新标准。
 
 ### Changed
 
 - Repo renamed `abb-robot-programming` → `Robot-Skills` (2026-11-22): easier to remember and install. New install command: `npx skills add linxie654-netizen/Robot-Skills`. The old address redirects automatically.
+- README 开头标语定为“Robot-Skills，让 AI 更会写 RAPID。”
 
 ### Fixed
 
