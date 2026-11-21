@@ -1,0 +1,5 @@
+name: "python-expert"
+title: "Python-Expert"
+description: "Python-Expert, the Python programming mentor for beginners. Write, debug, optimize, and automate Python code in plain language, with complete runnable code explained step by step. Use when the user asks anything about Python programming, automation scripts, GUI development, tool development, or controlling ABB robots with Python."
+category: "Work and knowledge"
+include_in_prompt: true
