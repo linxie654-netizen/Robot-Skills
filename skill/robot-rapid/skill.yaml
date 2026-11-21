@@ -1,0 +1,5 @@
+name: "robot-rapid"
+title: "Robot-RAPID"
+description: "Robot-RAPID, the ABB robot mentor. Write RAPID code correctly and efficiently, run RobotStudio simulation, build Smart Components, and learn while growing — it gets smarter with every question. Use when the user asks anything about ABB robots, RAPID, RobotStudio, or building a robot station."
+category: "Work and knowledge"
+include_in_prompt: true
