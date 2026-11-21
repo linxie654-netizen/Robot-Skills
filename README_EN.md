@@ -4,7 +4,7 @@
 
 <img src="assets/cover.png" alt="ABB industrial robot" width="720">
 
-**Write correct RAPID code, run it in RobotStudio simulation, then go to the real robot.**
+**Install Robot-RAPID, and your AI can write RAPID, run RobotStudio simulations, and teach you ABB robot programming from 0 to 1. One install takes its robot programming ability a big step further.**
 
 ![RAPID](https://img.shields.io/badge/RAPID-10%E4%BE%8B%E7%A8%8B-blue)
 ![RobotStudio](https://img.shields.io/badge/RobotStudio-green)
