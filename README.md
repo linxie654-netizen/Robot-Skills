@@ -4,7 +4,7 @@
 
 <img src="assets/cover.png" alt="ABB 工业机器人" width="720">
 
-**写对 RAPID 代码，在 RobotStudio 里仿真跑通，再上真机。**
+**装上 Robot-RAPID，你的 AI 就会写 RAPID、跑 RobotStudio 仿真、带你从 0 到 1 学 ABB 机器人编程。装一次，AI 的机器人编程能力直接上一个台阶。**
 
 ![RAPID](https://img.shields.io/badge/RAPID-10%E4%BE%8B%E7%A8%8B-blue)
 ![RobotStudio](https://img.shields.io/badge/RobotStudio-green)
