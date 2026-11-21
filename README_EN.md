@@ -38,16 +38,14 @@ Chinese, step by step, complete runnable code with each important part explained
 | Build a station from 0 to 1 | `docs/full-pipeline.md` | Full 6-stage flow, click through it |
 | Where a beginner starts | `docs/beginner-roadmap.md` | 12-lesson roadmap + 6 common mistakes |
 | Control the robot with Python | `python/01_move_joints.py` | Print the RAPID first, check it, then run it |
-| Write Python code | `skill/python-expert/SKILL.md` | Complete runnable code, explained in plain language |
+| Write Python code | `python/README.md` | How to use Python with the robot: setup, two examples, the safe workflow |
 | Questions asked before | `skill/robot-rapid/references/learned.md` | Question → answer → why, ready to use |
 
 ---
 
-## ✨ What the skills do
+## ✨ What the skill does
 
-Two skills live in this repo. Install one or both.
-
-### 1. Robot-RAPID (folder `robot-rapid`)
+One skill lives in this repo: **Robot-RAPID** (folder `robot-rapid`).
 
 Install it, and your assistant teaches you the ABB way:
 
@@ -58,17 +56,6 @@ Install it, and your assistant teaches you the ABB way:
 5. **It keeps learning**: every question you ask is recorded and the skill grows a little, so the library and the skill grow together.
 
 > Not an official ABB tutorial. A teaching version rewritten from official syntax and the consensus of several beginner tutorials. Positions are teaching values; reteach them before running on real hardware.
-
-### 2. Python-Expert (folder `python-expert`)
-
-Python programming mentor for beginners:
-
-1. **Write Python code**: complete runnable code, each important part explained in plain language.
-2. **Debug**: read the last line of the error message first, fix one thing at a time, run again.
-3. **Automation scripts**: walk through the manual steps first, then turn them into a script, test on small data first.
-4. **GUI**: start with tkinter, which ships with Python.
-5. **Small tools**: one `.py` file that runs from the command line.
-6. **Drive ABB robots with Python**: same `abb_motion_program_exec` approach, print the RAPID first, check it, then run it.
 
 ---
 
@@ -81,13 +68,6 @@ npx skills add linxie654-netizen/Robot-Skills
 ```
 
 Requires Node.js 22.20 or newer. The command finds the skills in the repo and asks which assistant to install to (verified: Claude Code). Install was tested 2026-11-20 under the previous repo name; the repo was renamed on 2026-11-22 (old address redirects), re-test with the new name is pending.
-
-To install only one skill:
-
-```bash
-npx skills add linxie654-netizen/Robot-Skills --skill robot-rapid
-npx skills add linxie654-netizen/Robot-Skills --skill python-expert
-```
 
 **Step 2: prefer manual install?**
 
@@ -104,8 +84,6 @@ No git? Open the link above, click the green `Code` → `Download ZIP`, and unzi
 | Muse | `cp -r Robot-Skills/skill/robot-rapid ~/workspace/custom-skills/robot-rapid` |
 | Claude Code | `cp -r Robot-Skills/skill/robot-rapid ~/.claude/skills/robot-rapid` |
 | Other assistants | Send the full text of `skill/robot-rapid/SKILL.md` to it, or save it in a skill directory it supports |
-
-Replace `robot-rapid` with `python-expert` for the Python skill.
 
 **Step 3: ask your first question**
 
@@ -136,6 +114,7 @@ It will follow the skill and start you on `rapid/01_move_basics.mod`.
   - `01_move_joints.py` — Python sends MoveAbsJ
   - `02_pick_place.py` — Python sends MoveJ/MoveL pick and place
   - `requirements.txt` — `abb-motion-program-exec`
+  - `README.md` — How to use Python with the robot
 - `robotstudio/` — RobotStudio tutorial
   - `tutorial.md` — Build a station, pick a robot, virtual controller, teaching, simulation, step by step
 - `docs/` — Cheat sheets and comparisons
@@ -148,11 +127,6 @@ It will follow the skill and start you on `rapid/01_move_basics.mod`.
   - `INSTALL.md` — Install guide (Muse / Claude Code / other assistants)
   - `skill.yaml` — Skill metadata
   - `references/` — Learned lessons, error handbook, common patterns, Smart Components, simulation checklist
-- `skill/python-expert/` — Python skill Python-Expert
-  - `SKILL.md` — Skill text (Python, automation, GUI, tools, ABB control)
-  - `INSTALL.md` — Install guide
-  - `skill.yaml` — Skill metadata
-  - `references/` — Learned lessons, error handbook
 - `learning-log.md` — Record of every question asked, kept up to date
 - `vendor/` — Reference sources pulled in for study (other people's projects, original repos and licenses kept)
   - `abb_motion_program_exec/` — rpiRobotics, Apache-2.0
