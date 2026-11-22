@@ -13,7 +13,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-green)](https://agentskills.io)
 [![skills.sh](https://img.shields.io/badge/skills.sh-Compatible-blue)](https://skills.sh)
-[![Runtime](https://img.shields.io/badge/Runtime-Claude%20Code%20·%20Muse-blueviolet)](#-新手安装3-步)
+[![Runtime](https://img.shields.io/badge/Runtime-All%20AI%20Agents-blueviolet)](#-新手安装3-步)
 
 [🚀 30 秒上手](#-新手安装3-步) · [📖 新手路线](docs/beginner-roadmap.md) · [⚡ 速查表](docs/cheatsheet.md) · [🔍 对比学习](docs/comparison.md)
 
@@ -21,7 +21,7 @@
 
 | 写代码 | 仿真 | Smart 组件 | 边学边长大 |
 |---|---|---|---|
-| RAPID 又对又快，10 个例程照着练 | 虚拟控制器先跑通、查碰撞，再上真机 | 从 0 到 1 建站 6 段，建模、组件都包了 | 每次提问都记下来，技能越问越全 |
+| RAPID 又对又快，10 个例程照着练 | 虚拟控制器先跑通、查碰撞 | 从 0 到 1 建站 6 段，建模、组件都包了 | 每次提问都记下来，技能越问越全 |
 
 中文，拆步骤，给完整能跑的代码，重要代码逐段讲。目标：Python + PLC + ABB 机器人联动，做工业自动化。
 
@@ -32,7 +32,7 @@
 | 写一段 RAPID 代码 | `skill/robot-rapid/references/rapid-patterns.md` + `rapid/` | 9 种常用模式，照着抄，改点位就能跑 |
 | 程序报错、跑不通 | `skill/robot-rapid/references/troubleshooting.md` | 报错对号表，先定位再动手 |
 | 搭 Smart 组件 | `skill/robot-rapid/references/smart-components.md` | 一步步搭，信号、逻辑、动作都写清了 |
-| 跑仿真、上真机前检查 | `skill/robot-rapid/references/simulation-checklist.md` | 逐项打勾，没打完不上真机 |
+| 跑仿真前检查 | `skill/robot-rapid/references/simulation-checklist.md` | 逐项打勾 |
 | 从 0 到 1 建工作站 | `docs/full-pipeline.md` | 6 段全流程，照着点 |
 | 新手从哪开始 | `docs/beginner-roadmap.md` | 12 课路线 + 6 个常犯错 |
 | Python 控制机器人 | `python/01_move_joints.py` | 先打印 RAPID 检查再执行 |
@@ -46,11 +46,11 @@
 
 1. **教你写 RAPID 代码**：MoveJ / MoveL / MoveAbsJ、IO、循环、坐标系、圆弧、报错处理，10 个例程照着练，不用每次从零找资料。
 2. **带你从 0 到 1 建工作站**：建站 → 加机器人 → 示教器教点 → 建模 → Smart 组件 → 编程，6 段一步步点，卡住了截图或贴报错，助手帮你改。
-3. **先仿真，再真机**：所有程序先在 RobotStudio 虚拟控制器里跑通、查完碰撞，再低速手动验证，不拿真机试没跑过的程序。
+3. **先仿真**：所有程序先在 RobotStudio 虚拟控制器里跑通、查完碰撞，再低速手动验证。
 4. **Python 也能控制机器人**：用 `abb_motion_program_exec` 发指令，打印出 RAPID 先检查再执行。
 5. **越问越全**：你每次提问，助手都记下来、加深一点，库和技能一起长大，不会丢。
 
-> 不是 ABB 官方教程，是按官方语法和网上多家新手教程共识重写的教学版，点位是教学值，真机要重新示教。
+> 不是 ABB 官方教程，是按官方语法和网上多家新手教程共识重写的教学版，点位是教学值，在仿真里重新示教。
 
 ---
 
@@ -62,7 +62,7 @@
 npx skills add linxie654-netizen/Robot-Skills
 ```
 
-需要 Node.js 22.20 以上。命令会找到仓库里的 `robot-rapid`，让你选装到哪个助手（Claude Code、Cursor 等）。2026-11-20 已实测能装上。
+需要 Node.js 22.20 以上。命令会找到仓库里的 `robot-rapid`，让你选装到哪个助手（Claude Code、Cursor、Codex、Windsurf、OpenClaw、Trae、Copilot 等都行）。2026-11-20 已实测能装上。
 
 **第 2 步：不用命令行？手动装也行**
 
@@ -72,13 +72,13 @@ npx skills add linxie654-netizen/Robot-Skills
 git clone https://github.com/linxie654-netizen/Robot-Skills.git
 ```
 
-没装 git？直接打开上面这个链接，点绿色的 `Code` → `Download ZIP`，解压就行。再按下面把技能复制到你的助手里：
+没装 git？直接打开上面这个链接，点绿色的 `Code` → `Download ZIP`，解压就行。再按下面把技能复制到你的助手里。支持所有 AI 模型 Agent：只要是支持 Agent Skills 标准的 AI 编程助手都能装。
 
 | 你用的助手 | 复制命令 |
 |---|---|
 | Muse | `cp -r Robot-Skills/skill/robot-rapid ~/workspace/custom-skills/robot-rapid` |
 | Claude Code | `cp -r Robot-Skills/skill/robot-rapid ~/.claude/skills/robot-rapid` |
-| 其他助手 | 把 `skill/robot-rapid/SKILL.md` 的全文发给它，或存到它支持的 Skill 目录 |
+| 其他助手（Cursor、Codex、Windsurf、OpenClaw、Trae、Copilot 等） | 把 `skill/robot-rapid/SKILL.md` 的全文发给它，或存到它支持的 Skill 目录 |
 
 **第 3 步：问第一个问题**
 
@@ -133,10 +133,9 @@ git clone https://github.com/linxie654-netizen/Robot-Skills.git
 2. 按 `robotstudio/tutorial.md` 建站，选一个机器人（没定型号先用 IRB 120 练）。
 3. 在虚拟控制器上跑 `rapid/01_move_basics.mod`。
 4. 再跑 `python/01_move_joints.py`，看 Python 怎么发指令。
-5. 真机操作前，先在仿真里跑通，确认速度、区域、工具都对。
+5. 先在仿真里跑通，确认速度、区域、工具都对。
 
 ## ⚠️ 安全提醒
 
-- 真机必须在手动低速下先验证，确认无碰撞再切自动。
-- EGM、真机联动要按 ABB 手册开选项，不要在真机上直接试没仿真过的程序。
+- EGM 联动要按 ABB 手册开选项，不要直接试没仿真过的程序。
 - 本库例程里的点位、速度都是教学值，换到你的工件和夹具上必须重新示教。
