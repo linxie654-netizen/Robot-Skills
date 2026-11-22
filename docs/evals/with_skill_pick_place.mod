@@ -1,4 +1,4 @@
-! 有技能时按 skills/robot-rapid/SKILL.md 该给的搬运程序（纸面例子）
+! 有技能时按 skills/robot-rapid/SKILL.md 该给的搬运程序（对照例子）
 ! 同一提示：“帮我写一段 RAPID，从 A 点取箱子放到 B 点。”
 ! 以 rapid/02_pick_place.mod 为底子，补上等料信号（带超时）、报错处理、回零。
 ! 点位是教学值，在仿真里重新示教。
