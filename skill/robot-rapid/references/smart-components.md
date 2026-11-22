@@ -25,7 +25,6 @@ Smart 组件是 RobotStudio 里会自己动的零件：信号进来 → 逻辑�
 
 - 桥有 `POST /station/add-component`，传 `.rslib` 文件路径（机器人或 Smart 组件的库文件）。
 - 机器人库文件在 `C:\ProgramData\ABB\DistributionPackages2` 下面找。
-- 只在虚拟控制器上操作，别碰真机。
 
 ## 注意事项
 
