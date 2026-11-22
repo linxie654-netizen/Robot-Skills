@@ -2,10 +2,9 @@
 
 目标：在电脑上把机器人跑起来。
 
-## 关于 RobotStudio 6.08
-- 6.08 是 RobotWare 6 时代的版本，对应 IRC5 控制器，本库的 RAPID 例程（MoveJ/MoveL/MoveC/MoveAbsJ、IO、循环、坐标系）都能用。
-- Wizard 积木编程、OmniCore 是更新版本的功能，6.08 里没有，不用找。
-- 我不能直接连进你电脑上的 RobotStudio 6.08 帮你点鼠标：我是云端的助手，没有 RobotStudio 连接器，RobotStudio 是本地 Windows 软件、不是网页。你按下面步骤操作，卡住了截图发我，我帮你看。
+## 关于 RobotStudio
+- 本库的 RAPID 例程（MoveJ/MoveL/MoveC/MoveAbsJ、IO、循环、坐标系）在 IRC5 和 OmniCore 控制器上通用。
+- 你在 RobotStudio 里按下面步骤操作，卡住了截图发给助手，助手帮你看。
 
 ## 1. 装软件
 - ABB 官网下载 RobotStudio，装免费版。
