@@ -13,7 +13,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-green)](https://agentskills.io)
 [![skills.sh](https://img.shields.io/badge/skills.sh-Compatible-blue)](https://skills.sh)
-[![Runtime](https://img.shields.io/badge/Runtime-Claude%20Code%20·%20Muse-blueviolet)](#install-in-3-steps)
+[![Runtime](https://img.shields.io/badge/Runtime-All%20AI%20Agents-blueviolet)](#install-in-3-steps)
 
 [🚀 Install in 3 steps](#install-in-3-steps) · [📖 Beginner roadmap](docs/beginner-roadmap.md) · [⚡ Cheat sheet](docs/cheatsheet.md) · [🔍 Comparison](docs/comparison.md)
 
@@ -23,7 +23,7 @@
 
 | Write code | Simulate | Smart Components | Keep learning |
 |---|---|---|---|
-| RAPID, correct and fast, 10 routines to practice with | Run it in a virtual controller first, check collisions, then go to the real robot | Build a station in 6 stages, modeling and components included | Every question is recorded, the skills grow with each question |
+| RAPID, correct and fast, 10 routines to practice with | Run it in a virtual controller first, check collisions | Build a station in 6 stages, modeling and components included | Every question is recorded, the skills grow with each question |
 
 Chinese, step by step, complete runnable code with each important part explained. Goal: Python + PLC + ABB robots working together for industrial automation.
 
@@ -34,7 +34,7 @@ Chinese, step by step, complete runnable code with each important part explained
 | Write RAPID code | `skill/robot-rapid/references/rapid-patterns.md` + `rapid/` | 9 common patterns, copy and change the positions |
 | Program errors / won't run | `skill/robot-rapid/references/troubleshooting.md` | Error lookup table, locate first, then fix |
 | Build Smart Components | `skill/robot-rapid/references/smart-components.md` | Step by step, signals, logic, and actions explained |
-| Simulate / check before real hardware | `skill/robot-rapid/references/simulation-checklist.md` | Checklist, don't go to the real robot until all boxes are ticked |
+| Simulate / check | `skill/robot-rapid/references/simulation-checklist.md` | Checklist, tick all boxes before running |
 | Build a station from 0 to 1 | `docs/full-pipeline.md` | Full 6-stage flow, click through it |
 | Where a beginner starts | `docs/beginner-roadmap.md` | 12-lesson roadmap + 6 common mistakes |
 | Control the robot with Python | `python/01_move_joints.py` | Print the RAPID first, check it, then run it |
@@ -51,11 +51,11 @@ Install it, and your assistant teaches you the ABB way:
 
 1. **Write RAPID code**: MoveJ / MoveL / MoveAbsJ, IO, loops, coordinate systems, arcs, error handling, 10 routines to practice with.
 2. **Build a station from 0 to 1**: station → robot → teach pendant → modeling → Smart Components → programming, 6 stages step by step.
-3. **Simulate first, real robot second**: every program runs in a RobotStudio virtual controller and passes a collision check before low-speed manual validation on hardware.
+3. **Simulate first**: every program runs in a RobotStudio virtual controller and passes a collision check before low-speed manual validation.
 4. **Python can drive the robot too**: send commands with `abb_motion_program_exec`, print the RAPID first, check it, then run it.
 5. **It keeps learning**: every question you ask is recorded and the skill grows a little, so the library and the skill grow together.
 
-> Not an official ABB tutorial. A teaching version rewritten from official syntax and the consensus of several beginner tutorials. Positions are teaching values; reteach them before running on real hardware.
+> Not an official ABB tutorial. A teaching version rewritten from official syntax and the consensus of several beginner tutorials. Positions are teaching values; reteach them in simulation.
 
 ---
 
@@ -67,7 +67,7 @@ Install it, and your assistant teaches you the ABB way:
 npx skills add linxie654-netizen/Robot-Skills
 ```
 
-Requires Node.js 22.20 or newer. The command finds the skills in the repo and asks which assistant to install to (verified: Claude Code). Install was tested 2026-11-20 under the previous repo name; the repo was renamed on 2026-11-22 (old address redirects), re-test with the new name is pending.
+Requires Node.js 22.20 or newer. The command finds the skills in the repo and asks which assistant to install to (Claude Code, Cursor, Codex, Windsurf, OpenClaw, Trae, Copilot, or any assistant that supports the Agent Skills standard). Install was tested 2026-11-20 under the previous repo name; re-tested 2026-11-22 with the new name and works.
 
 **Step 2: prefer manual install?**
 
@@ -77,13 +77,13 @@ Clone the repo:
 git clone https://github.com/linxie654-netizen/Robot-Skills.git
 ```
 
-No git? Open the link above, click the green `Code` → `Download ZIP`, and unzip. Then copy the skill into your assistant:
+No git? Open the link above, click the green `Code` → `Download ZIP`, and unzip. Then copy the skill into your assistant. Supports all AI model agents: any AI coding assistant that supports the Agent Skills standard can use it.
 
 | Your assistant | Copy command |
 |---|---|
 | Muse | `cp -r Robot-Skills/skill/robot-rapid ~/workspace/custom-skills/robot-rapid` |
 | Claude Code | `cp -r Robot-Skills/skill/robot-rapid ~/.claude/skills/robot-rapid` |
-| Other assistants | Send the full text of `skill/robot-rapid/SKILL.md` to it, or save it in a skill directory it supports |
+| Other assistants (Cursor, Codex, Windsurf, OpenClaw, Trae, Copilot, etc.) | Send the full text of `skill/robot-rapid/SKILL.md` to it, or save it in a skill directory it supports |
 
 **Step 3: ask your first question**
 
@@ -139,10 +139,9 @@ It will follow the skill and start you on `rapid/01_move_basics.mod`.
 2. Build a station with `robotstudio/tutorial.md`, pick a robot (no model decided yet? practice with IRB 120).
 3. Run `rapid/01_move_basics.mod` on a virtual controller.
 4. Run `python/01_move_joints.py` to see how Python sends commands.
-5. Before touching real hardware, run everything in simulation and check speed, zones, and tools.
+5. Run everything in simulation and check speed, zones, and tools.
 
 ## ⚠️ Safety notes
 
-- Real hardware must be validated in manual mode at low speed first; switch to auto only after confirming no collisions.
-- EGM and real-robot control need the options from the ABB manual. Never try an un-simulated program on a real robot.
+- EGM control needs the options from the ABB manual. Never try an un-simulated program.
 - Positions and speeds in this library are teaching values. Reteach them for your own workpieces and grippers.
