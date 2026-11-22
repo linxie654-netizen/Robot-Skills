@@ -92,6 +92,22 @@ git clone https://github.com/linxie654-netizen/Robot-Skills.git
 
 ---
 
+## 🌐 社区与收录
+
+### 已发布
+
+| 渠道 | 链接 |
+|---|---|
+| GitHub 仓库 | https://github.com/linxie654-netizen/Robot-Skills |
+| Release v2.1.0 | https://github.com/linxie654-netizen/Robot-Skills/releases/tag/v2.1.0 |
+
+### 已提交/申请中
+
+| 渠道 | 状态 | 备注 |
+|---|---|---|
+
+---
+
 ## 📂 目录
 
 - `rapid/` — RAPID 教学例程（我按官方语法重写的，不是抄别人的）
