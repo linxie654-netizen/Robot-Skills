@@ -119,8 +119,11 @@ client.stop_egm()  # 停掉 EGM，机器人回到程序控制
 - `vendor/ABB_EGM_Python`（rparak，MIT）：IRB 120 的 `Module1.mod` 原文、README（UDP 端口、防火墙、egm.proto 位置）。
 - `vendor/abb_motion_program_exec/docs/egm.md` + `examples/egm/`：三种模式、4 毫秒 / 48 毫秒更新、配置方法、安全警告。
 
----
+### 算会
 
+算会：骨架四步走通，电脑发数据、机器人跟着走；电脑断了报 ERR_UDPUC_COMM 能认出来。
+
+---
 ## 第 2 课：多任务——一个控制器同时跑几个程序
 
 ### 是什么
@@ -225,8 +228,11 @@ ENDPROC
 - ABB YuMi App 官方例子：`WaitSyncTask` / `SyncMoveOn` / `SyncMoveOff` 的实际写法、`PERS tasks all_tasks{2}`。
 - `vendor/abb_motion_program_exec` 的 `examples/multimove_example.py` + `docs/robot_multimove_setup_manual.md`：Python 发双机程序、两程序指令数要一样、一个控制器带两台机器人。
 
----
+### 算会
 
+算会：两个任务 WaitSyncTask 碰头、PERS 共享数据，协调动作 \ID 一一对应，仿真里跑通。
+
+---
 ## 第 3 课：外轴——机器人本体之外的第七根轴
 
 ### 是什么
@@ -314,7 +320,7 @@ ENDMODULE
 | 再 | 第 2 课 多任务 | 两个机器人配合、后台盯信号都要它；要开 623-1 选项 |
 | 最后 | 第 1 课 EGM | 最难，要开 689-1 选项、要配通讯、电脑还要同时发数据；先把前两课跑通再碰 |
 
-三课都只是纸面学完。下一步是去 RobotStudio 里跑：外轴先建一个带变位机的工作站，多任务先建两个任务碰一次头，EGM 先跑通 `vendor/ABB_EGM_Python` 的 IRB 120 例子。跑通一课，再学下一课。
+下一步去 RobotStudio 里跑：外轴先建一个带变位机的工作站，多任务先建两个任务碰一次头，EGM 先跑通 `vendor/ABB_EGM_Python` 的 IRB 120 例子。跑通一课，再学下一课。
 
 ## 依据来源总表
 
@@ -329,3 +335,7 @@ ENDMODULE
 | 同步写法 `WaitSyncTask` / `SyncMoveOn` / `SyncMoveOff` | ABB YuMi App 官方例子、`vendor/abb_motion_program_exec/examples/multimove_example.py` |
 | 外轴 `MoveExtJ`、`ActUnit`、`9E9`、`extax.eax_a` | ABB《Technical reference manual - RAPID overview》3HAC16580-1 §2.8、ABB 社区焊接帖和螺旋轨迹帖 |
 | 外轴大纲、两种形态 | `docs/youtube-study/drafts/external-axis-programming.md`（RU011 Day 4） |
+
+### 算会
+
+算会：ActUnit 激活、MoveExtJ 转 90 度、9E9 会写，变位机翻面再焊跑通。
