@@ -2,6 +2,19 @@
 
 All notable changes to this repo are recorded here. Dates are in the user's local time (Asia/Shanghai).
 
+## [2.1.0] — 2026-11-22
+
+### Added
+
+- 七个实战项目（projects/）：搬运、码垛、分拣、焊接、上下料、输送带跟踪、三机器人联动，每个含完整代码、搭建步骤、IO 配置、仿真方法、故障分析、安全检查。
+- 教学支撑：docs/teaching-guide.md（八种教法）、docs/exam-practice.md（35 道练习题）、docs/progress-tracker.md（学习进度表）；skill/robot-rapid/SKILL.md 加“八种教法”一节。
+- docs/3d-simulation-research.md（Three.js、PyBullet、URDF 研究）+ python/03_pybullet_arm.py（PyBullet 六轴演示）+ docs/threejs-arm-demo.html（网页版六轴演示）。
+- checks/：代码、文档、依赖、Skill 安装测试、安全检查五项，一键跑。
+
+### Changed
+
+- 按用户纠正（2026-11-22）：删掉核实状态类标注，删掉全部真实设备相关内容；技能只针对 RobotStudio 仿真学习，安全检查只写仿真里的检查项。
+
 ## [2.0.0] — 2026-11-22
 
 ### Added
