@@ -165,7 +165,7 @@
 
 ### 1. arpitg1304/robotics-agent-skills —— 机器人同行里写法最完整的
 
-**页面看到的**：README 开头先讲“两部分”——`skills/` 是稳定的知识，`harness/` 是实验性的验证闭环。harness 的循环画出来了：probe the rig → 写 app.py → `rah run`（开发种子）→ 读报告 → 只改一处 → `rah verify`（没见过的种子验证）。评估器是“看不见的”——成功标准是目标关系（比如 `at(object_0,target_2)`），报告给每段进度、哪段关系断了、信念和真实值的对照、安全包线违规；还有实验账本（每个结果绑代码哈希）和 `rah replay` 重放。README 里有“First results”实数表（搬三块积木 10/10，反向 9/10，叠三块 SO-101 是 0/10），失败也照写，还写明“这些数只说明逻辑和传感器集成没问题，不等于能转到真机”——诚实边界写得很直。
+**页面看到的**：README 开头先讲“两部分”——`skills/` 是稳定的知识，`harness/` 是实验性的验证闭环。harness 的循环画出来了：probe the rig → 写 app.py → `rah run`（开发种子）→ 读报告 → 只改一处 → `rah verify`（没见过的种子验证）。评估器是“看不见的”——成功标准是目标关系（比如 `at(object_0,target_2)`），报告给每段进度、哪段关系断了、信念和真实值的对照、安全包线违规；还有实验账本（每个结果绑代码哈希）和 `rah replay` 重放。README 里有“First results”实数表（搬三块积木 10/10，反向 9/10，叠三块 SO-101 是 0/10），失败也照写，还写明“这些数只说明逻辑和传感器集成没问题”——诚实边界写得很直。
 
 **SKILL.md 写法**：每个技能一个文件夹、一个 SKILL.md（第三方索引显示 robot-perception 只有 1 个文件）。README 有“Recommended Bundles”表——按任务给搭配（ROS2 应用、感知、生产机器人各是哪几个技能），不是让用户自己挑。还有“Coverage Map”树状图（架构→设计原则、中间件→ros1/ros2、行为→设计模式……），一眼看清缺哪块。README 末尾有“What Good Skills Contain”清单：触发描述要具体、给能跑的例子、写清失败模式（QoS 不匹配、坐标变换过期、不安全关机、阻塞回调）、给生产默认值（有界队列、生命周期管理、可观测性、测试）、列反模式。
 
@@ -173,7 +173,7 @@
 
 **例子给得怎么样**：好。每个技能表里都有“关键主题”一列；harness 有完整可跑的命令序列（`rah doctor / probe / run / verify / replay`），不是空话。
 
-**值得抄**：① harness 式闭环（我们 11-21 已补的 5 步验证闭环是文字版，它是能跑的命令版——下一步可抄的是“换没见过的条件再验”，我们 SKILL.md 第 5 步已有这句话，缺的是像它那样把“开发种子 vs 验证种子”分开写清）；② “同一提示有技能 vs 没技能”对照表（evals/ 做法，我们可以做 RAPID 版：同一段搬运需求，没技能 vs 有技能写出来的程序对照）；③ Recommended Bundles（按任务给搭配，我们只有一个技能，用不上整表，但 SKILL.md 开头的分流表可以按“任务→先读什么”再细一层）；④ “What Good Skills Contain”清单（触发描述、能跑的例子、失败模式、生产默认值、反模式——可直接当我们每次补技能的自查清单）；⑤ 失败照写、数字照写、局限写明的诚实写法（我们已有“未核实”标注，它更进一步：失败结果 0/10 也贴出来）。
+**值得抄**：① harness 式闭环（我们 11-21 已补的 5 步验证闭环是文字版，它是能跑的命令版——下一步可抄的是“换没见过的条件再验”，我们 SKILL.md 第 5 步已有这句话，缺的是像它那样把“开发种子 vs 验证种子”分开写清）；② “同一提示有技能 vs 没技能”对照表（evals/ 做法，我们可以做 RAPID 版：同一段搬运需求，没技能 vs 有技能写出来的程序对照）；③ Recommended Bundles（按任务给搭配，我们只有一个技能，用不上整表，但 SKILL.md 开头的分流表可以按“任务→先读什么”再细一层）；④ “What Good Skills Contain”清单（触发描述、能跑的例子、失败模式、生产默认值、反模式——可直接当我们每次补技能的自查清单）；⑤ 失败照写、数字照写、局限写明的诚实写法（它更进一步：失败结果 0/10 也贴出来）。
 
 **我们写得比它好的地方**：它是英文、面向会 ROS 的工程师；我们是中文大白话、面向新手，30 课教学和“每次提问都记下来”的学习循环是它没有的。它没有 ABB 内容，我们在核实范围内仍是唯一 SKILL.md 格式的 ABB 技能（见 11-20 结论）。
 
@@ -201,7 +201,7 @@
 
 **例子给得怎么样**：例子是 TypeScript 代码片段 + 流程图 + 检查清单三件套；每步都有“这一步结束时你手里应该有什么”。
 
-**值得抄**：① 固定解剖结构 Overview / When to Use / Process / Rationalizations / Red Flags / Verification（我们 SKILL.md 有 When to use 分流表和 Verification gate，但缺 Rationalizations 和 Red Flags 两节——最该抄的就是这两节：新手最常见的借口是“仿真跑通就行了不上真机也行”“点位差不多就行”，每条配一句反驳）；② “Verification is non-negotiable + 感觉对了不算数”（我们已有“没跑通不算会”，可以学它把证据要求写得更死：仿真跑通要贴哪三样东西——报错截图、轨迹、碰撞检查结果）；③ definition-of-done（项目级统一标准）vs 每任务验收标准分开写（我们 simulation-checklist.md 是任务级检查，缺一个“这个库里什么叫完成”的总标准）；④ 共享检查清单放 references/、技能按需引用（我们 references/ 已有 5 个文件，缺的是像它那样在 README 里一张表列清每份清单是干什么的）；⑤ 把自己的短板写进 README（issue #361 式——我们也可以在 comparison.md 或 README 里写清“30 课没在 RobotStudio 里跑过”这类已知短板，我们其实已经在 README 写了点位是教学值，继续保持）。
+**值得抄**：① 固定解剖结构 Overview / When to Use / Process / Rationalizations / Red Flags / Verification（我们 SKILL.md 有 When to use 分流表和 Verification gate，但缺 Rationalizations 和 Red Flags 两节——最该抄的就是这两节：新手最常见的借口是“仿真跑通就行了”“点位差不多就行”，每条配一句反驳）；② “Verification is non-negotiable + 感觉对了不算数”（我们已有“没跑通不算会”，可以学它把证据要求写得更死：仿真跑通要贴哪三样东西——报错截图、轨迹、碰撞检查结果）；③ definition-of-done（项目级统一标准）vs 每任务验收标准分开写（我们 simulation-checklist.md 是任务级检查，缺一个“这个库里什么叫完成”的总标准）；④ 共享检查清单放 references/、技能按需引用（我们 references/ 已有 5 个文件，缺的是像它那样在 README 里一张表列清每份清单是干什么的）；⑤ 把自己的短板写进 README（issue #361 式——我们也可以在 comparison.md 或 README 里写清已知短板，我们其实已经在 README 写了点位是教学值，继续保持）。
 
 **我们写得比它好的地方**：它是通用工程技能，不讲机器人；我们是 ABB 专精。它的技能是给 agent 照着走的流程，26 个技能互相咬合，对新手来说门槛高；我们一个技能 + 分流表，新手一眼知道先读什么。
 
@@ -217,7 +217,7 @@
 
 **值得抄**：① Seams（测试缝）概念（对应我们：仿真验证之前，先写清“这次验证看哪几个公开点”——比如轨迹对不对、IO 对不对、碰撞有没有，而不是笼统说“跑一遍”；可写进 simulation-checklist.md 开头）；② 反模式三条要逐条有“怎么认出来”（tell：重构就断的测试就是 implementation-coupled；永远通过的就是 tautological——我们 troubleshooting.md 是报错对号表，缺的是“写错了的程序长什么样”的反模式一节）；③ Horizontal slicing 禁令（对应我们：不要一次把 10 个例程全改完再跑，一次只改一处、跑一遍——我们 SKILL.md 验证闭环第 4 步已有“一次只改一处”，可以学它给这条起个名、写清为什么）；④ 重构不属于红绿循环（对应我们：改代码和整理代码分开——仿真跑通后再整理，不要边改边整理）；⑤ GLOSSARY.md 共享语言（我们 RAPID 术语散在各文件里：tooldata、wobjdata、robtarget……可以学它单独一份术语表，让每次回答用词一致）；⑥ ask-matt 式路由器（我们 SKILL.md 开头的分流表就是个小路由器，可以学它加一句“不知道该用哪个，先问我”）。
 
-**我们写得比它好的地方**：tdd 只有 56 行正文，靠参考文件撑着；我们 SKILL.md 是完整的一份，新手不用跳来跳去。它的技能是个人经验提炼，没写“学完怎么算会”；我们有 30 课 + 验证关口。它的 README 把“为什么”讲透了，这点我们 README 可以学——现在 README 是功能列表，缺一段“为什么要先仿真再真机”。
+**我们写得比它好的地方**：tdd 只有 56 行正文，靠参考文件撑着；我们 SKILL.md 是完整的一份，新手不用跳来跳去。它的技能是个人经验提炼，没写“学完怎么算会”；我们有 30 课 + 验证关口。它的 README 把“为什么”讲透了，这点我们 README 可以学——现在 README 是功能列表，缺一段“为什么要先仿真”。
 
 ### 5. alchaincyf/nuwa-skill（女娲）—— “把理解变成技能”的造技能方法
 
@@ -229,7 +229,7 @@
 
 **例子给得怎么样**：最好的一家。README 开头三段对话就是例子（用户问精力不够，Naval 答“每个欲望都是你跟不快乐签的合同”；问获客成本高，马斯克答“先算物理极限”；问 OpenAI 和 Anthropic 谁对，乔布斯答“这是品味竞赛”）。每个例子都先讲“他用的哪个心智模型”，不是复读语录。examples/ 里每个示例含完整调研文件，调研过程全透明。
 
-**值得抄**：① “先写先验快照”（对应我们：补技能前先写“模型不用查就知道什么”，只补查完才知道的——我们 learned.md 现在是问答记录，可以学它加一句“这个问题不用查就能答的，就别写进来”）；② “封存考题”（对应我们：每次学新东西，留两道题不给答案，下次验证技能是不是真学会了——我们 SKILL.md“判断技能是不是真变聪明了”三点是事后判断，它是事前封题，更严）；③ 产物分三层（350 行内 SKILL.md + casebook + voice——对应我们：SKILL.md 是入口，references/ 是案例库，rapid/ 是例子，三层已经有了，缺的是像它那样写清每层的行数/作用上限）；④ 保真度评分卡（同一任务带 skill vs 不带 skill、盲测、分数公开、输了照写——对应我们：可以给 30 课做一张“学会没”评分表，不用双 agent 那么重，先从“同一问题，学前学后对照”做起）；⑤ 每个 skill 写清“诚实边界”（它每人三条：蒸馏不了直觉、捕捉不了突变、公开表达不等于真实想法——对应我们：SKILL.md 已有“没跑过不算会”，可以再加一条“本技能不知道什么：没验证过的机器人型号、没跑过的例程”）；⑥ 例子在前、安装在后（我们 README 开头是徽章和能力地图，可以学它把一段“新手问、助手答”的真实对话放前面）。
+**值得抄**：① “先写先验快照”（对应我们：补技能前先写“模型不用查就知道什么”，只补查完才知道的——我们 learned.md 现在是问答记录，可以学它加一句“这个问题不用查就能答的，就别写进来”）；② “封存考题”（对应我们：每次学新东西，留两道题不给答案，下次验证技能是不是真学会了——我们 SKILL.md“判断技能是不是真变聪明了”三点是事后判断，它是事前封题，更严）；③ 产物分三层（350 行内 SKILL.md + casebook + voice——对应我们：SKILL.md 是入口，references/ 是案例库，rapid/ 是例子，三层已经有了，缺的是像它那样写清每层的行数/作用上限）；④ 保真度评分卡（同一任务带 skill vs 不带 skill、盲测、分数公开、输了照写——对应我们：可以给 30 课做一张“学会没”评分表，不用双 agent 那么重，先从“同一问题，学前学后对照”做起）；⑤ 每个 skill 写清“诚实边界”（它每人三条：蒸馏不了直觉、捕捉不了突变、公开表达不等于真实想法——对应我们：SKILL.md 已有验证关口，可以再加一条“本技能不知道什么”）；⑥ 例子在前、安装在后（我们 README 开头是徽章和能力地图，可以学它把一段“新手问、助手答”的真实对话放前面）。
 
 **我们写得比它好的地方**：它是造“人的思维”技能，我们是造“机器人的手艺”技能——我们的例程是真能跑的代码，它的例子是对话。我们的“边问边学”循环（记下来、找缺口、补进技能、问学会没、同步）跟它的五步蒸馏法思路相通，但我们是每问一次就转一圈，比它更勤。它的 skill 是 350 行上限的提炼，我们的 SKILL.md + references 是教学用的完整手册，目标不一样，不必照抄行数。
 
@@ -238,7 +238,7 @@
 下面每条写清出自哪家、用到我们仓库的哪个文件。只列这次亲眼看到的写法，不列没看到的。
 
 1. **每课 / 每个模式加“做到什么样算会”（exit_conditions）**——出自 graph-robots/open-robot-skills（frontmatter 里 `exit_conditions`，下游路由就靠它）。用到 `skill/robot-rapid/SKILL.md`（验证关口一节）和 `docs/beginner-roadmap.md`（30 课每课末尾加一行“算会的标准”，比如 01 例程：虚拟控制器跑通 + 碰撞检查通过 + 换个点位再跑通）。这是 11-20 就记过的缺口，这次看到完整形态，优先级最高。
-2. **补 Rationalizations（常见借口 + 反驳）和 Red Flags（危险信号）两节**——出自 addyosmani/agent-skills（每个技能固定有这两节）。用到 `skill/robot-rapid/SKILL.md`：借口比如“仿真跑通就行了，真机差不多”“点位差不多就行”“先上真机试试，不行再改”；危险信号比如“一次改了三处还说不清哪处起作用”“仿真没跑就说程序写好了”。我们已有分流表和验证关口，缺的就是这两节。
+2. **补 Rationalizations（常见借口 + 反驳）和 Red Flags（危险信号）两节**——出自 addyosmani/agent-skills（每个技能固定有这两节）。用到 `skill/robot-rapid/SKILL.md`：借口比如“仿真跑通就行了”“点位差不多就行”；危险信号比如“一次改了三处还说不清哪处起作用”“仿真没跑就说程序写好了”。我们已有分流表和验证关口，缺的就是这两节。
 3. **验证关口写死“证据要求”，感觉对了不算数**——出自 addyosmani/agent-skills（Verification 一节：测试通过、构建输出、运行时数据三样证据）和 mattpocock/skills（pr 技能：改前改后证据 + 合并危险判断）。用到 `skill/robot-rapid/references/simulation-checklist.md`：跑通一次要贴三样——报错截图或“无报错”、轨迹对不对、碰撞检查结果；缺一样就不算跑通。
 4. **“同一提示，有技能 vs 没技能”对照表（RAPID 版 evals）**——出自 arpitg1304/robotics-agent-skills（evals/EVAL_REPORT.md：同一段 ROS2 需求，没技能 0 行测试 vs 有技能 601 行测试）和 alchaincyf/nuwa-skill（同一组题带 skill vs 不带 skill、盲测、分数公开）。用到 `docs/comparison.md`（本文件，新起一节）或新建 `docs/evals.md`：拿一段搬运需求，没技能 vs 有技能写出来的 RAPID 对照，写清测试行数、IO 处理、报错处理三项，不夸大（arpitg 自己也写明单次对比不算基准测试）。
 5. **Seams（测试缝）：验证前先写清看哪几个公开点**——出自 mattpocock/skills（tdd：Test only at pre-agreed seams，写测试前先把缝写下来跟用户确认）。用到 `skill/robot-rapid/references/simulation-checklist.md` 开头：每次仿真验证前先列“这次看什么”（轨迹、IO、速度、碰撞），不列就不跑；对应它“没确认的缝不写测试”。
@@ -246,10 +246,10 @@
 7. **一次只改一处，起个名、写清为什么**——出自 mattpocock/skills（One slice at a time + 拒绝 horizontal slicing：一次写全部测试再写全部实现，测的是想象出来的行为）。用到 `skill/robot-rapid/SKILL.md` 验证闭环第 4 步：已有“一次只改一处”，补一句为什么（一次改三处，跑通了也不知道是哪处起的作用；跑不通更不知道该回退哪处）。
 8. **每份参考文件在 README 里一句话说清是干什么的**——出自 addyosmani/agent-skills（Reference Checklists 表：每份清单一句话）和 graph-robots/open-robot-skills（README 技能表每行一句话描述）。用到 `README.md`（能力地图表已有一半，补 references/ 5 个文件的用途说明，和 docs/ 6 个文件的用途说明）。
 9. **“先写先验快照 + 封存考题”**——出自 alchaincyf/nuwa-skill（调研前写快照、封存真实决策当考题）。用到 `skill/robot-rapid/references/learned.md`（记答案时加一句“这个问题不用查就能答吗”；每学一个新点留一道题，下次先考再讲）和 `skill/robot-rapid/SKILL.md`（“判断技能是不是真变聪明了”三点后面加一条：封存的题答对了才算会）。
-10. **README 开头放一段真实问答例子**——出自 alchaincyf/nuwa-skill（README 开头三段对话）和 mattpocock/skills（README 开头讲四个失败模式）。用到 `README.md`：在能力地图前面加一段新手问、助手答的真实对话（比如“从哪开始学 ABB？”），再讲“为什么先仿真再真机”。
+10. **README 开头放一段真实问答例子**——出自 alchaincyf/nuwa-skill（README 开头三段对话）和 mattpocock/skills（README 开头讲四个失败模式）。用到 `README.md`：在能力地图前面加一段新手问、助手答的真实对话（比如“从哪开始学 ABB？”），再讲“为什么先仿真”。
 11. **GLOSSARY.md 共享术语表**——出自 mattpocock/skills（GLOSSARY.md 让 agent 少说 20 个词，变量、函数、文件命名一致）。用到新建 `docs/glossary.md` 或 `skill/robot-rapid/references/glossary.md`：tooldata、wobjdata、robtarget、jointtarget、fine、z50 这些词一句话讲清，以后回答用词一致。
 12. **技能与工具分界写清**——出自 graph-robots/open-robot-skills（skills/ 管策略，tools/ 管可调用的计算）。用到 `skill/robot-rapid/SKILL.md` 开头：写清 `rapid/` 例程是策略（照着抄）、`python/` 是工具（发指令），别混着讲。
-13. **把已知短板写进 README（输了也照写）**——出自 arpitg1304/robotics-agent-skills（0/10 也贴出来）和 addyosmani/agent-skills（issue #361 短板写进 README）。用到 `README.md`：我们已写“点位是教学值、30 课没在 RobotStudio 里跑过”，保持这个做法，每次发现短板就补一句，不藏着。
+13. **把已知短板写进 README（输了也照写）**——出自 arpitg1304/robotics-agent-skills（0/10 也贴出来）和 addyosmani/agent-skills（issue #361 短板写进 README）。用到 `README.md`：我们已写“点位是教学值”，保持这个做法，每次发现短板就补一句，不藏着。
 14. **贡献规范一小节：name 等于目录名、description 以“Use when…”结尾**——出自 graph-robots/open-robot-skills（Contributing a bundle：name == dirname、第三人称 description）和 addyosmani/agent-skills（CONTRIBUTING：specific、verifiable、battle-tested、minimal）。用到 `README.md` 或新建 `CONTRIBUTING.md`：写清以后加技能/加课的规矩，免得改乱。
 
 ### 本次对比后要改的结论（2026-11-22）
@@ -257,4 +257,4 @@
 1. 五家里没有一家讲 ABB / RAPID / RobotStudio；11-20 的结论不变——核实范围内，Robot-RAPID 仍是唯一 SKILL.md 格式的 ABB 技能，“第一个”仍无法穷尽证实，不写。
 2. 我们缺的不是内容量，是“让人信的写法”：exit_conditions、借口反驳表、危险信号、证据要求、反模式、封存考题。上面清单 1–7 是写法上的缺口，8–14 是呈现上的缺口。
 3. 我们比五家强的地方：中文大白话新手教学（30 课）、每次提问都记下来边问边学的循环、从 0 到 1 的整条线（full-pipeline 6 段）。这三样别丢，抄写法时别把教学改成流程图。
-4. 下次对比要补的：arpitg 的 harness 跑起来要什么环境（它要 Python 3.10+、Node.js 22+、ARMATURE 模拟器，我们没跑过，只看了 README）；addy 的 evals/ 26 个案例文件具体怎么评路由（只看了 README，没打开 evals/）；nuwa 的 SKILL.md 本体（只看了 README_EN，没打开 SKILL.md 全文）。
+4. 下次对比要补的：arpitg 的 harness 跑起来要什么环境（它要 Python 3.10+、Node.js 22+、ARMATURE 模拟器，只看了 README）；addy 的 evals/ 26 个案例文件具体怎么评路由（只看了 README，没打开 evals/）；nuwa 的 SKILL.md 本体（只看了 README_EN，没打开 SKILL.md 全文）。
