@@ -4,7 +4,7 @@
 
 ## 这个技能有什么用
 
-装上它，助手就按这套方法教你：写 RAPID 代码（10 个例程照着练）、从 0 到 1 建工作站（建站 → 加机器人 → 示教器 → 建模 → 组件 → 编程，6 段一步步点）、先在 RobotStudio 虚拟控制器里仿真跑通再上真机、Python 也能发指令控制机器人。你每次提问，助手都记下来、加深一点，库和技能一起长大。
+装上它，助手就按这套方法教你：写 RAPID 代码（10 个例程照着练）、从 0 到 1 建工作站（建站 → 加机器人 → 示教器 → 建模 → 组件 → 编程，6 段一步步点）、先在 RobotStudio 虚拟控制器里仿真跑通、Python 也能发指令控制机器人。你每次提问，助手都记下来、加深一点，库和技能一起长大。
 
 ## 新手安装：3 步
 
@@ -29,9 +29,9 @@ git clone https://github.com/linxie654-netizen/Robot-Skills.git
 cp -r Robot-Skills/skill/robot-rapid ~/.claude/skills/robot-rapid
 ```
 
-### 方法 3：其他 AI 助手
+### 方法 3：其他 AI 助手（Cursor、Codex、Windsurf、OpenClaw、Trae、Copilot 等）
 
-把 `skill/robot-rapid/SKILL.md` 的全文发给你的 AI 助手，或把它存到你的助手支持的 Skill 目录，让助手按里面的方法工作。
+支持所有 AI 模型 Agent：只要是支持 Agent Skills 标准的 AI 编程助手都能装。一条命令：`npx skills add linxie654-netizen/Robot-Skills --skill robot-rapid -a <助手名> -g -y`（把 `<助手名>` 换成 cursor、codex 这类）；或者把 `skill/robot-rapid/SKILL.md` 的全文发给你的 AI 助手，或把它存到你的助手支持的 Skill 目录，让助手按里面的方法工作。
 
 ## 需要什么
 
@@ -42,7 +42,7 @@ cp -r Robot-Skills/skill/robot-rapid ~/.claude/skills/robot-rapid
 ## 版本
 
 - Skill 与本仓库同步更新：每次提问都会记入 `learning-log.md`、加深一点；同步到 GitHub 前先问用户，同意了再同步。
-- 本 Skill 不是 ABB 官方出品，是按官方语法和网上多家新手教程共识写的教学版，点位是教学值，真机要重新示教。
+- 本 Skill 不是 ABB 官方出品，是按官方语法和网上多家新手教程共识写的教学版，点位是教学值，在仿真里重新示教。
 
 ---
 
@@ -64,9 +64,9 @@ git clone https://github.com/linxie654-netizen/Robot-Skills.git
 cp -r Robot-Skills/skill/robot-rapid ~/.claude/skills/robot-rapid
 ```
 
-### Other AI assistants
+### Other AI assistants (Cursor, Codex, Windsurf, OpenClaw, Trae, Copilot, etc.)
 
-Send the full text of `skill/robot-rapid/SKILL.md` to your assistant, or save it in your assistant's skill directory.
+Supports all AI model agents: any AI coding assistant that supports the Agent Skills standard can use it. One command: `npx skills add linxie654-netizen/Robot-Skills --skill robot-rapid -a <agent> -g -y` (replace `<agent>` with cursor, codex, and so on); or send the full text of `skill/robot-rapid/SKILL.md` to your assistant, or save it in your assistant's skill directory.
 
 ### Check the install worked
 
@@ -83,4 +83,4 @@ Send the full text of `skill/robot-rapid/SKILL.md` to your assistant, or save it
 ### Version
 
 - The skill is updated together with this repository: every question is recorded in `learning-log.md` and the skill deepens a little; sync to GitHub only after asking the user first.
-- This skill is not an official ABB product. It is a teaching version written from official syntax and the consensus of several beginner tutorials. Positions are teaching values; reteach them before running on real hardware.
+- This skill is not an official ABB product. It is a teaching version written from official syntax and the consensus of several beginner tutorials. Positions are teaching values; reteach them in simulation.
