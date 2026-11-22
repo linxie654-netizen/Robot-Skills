@@ -1,5 +1,5 @@
 """02 Python 发搬运：MoveJ / MoveL
-先在虚拟控制器上跑通，再上真机。
+先在虚拟控制器上跑通。
 robtarget = 位置 [x,y,z]（毫米）+ 姿态四元数 [qw,qx,qy,qz]
   + 机器人姿态 confdata + 外轴
 """
