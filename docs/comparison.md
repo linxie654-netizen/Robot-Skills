@@ -1,6 +1,6 @@
 # 网上 ABB 编程 APP / 库对比学习
 
-更新：2026-11-20。只写已核实的内容，没核实的标“未核实”，不编 Star 数和功能。
+更新：2026-11-22。只写对照过来源的内容，不编 Star 数和功能。
 来源：GitHub 实查页面 + 官方说明。ABB 官方没有在 GitHub 放完整 RAPID 教程库。
 
 ## 热门 Skill 对比（2026-11-20 查 skills.sh，2026-11-10 数据）
@@ -12,7 +12,7 @@
 | find-skills | 430 万 | 动词 + 名词 | 帮你找已有的技能，别重复造轮子 | 先查 GitHub 再写，本库已照做 |
 | grill-me | 150 万 | 动词 + 代词，短好记 | 先问清方案再动手 | 问清型号、场景再给代码 |
 | agent-browser | 150 万 | 领域 + 工具 | 薄薄一层包住一个 CLI | 桥操作走脚本，不在 SKILL.md 里堆命令 |
-| tdd | 120 万 | 3 字母缩写 | 一套固定流程：红绿重构 | 仿真先跑通再上真机，也是固定流程 |
+| tdd | 120 万 | 3 字母缩写 | 一套固定流程：红绿重构 | 仿真先跑通再低速手动验证，也是固定流程 |
 | frontend-design | 110 万 | 领域 + 动作 | 给出品标准，不只给代码 | RAPID 也要给“对”的标准：先仿真、查碰撞、低速验证 |
 | systematic-debugging | 32 万 | 副词 + 动词 | 一步步找根因，不猜 | 报错先查手腕姿态和工件坐标系，别乱改点位 |
 | skill-creator | 42 万 | 动作 + 名词 | 教你写技能、测技能 | 边问边学循环就是本库的 skill-creator |
@@ -31,7 +31,7 @@
 | RavenClaude robotics 插件 | 机器人与自主系统工程插件 | 3 个专家 agent + 决策树知识库 + 模板 + 最佳实践；版本号、日期都钉死，写明“用前再核实” | 版本钉死 + 用前核实 → 曾补 README 版本行，2026-11-21 用户要求删掉（公开仓库内容按通用写，不钉死版本） |
 | awesome-gamedev-agent-skills | 79 个游戏开发 skill + 路由器 | 按引擎/学科/类型/流程分类编目，路由器按项目文件自动挑 skill；每个 skill 按官方文档写、钉死引擎版本、有 validator 和 evals | 编目 + 路由 → 本库只有一个 skill，不拆；改成 SKILL.md 内的分流表，相当于一个小路由器 |
 
-**补完后的本库结构**：SKILL.md + references 5 个文件（learned、troubleshooting、rapid-patterns、smart-components、simulation-checklist）+ INSTALL.md；库里另有 RAPID 例程 10 个、Python 2 个、docs 根目录 6 个文件。跟 PLC 那个插件比还是少（人家是多 skill + 校验器），下一步可补的是一个 RAPID 语法自查清单，但那要先有真机验证，暂时不写。
+**补完后的本库结构**：SKILL.md + references 5 个文件（learned、troubleshooting、rapid-patterns、smart-components、simulation-checklist）+ INSTALL.md；库里另有 RAPID 例程 10 个、Python 2 个、docs 根目录 6 个文件。跟 PLC 那个插件比还是少（人家是多 skill + 校验器），下一步可补的是一个 RAPID 语法自查清单（仿真里核对），暂时不写。
 
 ## 对比表
 
@@ -44,8 +44,8 @@
 | rparak/ABB_EGM_Python | Python 经 EGM 控制 ABB 臂 | Python + EGM | 关节/笛卡尔位置实时下发，测 IRB 120 和 YuMi IRB 14000，带 RobotStudio 工程 | 想学 EGM 实时控制的人 | MIT | 21 星，2026-11-20 实查 |
 | FLo-ABB/Hershey-ABB-Robot-Handwriting | Python 生成 RAPID 写字程序 | Python 生成 RAPID | 矢量字体转 RAPID 轨迹，RobotStudio 仿真写字 | 学“Python 生成 RAPID”思路的好例子 | MIT | 2026-11-20 实查 README |
 | RoboDK + Industrial-Robots-VSCode | 离线编程软件 + VS Code 语法高亮 | RoboDK / VS Code | 多品牌机器人离线编程、仿真；VS Code 给 RAPID 等语言加高亮 | 想跨品牌、想在 VS Code 写 RAPID 的人 | RoboDK 有免费版，插件开源 | 搜索结果确认，未逐项核实版本号 |
-| RAPID Live for ABB Robots / abb-rws-client | VS Code 直连真机 / 虚拟控制器 | TypeScript + RWS | RAPID 补全、悬停、推拉 `.mod`、连 RWS 1.0/2.0 | 进阶：想在 VS Code 里直接改控制器程序的人 | Apache-2.0（按扩展页） | 扩展页确认支持 RobotWare 8.2.1 / 7.21.4 / 6.16.03 虚拟控制器 |
-| abb_wrapper / abb_libegm + abb_librws | C++ 库，连 EGM 和 RWS | C++ | EGM 实时引导 + RWS 读写控制器，配 StateMachine Add-In | 进阶 C++ 开发，不适合入门 | 未核实协议，以仓库为准 | 搜索结果确认，未逐项核实 |
+| RAPID Live for ABB Robots / abb-rws-client | VS Code 直连控制器 / 虚拟控制器 | TypeScript + RWS | RAPID 补全、悬停、推拉 `.mod`、连 RWS 1.0/2.0 | 进阶：想在 VS Code 里直接改控制器程序的人 | Apache-2.0（按扩展页） | 扩展页确认支持 RobotWare 8.2.1 / 7.21.4 / 6.16.03 虚拟控制器 |
+| abb_wrapper / abb_libegm + abb_librws | C++ 库，连 EGM 和 RWS | C++ | EGM 实时引导 + RWS 读写控制器，配 StateMachine Add-In | 进阶 C++ 开发，不适合入门 | 以仓库为准 | 搜索结果确认，未逐项对照 |
 | Autodesk Mimic | Maya 插件，控制工业机器人 | Python 3 + Maya | Maya 里仿真、编 6 轴机器人，生成 RAPID 等后处理 | 有 Maya 基础的人 | MIT | 搜索结果确认，未逐项核实 |
 
 ## 对比结论（给初学者的建议）
@@ -62,11 +62,11 @@
 - TryPLC ABB RAPID：RAPID 是 Pascal 风格强类型语言，模块 + PROC main 入口，Move 一行包含目标、速度、区域、工具；IRC5 到 OmniCore 大部分 RAPID 通用。【4507421519131795109†L112-L115】
 - CMU Future CNC RobotStudio 教程：10 步建基础程序（Jog Joint、Teach Target、建 Path、同步到虚拟控制器、仿真播放），另有加工具的 10 步。【8932007933019643557†L19-L29】
 - AYE Tech Hub Lesson 04：IRB 系列、IRC5、RobotStudio、RAPID、MoveL/MoveJ、IO、速度/区域/工件/工具。【4507421519131795109†L15-L17】
-- 共识路线已写进 `docs/beginner-roadmap.md`，共 12 课 + 6 个新手常犯错。
+- 共识路线已写进 `docs/beginner-roadmap.md`，共 15 课 + 6 个新手常犯错。
 
 ## 2026-11-20 别的 AI 搜到的 7 个相关项目（对比学习）
 
-背景：别的 AI 在 GitHub 上按 "SKILL.md + ABB/RAPID/RobotStudio" 搜，没找到我们的仓库，只找到下面 7 个。2026-11-20 晚逐个打开 GitHub 页面核实。各项目最近更新时间页面没显示，一律写未核实。
+背景：别的 AI 在 GitHub 上按 "SKILL.md + ABB/RAPID/RobotStudio" 搜，没找到我们的仓库，只找到下面 7 个。2026-11-20 晚逐个打开 GitHub 页面核实。各项目最近更新时间页面没显示，一律不写。
 
 | 项目 | 是什么 | 星数 | 是 Agent Skill（SKILL.md）吗 | 有 ABB 内容吗 |
 |---|---|---|---|---|
@@ -81,7 +81,7 @@
 
 ### 1. robotstudio-mcp —— 另一 AI 给的地址是错的
 
-**是什么**：`zhou-zhichao/robotstudio-mcp` 打开是 404，仓库不存在。另一 AI 把名字记混了：Zhichao Zhou 是论文《Retrieval-grounded robot program generation and simulation-based correction via Model Context Protocol》（arXiv:2505.03275）的作者，讲的是 RAG + MCP 生成并仿真验证 ABB RAPID 程序，论文里没有这个仓库地址。真正的 RobotStudio MCP 服务是 `PMinhDuc204/abb-robotstudio-mcp6.08`：TypeScript MCP 服务 + ClaudeBridge C# 插件，63 个工具（33 个 `rs_*` + 30 个 `rws_*`），v3.1.0，面向 RobotStudio 6.08，0 星、15 提交、建于 2026-10-26，MIT 协议。
+**是什么**：`zhou-zhichao/robotstudio-mcp` 打开是 404，仓库不存在。另一 AI 把名字记混了：Zhichao Zhou 是论文《Retrieval-grounded robot program generation and simulation-based correction via Model Context Protocol》（arXiv:2505.03275）的作者，讲的是 RAG + MCP 生成并仿真验证 ABB RAPID 程序，论文里没有这个仓库地址。真正的 RobotStudio MCP 服务是 `PMinhDuc204/abb-robotstudio-mcp6.08`：TypeScript MCP 服务 + ClaudeBridge C# 插件，63 个工具（33 个 `rs_*` + 30 个 `rws_*`），v3.1.0，面向 RobotStudio，0 星、15 提交、建于 2026-10-26，MIT 协议。
 
 **跟我们有什么关系**：就是用户 Windows 机上装过的那个 MCP（63 个工具），用户 2026-11-20 14:40 已拍板停掉 MCP 路线、改做 Skill，20:27 又让把桥和 MCP 的东西全删了。它不是 Agent Skill（根目录没有 SKILL.md）。
 
@@ -93,7 +93,7 @@
 
 **跟我们有什么关系**：思路最近的一个 ABB AI 项目，但只做喷涂一个场景，不教新手、不讲 RobotStudio 操作。
 
-**借鉴点**：① 喷涂是我们的空白——30 课大白话教学里只有第 24 课基础焊接，喷涂一个字没有；PaintL/PaintC、brushdata 是可补的方向；② 手册做 RAG 知识库的思路值得学；③ 它也要求生成代码必须先在 RobotStudio 里仿真验证再上机，跟我们的红线一致；④ Pack&Go 一键交付的思路好。
+**借鉴点**：① 喷涂已补：`docs/spray-painting.md`（PaintL、SetBrush、刷子表，按 ABB Painting PowerPac 手册写，2026-11-22）；② 手册做 RAG 知识库的思路值得学；③ 它也要求生成代码必须先在 RobotStudio 里仿真验证再上机，跟我们的红线一致；④ Pack&Go 一键交付的思路好。
 
 ### 3. dtpisanty/abblender —— Blender 插件，动画导出 RAPID
 
@@ -138,8 +138,8 @@
 ## 对比结论（2026-11-20 晚核实）
 
 1. 7 个项目里，**没有一个是“SKILL.md 格式的 ABB 技能”**。两个真正的 Agent Skill 仓库（open-robot-skills、robotics-agent-skills）都是 ROS / 通用操作方向，无 ABB；四个 ABB 项目（MCP 服务、离线喷涂助手、Blender 插件、Modbus 库、VS Code 扩展）都不是 Skill 格式。
-2. 按本次核实的 7 个项目 + 此前搜索（2026-11-20），**我们的 Robot-RAPID 是核实范围内唯一一个按 SKILL.md 格式封装的 ABB 技能**。但“GitHub 上第一个”无法穷尽证实——GitHub 全量检索做不到，只能说“目前核实到的范围内没有第二个，‘第一个’未核实”。
-3. 值得补进我们技能的三样（按优先级）：① harness 式验证闭环（写代码 → 仿真跑 → 看报告 → 改 → 换种子再验）→ 已补：2026-11-21 SKILL.md 验证关口 + simulation-checklist.md，只在仿真里做，不上真机（用户 2026-11-21 定）；② 喷涂内容（PaintL/PaintC、brushdata），我们的 30 课里没有；③ VS Code 里装 ABB RAPID Pack 的工具推荐 → 已补：2026-11-21 SKILL.md 分流表 + INSTALL.md 已推荐安装。
+2. 按本次核实的 7 个项目 + 此前搜索（2026-11-20），**我们的 Robot-RAPID 是核实范围内唯一一个按 SKILL.md 格式封装的 ABB 技能**。但“GitHub 上第一个”无法穷尽证实——GitHub 全量检索做不到，只能说“目前核实到的范围内没有第二个”。
+3. 值得补进我们技能的三样（按优先级）：① harness 式验证闭环（写代码 → 仿真跑 → 看报告 → 改 → 换种子再验）→ 已补：2026-11-21 SKILL.md 验证关口 + simulation-checklist.md，只在仿真里做（用户 2026-11-21 定）；② 喷涂内容（PaintL/PaintC、brushdata）→ 已补：`docs/spray-painting.md`（2026-11-22）；③ VS Code 里装 ABB RAPID Pack 的工具推荐 → 已补：2026-11-21 SKILL.md 分流表 + INSTALL.md 已推荐安装。
 4. 另一 AI 的报告本身有一处错：`zhou-zhichao/robotstudio-mcp` 这个地址不存在，真正的 MCP 服务是 PMinhDuc204/abb-robotstudio-mcp6.08。
 
 ## 下次对比要补的
@@ -237,18 +237,18 @@
 
 下面每条写清出自哪家、用到我们仓库的哪个文件。只列这次亲眼看到的写法，不列没看到的。
 
-1. **每课 / 每个模式加“做到什么样算会”（exit_conditions）**——出自 graph-robots/open-robot-skills（frontmatter 里 `exit_conditions`，下游路由就靠它）。用到 `skill/robot-rapid/SKILL.md`（验证关口一节）和 `docs/beginner-roadmap.md`（30 课每课末尾加一行“算会的标准”，比如 01 例程：虚拟控制器跑通 + 碰撞检查通过 + 换个点位再跑通）。这是 11-20 就记过的缺口，这次看到完整形态，优先级最高。
-2. **补 Rationalizations（常见借口 + 反驳）和 Red Flags（危险信号）两节**——出自 addyosmani/agent-skills（每个技能固定有这两节）。用到 `skill/robot-rapid/SKILL.md`：借口比如“仿真跑通就行了”“点位差不多就行”；危险信号比如“一次改了三处还说不清哪处起作用”“仿真没跑就说程序写好了”。我们已有分流表和验证关口，缺的就是这两节。
-3. **验证关口写死“证据要求”，感觉对了不算数**——出自 addyosmani/agent-skills（Verification 一节：测试通过、构建输出、运行时数据三样证据）和 mattpocock/skills（pr 技能：改前改后证据 + 合并危险判断）。用到 `skill/robot-rapid/references/simulation-checklist.md`：跑通一次要贴三样——报错截图或“无报错”、轨迹对不对、碰撞检查结果；缺一样就不算跑通。
+1. **每课 / 每个模式加“做到什么样算会”（exit_conditions）**——出自 graph-robots/open-robot-skills（frontmatter 里 `exit_conditions`，下游路由就靠它）。用到 `skills/robot-rapid/SKILL.md`（验证关口一节）和 `docs/beginner-roadmap.md`（30 课每课末尾加一行“算会的标准”，比如 01 例程：虚拟控制器跑通 + 碰撞检查通过 + 换个点位再跑通）。这是 11-20 就记过的缺口，这次看到完整形态，优先级最高。
+2. **补 Rationalizations（常见借口 + 反驳）和 Red Flags（危险信号）两节**——出自 addyosmani/agent-skills（每个技能固定有这两节）。用到 `skills/robot-rapid/SKILL.md`：借口比如“仿真跑通就行了”“点位差不多就行”；危险信号比如“一次改了三处还说不清哪处起作用”“仿真没跑就说程序写好了”。我们已有分流表和验证关口，缺的就是这两节。
+3. **验证关口写死“证据要求”，感觉对了不算数**——出自 addyosmani/agent-skills（Verification 一节：测试通过、构建输出、运行时数据三样证据）和 mattpocock/skills（pr 技能：改前改后证据 + 合并危险判断）。用到 `skills/robot-rapid/references/simulation-checklist.md`：跑通一次要贴三样——报错截图或“无报错”、轨迹对不对、碰撞检查结果；缺一样就不算跑通。
 4. **“同一提示，有技能 vs 没技能”对照表（RAPID 版 evals）**——出自 arpitg1304/robotics-agent-skills（evals/EVAL_REPORT.md：同一段 ROS2 需求，没技能 0 行测试 vs 有技能 601 行测试）和 alchaincyf/nuwa-skill（同一组题带 skill vs 不带 skill、盲测、分数公开）。用到 `docs/comparison.md`（本文件，新起一节）或新建 `docs/evals.md`：拿一段搬运需求，没技能 vs 有技能写出来的 RAPID 对照，写清测试行数、IO 处理、报错处理三项，不夸大（arpitg 自己也写明单次对比不算基准测试）。
-5. **Seams（测试缝）：验证前先写清看哪几个公开点**——出自 mattpocock/skills（tdd：Test only at pre-agreed seams，写测试前先把缝写下来跟用户确认）。用到 `skill/robot-rapid/references/simulation-checklist.md` 开头：每次仿真验证前先列“这次看什么”（轨迹、IO、速度、碰撞），不列就不跑；对应它“没确认的缝不写测试”。
-6. **反模式一节：写错了的程序长什么样、怎么认出来**——出自 mattpocock/skills（tdd 三条反模式，每条有 tell：重构就断的测试、永远通过的测试）和 arpitg1304/robotics-agent-skills（What Good Skills Contain：失败模式 + 反模式）。用到 `skill/robot-rapid/references/troubleshooting.md`（现在是报错对号表，加一节“常写错的 RAPID 反模式”，比如 MoveL 一路用 fine、该用 MoveAbsJ 回零却用 MoveJ、IO 不等信号就往下走）。
-7. **一次只改一处，起个名、写清为什么**——出自 mattpocock/skills（One slice at a time + 拒绝 horizontal slicing：一次写全部测试再写全部实现，测的是想象出来的行为）。用到 `skill/robot-rapid/SKILL.md` 验证闭环第 4 步：已有“一次只改一处”，补一句为什么（一次改三处，跑通了也不知道是哪处起的作用；跑不通更不知道该回退哪处）。
+5. **Seams（测试缝）：验证前先写清看哪几个公开点**——出自 mattpocock/skills（tdd：Test only at pre-agreed seams，写测试前先把缝写下来跟用户确认）。用到 `skills/robot-rapid/references/simulation-checklist.md` 开头：每次仿真验证前先列“这次看什么”（轨迹、IO、速度、碰撞），不列就不跑；对应它“没确认的缝不写测试”。
+6. **反模式一节：写错了的程序长什么样、怎么认出来**——出自 mattpocock/skills（tdd 三条反模式，每条有 tell：重构就断的测试、永远通过的测试）和 arpitg1304/robotics-agent-skills（What Good Skills Contain：失败模式 + 反模式）。用到 `skills/robot-rapid/references/troubleshooting.md`（现在是报错对号表，加一节“常写错的 RAPID 反模式”，比如 MoveL 一路用 fine、该用 MoveAbsJ 回零却用 MoveJ、IO 不等信号就往下走）。
+7. **一次只改一处，起个名、写清为什么**——出自 mattpocock/skills（One slice at a time + 拒绝 horizontal slicing：一次写全部测试再写全部实现，测的是想象出来的行为）。用到 `skills/robot-rapid/SKILL.md` 验证闭环第 4 步：已有“一次只改一处”，补一句为什么（一次改三处，跑通了也不知道是哪处起的作用；跑不通更不知道该回退哪处）。
 8. **每份参考文件在 README 里一句话说清是干什么的**——出自 addyosmani/agent-skills（Reference Checklists 表：每份清单一句话）和 graph-robots/open-robot-skills（README 技能表每行一句话描述）。用到 `README.md`（能力地图表已有一半，补 references/ 5 个文件的用途说明，和 docs/ 6 个文件的用途说明）。
-9. **“先写先验快照 + 封存考题”**——出自 alchaincyf/nuwa-skill（调研前写快照、封存真实决策当考题）。用到 `skill/robot-rapid/references/learned.md`（记答案时加一句“这个问题不用查就能答吗”；每学一个新点留一道题，下次先考再讲）和 `skill/robot-rapid/SKILL.md`（“判断技能是不是真变聪明了”三点后面加一条：封存的题答对了才算会）。
+9. **“先写先验快照 + 封存考题”**——出自 alchaincyf/nuwa-skill（调研前写快照、封存真实决策当考题）。用到 `skills/robot-rapid/references/learned.md`（记答案时加一句“这个问题不用查就能答吗”；每学一个新点留一道题，下次先考再讲）和 `skills/robot-rapid/SKILL.md`（“判断技能是不是真变聪明了”三点后面加一条：封存的题答对了才算会）。
 10. **README 开头放一段真实问答例子**——出自 alchaincyf/nuwa-skill（README 开头三段对话）和 mattpocock/skills（README 开头讲四个失败模式）。用到 `README.md`：在能力地图前面加一段新手问、助手答的真实对话（比如“从哪开始学 ABB？”），再讲“为什么先仿真”。
-11. **GLOSSARY.md 共享术语表**——出自 mattpocock/skills（GLOSSARY.md 让 agent 少说 20 个词，变量、函数、文件命名一致）。用到新建 `docs/glossary.md` 或 `skill/robot-rapid/references/glossary.md`：tooldata、wobjdata、robtarget、jointtarget、fine、z50 这些词一句话讲清，以后回答用词一致。
-12. **技能与工具分界写清**——出自 graph-robots/open-robot-skills（skills/ 管策略，tools/ 管可调用的计算）。用到 `skill/robot-rapid/SKILL.md` 开头：写清 `rapid/` 例程是策略（照着抄）、`python/` 是工具（发指令），别混着讲。
+11. **GLOSSARY.md 共享术语表**——出自 mattpocock/skills（GLOSSARY.md 让 agent 少说 20 个词，变量、函数、文件命名一致）。用到新建 `docs/glossary.md` 或 `skills/robot-rapid/references/glossary.md`：tooldata、wobjdata、robtarget、jointtarget、fine、z50 这些词一句话讲清，以后回答用词一致。
+12. **技能与工具分界写清**——出自 graph-robots/open-robot-skills（skills/ 管策略，tools/ 管可调用的计算）。用到 `skills/robot-rapid/SKILL.md` 开头：写清 `rapid/` 例程是策略（照着抄）、`python/` 是工具（发指令），别混着讲。
 13. **把已知短板写进 README（输了也照写）**——出自 arpitg1304/robotics-agent-skills（0/10 也贴出来）和 addyosmani/agent-skills（issue #361 短板写进 README）。用到 `README.md`：我们已写“点位是教学值”，保持这个做法，每次发现短板就补一句，不藏着。
 14. **贡献规范一小节：name 等于目录名、description 以“Use when…”结尾**——出自 graph-robots/open-robot-skills（Contributing a bundle：name == dirname、第三人称 description）和 addyosmani/agent-skills（CONTRIBUTING：specific、verifiable、battle-tested、minimal）。用到 `README.md` 或新建 `CONTRIBUTING.md`：写清以后加技能/加课的规矩，免得改乱。
 
