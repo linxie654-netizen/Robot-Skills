@@ -11,7 +11,7 @@
 
 新手顺序：RobotStudio 仿真 -> RAPID 基础 -> 示教调点 -> 仿真验证。
 
-## 12 课路线（按网上 15 课 / 6 小时+课程归纳）
+## 15 课路线（按网上 15 课 / 6 小时+课程归纳）
 
 ### 第 1 周：先跑起来
 - L1：认识系统：机器人本体 IRB + 控制器 IRC5 / OmniCore + FlexPendant + RobotStudio。算会：能说清本体、控制器、示教器、RobotStudio 各是干什么的。
@@ -35,6 +35,18 @@
 - L13：报错处理：ERROR 陷阱、RAISE、TRAP 中断。对应 `rapid/09_error_handling.mod`。算会：ERROR 陷阱、RAISE、TRAP 各写一段，故意造一个错能被程序接住，跑通 `rapid/09`。
 - L14：安全：手动低速先验证、确认无碰撞再切自动、急停和围栏规则、不要试没仿真过的程序。算会：手动低速验证、确认无碰撞再切自动、急停和围栏规则都说得出，没仿真过的程序不跑。
 - L15：进阶方向（先知道，不急着学）：多任务、PLC 通讯（Ethernet/IP、PROFINET、OPC UA）、EGM 实时控制、Python 联动。算会：能说清多任务、PLC 通讯、EGM、Python 联动各是干什么的、先学哪个（只要求说清方向，不要求会做；三课在 `docs/advanced-topics.md`，同样要跑通才算会）。
+
+## 官方课程有、本路线补上的知识点（对照 ABB 官方 RoboMasters / Advanced Programming 大纲，2026-11-22 补）
+
+15 课学完再学这 5 课，都在 RobotStudio 虚拟控制器里练。
+
+- L16：系统事件 Event Routine：开机、启动、停止、复位时自动跑一段程序（比如开机先把夹爪 DO 复位）。在系统参数 Controller → Event Routine 里挂例行程序名和事件（POWER_ON、START、STOP、RESET 等）。算会：挂一个 POWER_ON 事件，重启虚拟控制器后那段程序自己跑了（示教器上能看到它写的一句话）。
+- L17：搜索 SearchL：机器人沿直线慢慢走，等某个 DI 变化，把变化那一刻的位置记下来，用来找工件高度或边缘。写法 `SearchL \Stop, di_sensor, pFound, pEnd, v100, tool1;`。算会：在仿真里用一个 DI 模拟传感器，SearchL 停下后把 pFound 的 Z 值写到示教器上，换个触发时机再跑一次，记下的位置跟着变。
+- L18：限速限加速 AccSet / VelSet：`AccSet 50, 100;` 把加速度降到一半，`VelSet 50, 800;` 速度打五折、最高不超过 800 mm/s。搬易晃的东西、调试时用。算会：同一段路径设前设后各跑一遍，用 RobotStudio 的信号分析器或节拍时间看出差别，最后恢复 `AccSet 100, 100; VelSet 100, 5000;`。
+- L19：走着触发 TriggIO + TriggL：机器人不停，走到路径上离终点（或起点）某个距离时自动置 DO，比停下来 SetDO 省时间。先 `TriggIO trig1, 10 \DOp:=do_glue, 1;` 定义，再 `TriggL p20, v300, trig1, z10, tool1;`。算会：仿真里 DO 在离目标 10mm 处变 1，用信号分析器看到 DO 变化时机器人没停。
+- L20：姿态监控 ConfJ / ConfL + 事件日志：`ConfL \Off;` 关掉直线运动的姿态监控，走不通的直线有时能过去，代价是腕部可能突然翻转，用完要 `ConfL \On;` 打开。同时学会看事件日志：报错号、原因、处理建议都在里面。算会：故意造一个“姿态不对”的报错，从事件日志里找到报错号和建议，改完跑通；能说清 ConfL \Off 的风险。
+
+另外两样操作员技能，30 课里有、本路线没单列：备份与恢复（RobotStudio 控制器选项卡 → 备份）、UAS 用户授权（谁能改程序、谁只能看）。考 ABB 操作员课会碰到。
 
 ## 新手最常犯的错（多家教程都提到的）
 1. 语句漏分号 `;`，编译不过。
