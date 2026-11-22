@@ -17,7 +17,6 @@
 | 发一段搬运 | `02_pick_place.py` | 生成 MoveJ / MoveL 的 RAPID，取料、放料 |
 | 批量生成程序 | 同一个 `MotionProgram` 写法，循环里改点位 | 不用一个个手写 RAPID |
 | 数据处理 | Python 标准库、numpy | 算点位、读文件、批量改数据 |
-| 接视觉和 AI | 方向，库里还没有现成例程 | 以后再说，先把上面两条跑通 |
 
 思路来自上游库 rpiRobotics/abb_motion_program_exec（Apache-2.0，见 `vendor/abb_motion_program_exec/`）：Python 写运动指令，生成 RAPID，下发到控制器执行。
 
@@ -28,7 +27,7 @@
    ```
    pip install -r requirements.txt
    ```
-   装的是 `abb-motion-program-exec` 和 `numpy`。numpy 在 `requirements.txt` 里，但两个例程里没用到它。
+   装的是 `abb-motion-program-exec`、`numpy`、`pybullet`。numpy 在 `requirements.txt` 里，但三个例程里没用到它；pybullet 是 `03_pybullet_arm.py` 用的（六轴演示）。
 3. **RobotStudio 里建站，启动虚拟控制器**：按 `robotstudio/tutorial.md` 建站。
 4. **控制器里装 RAPID 端**：把 `vendor/abb_motion_program_exec/robot/` 里的文件装到控制器上，步骤见上游库的 `docs/robot_setup_manual.md`。
 5. **注意**：一次只能开一个虚拟控制器——虚拟控制器占 TCP 80 端口，两个一起开会冲突（上游库 README 原话）。
@@ -104,15 +103,11 @@ C / C++ / C# 跟 ABB 机器人编程有关联，但**都是辅助且进阶，不
 | `abb_wrapper` / `abb_libegm` + `abb_librws` | C++ 库，连 EGM 和 RWS（见 `docs/comparison.md`） | 进阶 C++ 开发，不适合入门；以仓库为准 |
 | RobotComponents | Grasshopper 插件，Python / C# API | 有 Rhino 基础才用得上，否则先不动 |
 | C# 插件 | RobotStudio 插件、PC SDK 都是 C# / .NET 那边的 | 以前 MCP 路线用过 C# 插件，MCP 已停、相关文件已删 |
-| EGM | 实时控制要开 RobotWare EGM 选项 | 先不碰，等 MoveJ / MoveL 跑通再说 |
+| EGM | 实时控制要开 RobotWare EGM 选项 | 按 `docs/advanced-topics.md` 第 1 课学 |
 
 一句话：C 那边是给进阶开发留的路，先把 RAPID + Python 联动跑通再说。
 
-## 还没有的内容
+## 进阶方向
 
-
-- GUI 例程：库里暂无，方向是先从 Python 自带的 tkinter 入手，换框架等用户说。
-- PLC 直连的 Python 例程：库里暂无，先学 Python + ABB 联动。
-- 视觉 / AI 联动例程：库里暂无，方向先记下来。
-- 双机联动（Multi-Move）：上游库支持，库里没有例程。
-- C++ 的 `abb_libegm` / `abb_librws`：只在 comparison.md 里记了一行。
+- 多机器人联动（MultiMove）：RAPID 版在 `projects/multi-robot/`，上游 `abb_motion_program_exec` 也支持。
+- C++ 的 `abb_libegm` / `abb_librws`：见 `docs/comparison.md`。
