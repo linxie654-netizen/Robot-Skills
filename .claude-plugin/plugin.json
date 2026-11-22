@@ -4,5 +4,8 @@
   "description": "Robot-Skills，让 AI 更会写 RAPID。",
   "author": {
     "name": "linxie654-netizen"
-  }
+  },
+  "skills": [
+    "./skills/robot-rapid"
+  ]
 }
