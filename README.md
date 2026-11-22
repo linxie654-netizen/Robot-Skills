@@ -12,7 +12,7 @@
 ![Language](https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-%E4%B8%AD%E6%96%87-red)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-green)](https://agentskills.io)
-[![skills.sh](https://img.shields.io/badge/skills.sh-Compatible-blue)](https://skills.sh)
+[![skills.sh](https://img.shields.io/badge/skills.sh-Compatible-blue)](https://skills.sh/linxie654-netizen/Robot-Skills/robot-rapid)
 [![Runtime](https://img.shields.io/badge/Runtime-All%20AI%20Agents-blueviolet)](#-新手安装3-步)
 
 [🚀 30 秒上手](#-新手安装3-步) · [📖 新手路线](docs/beginner-roadmap.md) · [⚡ 速查表](docs/cheatsheet.md) · [🔍 对比学习](docs/comparison.md)
@@ -25,18 +25,20 @@
 
 中文，拆步骤，给完整能跑的代码，重要代码逐段讲。目标：Python + PLC + ABB 机器人联动，做工业自动化。
 
+> 新手问：“我是新手，从哪开始学 ABB？”——助手带你从 `rapid/01_move_basics.mod` 开始练：先在 RobotStudio 虚拟控制器里跑通，再换个点位验一遍。先仿真，不碰没跑过的程序。
+
 ## 🗺️ 能力地图：要干什么，找什么
 
 | 你要干什么 | 打开什么 | 得到什么 |
 |---|---|---|
-| 写一段 RAPID 代码 | `skill/robot-rapid/references/rapid-patterns.md` + `rapid/` | 9 种常用模式，照着抄，改点位就能跑 |
-| 程序报错、跑不通 | `skill/robot-rapid/references/troubleshooting.md` | 报错对号表，先定位再动手 |
-| 搭 Smart 组件 | `skill/robot-rapid/references/smart-components.md` | 一步步搭，信号、逻辑、动作都写清了 |
-| 跑仿真前检查 | `skill/robot-rapid/references/simulation-checklist.md` | 逐项打勾 |
+| 写一段 RAPID 代码 | `skills/robot-rapid/references/rapid-patterns.md` + `rapid/` | 9 种常用模式，照着抄，改点位就能跑 |
+| 程序报错、跑不通 | `skills/robot-rapid/references/troubleshooting.md` | 报错对号表，先定位再动手 |
+| 搭 Smart 组件 | `skills/robot-rapid/references/smart-components.md` | 一步步搭，信号、逻辑、动作都写清了 |
+| 跑仿真前检查 | `skills/robot-rapid/references/simulation-checklist.md` | 逐项打勾 |
 | 从 0 到 1 建工作站 | `docs/full-pipeline.md` | 6 段全流程，照着点 |
-| 新手从哪开始 | `docs/beginner-roadmap.md` | 12 课路线 + 6 个常犯错 |
+| 新手从哪开始 | `docs/beginner-roadmap.md` | 15 课路线 + 6 个常犯错 |
 | Python 控制机器人 | `python/01_move_joints.py` | 先打印 RAPID 检查再执行 |
-| 以前问过的问题 | `skill/robot-rapid/references/learned.md` | 问题 → 答案 → 为什么，现成的 |
+| 以前问过的问题 | `skills/robot-rapid/references/learned.md` | 问题 → 答案 → 为什么，现成的 |
 
 ---
 
@@ -62,7 +64,7 @@
 npx skills add linxie654-netizen/Robot-Skills
 ```
 
-需要 Node.js 22.20 以上。命令会找到仓库里的 `robot-rapid`，让你选装到哪个助手（Claude Code、Cursor、Codex、Windsurf、OpenClaw、Trae、Copilot 等都行）。2026-11-20 已实测能装上。
+需要 Node.js 22.20 以上。命令会找到仓库里的 `robot-rapid`，让你选装到哪个助手（Claude Code、Cursor、Codex、Windsurf、OpenClaw、Trae、Copilot 等都行）。2026-11-22 已实测能装上。
 
 **第 2 步：不用命令行？手动装也行**
 
@@ -76,9 +78,9 @@ git clone https://github.com/linxie654-netizen/Robot-Skills.git
 
 | 你用的助手 | 复制命令 |
 |---|---|
-| Muse | `cp -r Robot-Skills/skill/robot-rapid ~/workspace/custom-skills/robot-rapid` |
-| Claude Code | `cp -r Robot-Skills/skill/robot-rapid ~/.claude/skills/robot-rapid` |
-| 其他助手（Cursor、Codex、Windsurf、OpenClaw、Trae、Copilot 等） | 把 `skill/robot-rapid/SKILL.md` 的全文发给它，或存到它支持的 Skill 目录 |
+| Muse | `cp -r Robot-Skills/skills/robot-rapid ~/workspace/custom-skills/robot-rapid` |
+| Claude Code | `cp -r Robot-Skills/skills/robot-rapid ~/.claude/skills/robot-rapid` |
+| 其他助手（Cursor、Codex、Windsurf、OpenClaw、Trae、Copilot 等） | 把 `skills/robot-rapid/SKILL.md` 的全文发给它，或存到它支持的 Skill 目录 |
 
 **第 3 步：问第一个问题**
 
@@ -125,19 +127,36 @@ git clone https://github.com/linxie654-netizen/Robot-Skills.git
 - `python/` — Python 联动例程（用 `abb_motion_program_exec`）
   - `01_move_joints.py` — Python 发 MoveAbsJ
   - `02_pick_place.py` — Python 发 MoveJ/MoveL 搬运
-  - `requirements.txt` — `abb-motion-program-exec`
+  - `03_pybullet_arm.py` — PyBullet 六轴演示（KUKA iiwa 自带模型，关节角误差 0.0 度）
+  - `requirements.txt` — 依赖都钉死版本（abb-motion-program-exec 0.7.4、numpy 1.26.4、pybullet 3.2.7）
   - `README.md` — Python 怎么用（辅助：生成 RAPID、批量、自动化）
 - `robotstudio/` — RobotStudio 教程
   - `tutorial.md` — 建站、选机器人、虚拟控制器、示教、仿真，一步步来
 - `docs/` — 速查和对比
-  - `beginner-roadmap.md` — 新手必学 12 课路线（网上教程共识版）
+  - `beginner-roadmap.md` — 新手必学 15 课路线（网上教程共识版）
   - `cheatsheet.md` — RAPID 速查表
   - `comparison.md` — 网上 APP / 库对比学习表
   - `full-pipeline.md` — 从 0 到 1 全流程 6 段（Skill 版）
-- `skill/robot-rapid/` — 唯一的 ABB Skill，叫 Robot-RAPID（通用版，任何人都能装）
+  - `advanced-topics.md` — 进阶三课：EGM、多任务、外轴（大白话教学）
+  - `teaching-guide.md` — 八种教法怎么做
+  - `exam-practice.md` — 35 道练习题
+  - `progress-tracker.md` — 学习进度表
+  - `3d-simulation-research.md` — Three.js、PyBullet、URDF 研究
+  - `threejs-arm-demo.html` — 网页版六轴演示（单文件）
+  - `evals.md` — 同一提示、有技能 vs 没技能对照
+  - `spray-painting.md` — 喷涂课：PaintL、SetBrush、刷子表
+  - `promotion/` — 各渠道推广文案（Reddit/X 英文、知乎/掘金中文、B站口播稿）
+- `skills/robot-rapid/` — 唯一的 ABB Skill，叫 Robot-RAPID（通用版，任何人都能装）
   - `SKILL.md` — Skill 正文（RAPID、0 到 1 全流程）
   - `INSTALL.md` — 安装方法（Muse / Claude Code / 其他助手）
   - `references/` — 学到的东西、报错手册、常用模式、Smart 组件、仿真检查清单
+    - `beginner-lessons.md` — 30 课大白话教学，每课末尾有“算会”
+    - `learned.md` — 学到的东西（问题 → 答案 → 为什么）+ 封存考题
+    - `rapid-patterns.md` — 9 种常用 RAPID 模式
+    - `troubleshooting.md` — 报错对号表 + 反模式
+    - `smart-components.md` — Smart 组件怎么做
+    - `simulation-checklist.md` — 仿真前检查清单 + 跑通证据要求
+    - `glossary.md` — 术语表，一个词一句话
 - `learning-log.md` — 每次提问记录，按用户要求持续记
 - `vendor/` — 拉取的开源参考源（别人的项目，保留原仓库和协议）
   - `abb_motion_program_exec/` — rpiRobotics，Apache-2.0
@@ -156,3 +175,7 @@ git clone https://github.com/linxie654-netizen/Robot-Skills.git
 
 - EGM 联动要按 ABB 手册开选项，不要直接试没仿真过的程序。
 - 本库例程里的点位、速度都是教学值，换到你的工件和夹具上必须重新示教。
+
+## 已知短板（修好一项划掉一项）
+
+- 焊接、输送带跟踪、三机器人联动 3 个项目是骨架，专用指令待按手册补。
