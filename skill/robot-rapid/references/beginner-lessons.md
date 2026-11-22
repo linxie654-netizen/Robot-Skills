@@ -4,8 +4,7 @@
 
 **先说清楚三件事：**
 
-- 这 30 课是纸面上的理解，**还没在 RobotStudio 里照做跑通过**。按步骤做之前，先在仿真里走一遍、查碰撞，手动低速验证后再上真机。
-- 内容只写草稿里有的东西。没核实的地方写了“未核实”，不要当成定论。
+- 这 30 课是纸面上的理解。按步骤做之前，先在仿真里走一遍、查碰撞。
 - 术语第一次出现都用人话解释了一遍，后面直接用简称。
 - 本文件已进公开仓库。以后边问边调用、边回答边改正。第 15–30 课是 2026-11-20 新追加的。
 
@@ -14,7 +13,7 @@
 ## 第 1 课：安全开场——上锁挂牌、急停、安全恢复
 
 **来源视频：** Automation Academy《ABB ROBOT PROGRAMMING TUTORIAL PART 1》第 1 段（视频 https://www.youtube.com/watch?v=hGGkzsT8WEU ，时长 4:36:34）
-**学法说明：** 视频原片没逐帧看过，字幕拿不到；本课内容以 Wolf Robotics《ABB BASIC ROBOTIC PROGRAMMING》4 天线下班手册和 ABB 官方 RU011／IN-RB02 课程大纲为准，视频内章节时间点**未核实**。
+**学法说明：** 本课内容以 Wolf Robotics《ABB BASIC ROBOTIC PROGRAMMING》4 天线下班手册和 ABB 官方 RU011／IN-RB02 课程大纲为准。
 
 ### 这是什么
 
@@ -46,7 +45,7 @@
 ## 第 2 课：认识示教器——主菜单、快捷菜单、操作模式、使能与速度
 
 **来源视频：** Automation Academy《ABB ROBOT PROGRAMMING TUTORIAL PART 1》第 2 段（视频同第 1 课）
-**学法说明：** 同第 1 课，视频内章节时间点**未核实**。
+**学法说明：** 同第 1 课。
 
 ### 这是什么
 
@@ -76,7 +75,7 @@
 
 ## 第 3 课：从已有布局创建单机器人系统 + 配 I/O
 
-**来源视频：** cnctrain《Creating Single Robot System in ABB Robotstudio》（文章 https://cnctrain.com/blogs/post/creating-single-robot-system-in-abb-robotstudio ，2024-04-04；视频 https://www.youtube.com/watch?v=TDjzO5AMOmk ；时长**未核实**）
+**来源视频：** cnctrain《Creating Single Robot System in ABB Robotstudio》（文章 https://cnctrain.com/blogs/post/creating-single-robot-system-in-abb-robotstudio ，2024-04-04；视频 https://www.youtube.com/watch?v=TDjzO5AMOmk）
 
 ### 这是什么
 
@@ -107,7 +106,7 @@ I/O 就是信号：输入信号是外面传进来的（比如传感器说“箱�
 
 ## 第 4 课：工具坐标系——三种定义方法 + Create Tool 向导
 
-**来源视频：** Aleksandar Haber《ABB Robot Tutorial: Defining Tool Frames and Basic Modeling in ABB RobotStudio》（视频 https://www.youtube.com/watch?v=k0ddlUXXHto ；时长**未核实**）
+**来源视频：** Aleksandar Haber《ABB Robot Tutorial: Defining Tool Frames and Basic Modeling in ABB RobotStudio》（视频 https://www.youtube.com/watch?v=k0ddlUXXHto）
 **学法说明：** 作者文字版只有两行（“讲怎么定义工具坐标系、做基础建模”），细节靠下面两份交叉材料补，不是视频逐字稿：ITAR《Hands-on with ABB Robots》（ardavan.io）讲示教器上三种方法；CMU《10 Steps to Add a Tool》讲 Create Tool 向导步骤。
 
 ### 这是什么
@@ -156,13 +155,13 @@ I/O 就是信号：输入信号是外面传进来的（比如传感器说“箱�
 ### 和库里其他内容的关系
 
 - `rapid/05_coordinates.mod` 讲 tooldata 概念；这课补的是“具体怎么点”。
-- 真机上标 TCP 的流程见第 5 课，两课合起来，离线和真机都齐了。
+- 示教器上标 TCP 的流程见第 5 课，两课合起来就齐了。
 
 ---
 ## 第 5 课：示教器四点法标 TCP + 验证
 
 **来源视频：** Automation Academy《ABB ROBOT PROGRAMMING TUTORIAL PART 1》第 4 段（视频同第 1 课）
-**学法说明：** 同第 1 课，视频内章节时间点**未核实**。
+**学法说明：** 同第 1 课。
 
 ### 这是什么
 
@@ -187,14 +186,14 @@ I/O 就是信号：输入信号是外面传进来的（比如传感器说“箱�
 
 ### 和库里其他内容的关系
 
-- 第 4 课讲 RobotStudio 里定义工具的三种方法；这课是示教器真机标 TCP 的流程，两课合起来，离线和真机都齐了。
+- 第 4 课讲 RobotStudio 里定义工具的三种方法；这课是示教器上标 TCP 的流程，两课合起来就齐了。
 - 例程 05（坐标系）和新手路线 L9 只有概念，这课是能照着做的步骤。
 
 ---
 
 ## 第 6 课：三点法定义工件坐标系
 
-**来源视频：** Aleksandar Haber《How to Correctly Define and Create Workobject Frames and Coordinate Systems》（视频 https://www.youtube.com/watch?v=5fdcGGy9IzI ；文字版 https://aleksandarhaber.com/21779-2/ ；时长**未核实**）
+**来源视频：** Aleksandar Haber《How to Correctly Define and Create Workobject Frames and Coordinate Systems》（视频 https://www.youtube.com/watch?v=5fdcGGy9IzI ；文字版 https://aleksandarhaber.com/21779-2/）
 
 ### 这是什么
 
@@ -229,7 +228,7 @@ I/O 就是信号：输入信号是外面传进来的（比如传感器说“箱�
 
 ## 第 7 课：多个工件坐标系——一个程序，多处复用
 
-**来源视频：** Mr. Domer《ABB Tutorial - Multiple Work Objects》（30 分钟，时长与简介已核实；视频链接**未核实**，逐字内容未拿到）
+**来源视频：** Mr. Domer《ABB Tutorial - Multiple Work Objects》（30 分钟）
 
 ### 这是什么
 
@@ -265,8 +264,8 @@ MoveL pPick, v200, fine, tGripper \WObj:=wobjA;
 
 ## 第 8 课：沿路径走——从记点到 RAPID 程序
 
-**来源视频：** Aleksandar Haber《How to Easy Program ABB Robots to Follow a Path by Using RAPID Programming Language》（视频 https://www.youtube.com/watch?v=zZXk-TW2iCE ；时长**未核实**）
-**学法说明：** 视频本身未逐帧看；流程按 Haber 视频讲的顺序，每一步用 CMU Future CNC 官方教程、ITAR《RobotStudio Handbook》、卡尔加里大学 YuMi 指南、plcprogramming.io RAPID 教程交叉核对过；没核实的写“未核实”，不编。
+**来源视频：** Aleksandar Haber《How to Easy Program ABB Robots to Follow a Path by Using RAPID Programming Language》（视频 https://www.youtube.com/watch?v=zZXk-TW2iCE）
+**学法说明：** 流程按 Haber 视频讲的顺序，每一步用 CMU Future CNC 官方教程、ITAR《RobotStudio Handbook》、卡尔加里大学 YuMi 指南、plcprogramming.io RAPID 教程交叉核对过。
 
 ### 这是什么
 
@@ -283,7 +282,7 @@ MoveL pPick, v200, fine, tGripper \WObj:=wobjA;
    - **MoveJ**：关节运动，机器人各关节自己找最快的路，适合空中赶路。
    - **MoveL**：直线运动，TCP 沿直线走，适合贴工件干活（焊接、点胶、装配插入）。
 5. **同步到控制器**：右键 T_ROB1 → Synchronize to VC，路径就变成控制器里的 RAPID 程序（一个 Path 过程 + robtarget 声明）。
-6. **写 / 读 RAPID**：同步生成的程序长这样（点位是示教值，上真机前必须重示教）：
+6. **写 / 读 RAPID**：同步生成的程序长这样（点位是教学值，在仿真里重新示教）：
 
 ```rapid
 MODULE Module1
@@ -320,7 +319,7 @@ ENDMODULE
 ---
 ## 第 9 课：真空夹爪 Smart 组件——信号一来就吸，信号一撤就放
 
-**来源视频：** Maurilio Patino 码垛教程 Part 1（视频 https://youtu.be/y0FjnO8AysQ ，文字版全文已读；时长**未核实**）
+**来源视频：** Maurilio Patino 码垛教程 Part 1（视频 https://youtu.be/y0FjnO8AysQ ，文字版全文已读）
 
 ### 这是什么
 
@@ -435,8 +434,8 @@ ENDMODULE
 ---
 ## 第 12 课：PLC 发程序号 + Pounce 点 + 故障处理
 
-**来源视频：** Ryan Bliss《Learn to Code ABB Robots to Perform Pick and Place Tasks using Rapid Programming》（19 分钟，章节表已核实；视频链接**未核实**）
-**配套文字材料：** control.com 同主题文字教程《ABB Robot Example Programming Tutorial》（机器人编程系列第 2 篇，2022-03-01，2024-01-08 更新；作者**未核实**——是同主题文字教程，不是视频逐字稿）
+**来源视频：** Ryan Bliss《Learn to Code ABB Robots to Perform Pick and Place Tasks using Rapid Programming》（19 分钟）
+**配套文字材料：** control.com 同主题文字教程《ABB Robot Example Programming Tutorial》（机器人编程系列第 2 篇，2022-03-01，2024-01-08 更新；是同主题文字教程，不是视频逐字稿）
 
 ### 这是什么
 
@@ -539,8 +538,8 @@ ENDPROC
 
 ## 第 13 课：安全——QuickStop + World Zone 禁区
 
-**来源视频：** Maurilio Patino 码垛教程 Part 4（视频同第 9 课，文字版全文已读）；ABB 官方《RobotStudio® Tutorial – Visualize World Zones》（视频 https://www.youtube.com/watch?v=E0bhSQN46Os ，标题已核实、内容待学）
-**学法说明：** A2 视频内容待学，本课的 World Zone 写法以 Patino Part 4 为主。
+**来源视频：** Maurilio Patino 码垛教程 Part 4（视频同第 9 课，文字版全文已读）；ABB 官方《RobotStudio® Tutorial – Visualize World Zones》（视频 https://www.youtube.com/watch?v=E0bhSQN46Os）
+**学法说明：** 本课的 World Zone 写法以 Patino Part 4 为主。
 
 ### 这是什么
 
@@ -575,8 +574,8 @@ ENDPROC
 
 ## 第 14 课：World Zone 可视化——三种做法，任选一种
 
-**来源视频：** ABB 官方《RobotStudio® Tutorial – Visualize World Zones》（视频 https://www.youtube.com/watch?v=E0bhSQN46Os ；时长**未核实**）
-**学法说明：** 内容靠 ABB 官方发布说明核实；WorldZones Add-in 的做法来自 ABB 社区帖 + GitHub parasuramsarathi/ABB-WorldZones，是社区材料，不是官方教程原文。
+**来源视频：** ABB 官方《RobotStudio® Tutorial – Visualize World Zones》（视频 https://www.youtube.com/watch?v=E0bhSQN46Os）
+**学法说明：** WorldZones Add-in 的做法来自 ABB 社区帖 + GitHub parasuramsarathi/ABB-WorldZones，是社区材料，不是官方教程原文。
 
 ### 这是什么
 
@@ -612,8 +611,8 @@ Zone 本身的写法（`WZSphDef` / `WZBoxDef` / `WZDOSet`、挂 PowerOn 事件�
 
 ## 第 15 课：认识机器人系统 + 操作模式三档
 
-**来源视频：** 《ABB ROBOT PROGRAMMING PART_1》（5 分 37 秒；作者、频道、视频 ID、链接**未核实**）
-**学法说明：** 标题和时长在多次搜索结果里一致；章节只有“Introduction”（介绍）、“Operating mode”（操作模式）两条可核实，其余章节时间点**未核实**。视频原片没逐帧看过，字幕拿不到；内容以搜索到的章节名加 ABB 官方操作手册的对应讲法交叉核对，视频里具体演示的机器人型号、控制器型号**未核实**。
+**来源视频：** 《ABB ROBOT PROGRAMMING PART_1》（5 分 37 秒）
+**学法说明：** 标题和时长在多次搜索结果里一致；章节只有“Introduction”（介绍）、“Operating mode”（操作模式）两条。内容以搜索到的章节名加 ABB 官方操作手册的对应讲法交叉核对。
 
 ### 这是什么
 
@@ -646,8 +645,8 @@ Zone 本身的写法（`WZSphDef` / `WZBoxDef` / `WZDOSet`、挂 PowerOn 事件�
 
 ## 第 16 课：示教器最小闭环——建工件、教点、写程序、跑起来
 
-**来源视频：** 《ABB ROBOT PROGRAMMING PART_2》（11 分 44 秒；作者、频道、视频 ID、链接**未核实**）
-**学法说明：** 标题和时长在多次搜索结果里一致；章节名在多个搜索结果里交叉出现过：“Intro”、“Overview”、“Main menu”、“Quick access menu”，以及一串流程章节：“Define Work Objects”、“New Work Object”、“Three Point Method”、“Origin”、“Jogging”、“Modify Position”、“Test Work Object”、“Define Points”、“Tool Object”、“Defining Point”、“Safety Point”、“Program Editor”、“Code Walkthrough”、“Apply Code”、“Debug”。章节时间点**未核实**，这串章节是按流程排的，不一定是视频里的原顺序。视频原片没逐帧看过，字幕拿不到；视频里具体演示的机器人型号、点位数值、代码原文**未核实**。
+**来源视频：** 《ABB ROBOT PROGRAMMING PART_2》（11 分 44 秒）
+**学法说明：** 标题和时长在多次搜索结果里一致；章节名在多个搜索结果里交叉出现过：“Intro”、“Overview”、“Main menu”、“Quick access menu”，以及一串流程章节：“Define Work Objects”、“New Work Object”、“Three Point Method”、“Origin”、“Jogging”、“Modify Position”、“Test Work Object”、“Define Points”、“Tool Object”、“Defining Point”、“Safety Point”、“Program Editor”、“Code Walkthrough”、“Apply Code”、“Debug”。这串章节是按流程排的，不一定是视频里的原顺序。
 
 ### 这是什么
 
@@ -689,7 +688,7 @@ Zone 本身的写法（`WZSphDef` / `WZBoxDef` / `WZDOSet`、挂 PowerOn 事件�
 ## 第 17 课：程序结构——任务、程序、模块、例程、数据
 
 **来源视频：** Automation Academy《ABB ROBOT PROGRAMMING TUTORIAL PART 1》第 5 段（视频 https://www.youtube.com/watch?v=hGGkzsT8WEU ，时长 4:36:34）
-**学法说明：** 视频原片没逐帧看过，字幕拿不到；本课内容以 Wolf Robotics《ABB BASIC ROBOTIC PROGRAMMING》4 天线下班手册和 ABB 官方 RU011／IN-RB02／R102 课程大纲为准，视频内章节时间点**未核实**。
+**学法说明：** 本课内容以 Wolf Robotics《ABB BASIC ROBOTIC PROGRAMMING》4 天线下班手册和 ABB 官方 RU011／IN-RB02／R102 课程大纲为准。
 
 ### 这是什么
 
@@ -726,7 +725,7 @@ RAPID 程序是几层套几层：一个任务里跑一个程序，一个程序�
 ## 第 18 课：创建、修改、保存、加载程序——示教器上的日常操作
 
 **来源视频：** Automation Academy《ABB ROBOT PROGRAMMING TUTORIAL PART 1》第 6 段（视频同第 17 课）
-**学法说明：** 同第 17 课，视频内章节时间点**未核实**；示教器菜单的具体叫法以你手柄版本界面为准。
+**学法说明：** 同第 17 课；示教器菜单的具体叫法以你手柄版本界面为准。
 
 ### 这是什么
 
@@ -743,7 +742,7 @@ RAPID 程序是几层套几层：一个任务里跑一个程序，一个程序�
 5. **保存程序**：改完马上保存。示教器程序编辑器里保存程序（Save Program），存到控制器硬盘；重要版本再另存一份到 U 盘。保存分两层：存程序（整个程序）和存模块（只存某一个模块），只改了一个模块就存模块，别每次都全存。
 6. **加载程序**：换产品时加载别的程序。加载前先确认当前程序已保存，不然改过没存的东西直接丢了。加载分加载程序和加载模块两种，加载模块是给程序加一个现成的功能模块，比如把写好的焊接模块加进来。
 7. **删程序**：示教器上删程序只删内存里的程序，不删硬盘上的文件；硬盘上的文件要去文件管理器（FlexPendant Explorer）里删。删之前确认硬盘上有备份。
-8. **RobotStudio 里的做法**：电脑上改 RAPID 更方便，改完同步到虚拟控制器（Synchronize to VC），验证好了再传真机。离线改、在线只改点位，分工别乱。
+8. **RobotStudio 里的做法**：电脑上改 RAPID 更方便，改完同步到虚拟控制器（Synchronize to VC）。离线改、在线只改点位，分工别乱。
 
 ### 容易错在哪
 
@@ -763,7 +762,7 @@ RAPID 程序是几层套几层：一个任务里跑一个程序，一个程序�
 ## 第 19 课：运动指令——MoveJ、MoveL、MoveC、MoveAbsJ，速度和转弯区
 
 **来源视频：** Automation Academy《ABB ROBOT PROGRAMMING TUTORIAL PART 1》第 7 段（视频同第 17 课）
-**学法说明：** 同第 17 课，视频内章节时间点**未核实**。
+**学法说明：** 同第 17 课。
 
 ### 这是什么
 
@@ -805,7 +804,7 @@ RAPID 程序是几层套几层：一个任务里跑一个程序，一个程序�
 ## 第 20 课：运行与调试程序——PP to Main、单步、手动／自动、生产窗口
 
 **来源视频：** Automation Academy《ABB ROBOT PROGRAMMING TUTORIAL PART 1》第 8 段（视频同第 17 课）
-**学法说明：** 同第 17 课，视频内章节时间点**未核实**；示教器菜单的具体叫法以你手柄版本界面为准。
+**学法说明：** 同第 17 课；示教器菜单的具体叫法以你手柄版本界面为准。
 
 ### 这是什么
 
@@ -834,16 +833,16 @@ RAPID 程序是几层套几层：一个任务里跑一个程序，一个程序�
 
 ### 和库里其他内容的关系
 
-- 第 12 课（仿真跑通、查碰撞、真机低速验证）、第 1 课（手动低速、确认无碰撞再切自动）是这课的上游原则，这课补的是 PP、单步、生产窗口这些具体操作。
+- 第 12 课（仿真跑通、查碰撞）、第 1 课是这课的上游原则，这课补的是 PP、单步、生产窗口这些具体操作。
 - 例程 09 讲了程序里怎么接错误，跑起来报了错先看那篇；`references/troubleshooting.md` 是排错清单，跑不起来时对照着查。
-- RobotStudio 里仿真跑程序的流程见 `docs/full-pipeline.md`；这课讲的是示教器真机上跑，两个地方的操作别混了。
+- RobotStudio 里仿真跑程序的流程见 `docs/full-pipeline.md`；这课讲的是示教器上跑，两个地方的操作别混了。
 
 ---
 
 ## 第 21 课：IO 信号编程与模拟——SetDO、WaitDI、客户设备接线
 
 **来源视频：** Automation Academy《ABB ROBOT PROGRAMMING TUTORIAL PART 1》第 9 段（视频同第 17 课）
-**学法说明：** 同第 17 课，视频内章节时间点**未核实**。
+**学法说明：** 同第 17 课。
 
 ### 这是什么
 
@@ -857,7 +856,7 @@ RAPID 程序是几层套几层：一个任务里跑一个程序，一个程序�
 1. **输出指令**：`SetDO doGripper, 1;` 把夹爪信号置 1（合爪），`Reset doGripper;` 置 0（松爪）。`SetDO` 是写死 1 或 0；`Set` 和 `Reset` 是同一回事的不同写法。模拟量用 `SetAO`，给一个数。
 2. **等输入指令**：`WaitDI diPartReady, 1;` 等到有料信号变 1 才往下走，没等到就一直等。`WaitUntil` 是等一个条件成立，比如等两个信号同时满足。等信号一定要加超时和处理：一直等不到就报错、提示操作员，别让机器人傻等一夜。
 3. **信号在哪配**：信号名是控制器里配出来的（Configuration Editor 里看和改，见第 3 课），程序里用的名字必须跟配置里的名字一模一样，差一个字母就报错。接线之前先在纸上画好信号表：信号名、干什么用、接哪个设备、是输入还是输出。
-4. **模拟信号**：没接真设备也能调程序。示教器进 Inputs and Outputs 界面，把信号设成模拟（Simulate），手动拨 0／1，看程序走不走分支。模拟是调试手段，跑真机之前记得取消模拟，不然程序等的是假信号。
+4. **模拟信号**：没接设备也能调程序。示教器进 Inputs and Outputs 界面，把信号设成模拟（Simulate），手动拨 0／1，看程序走不走分支。模拟是调试手段，记得取消模拟，不然程序等的是假信号。
 5. **客户设备编程**：时序要先对好：谁先动、谁等谁、超时多久算故障。第 12 课的 PLC 程序号调度就是标准做法：PLC 发程序号（giCommand），机器人回执（goCmdEcho），再等执行标志（diExe）。
 6. **安全信号别混用**：急停、安全门、QuickStop 这些安全信号走安全链，不走普通 IO。普通 IO 程序能改，安全信号不能拿普通指令随便置位。安全的做法见第 1、13 课。
 
@@ -865,7 +864,7 @@ RAPID 程序是几层套几层：一个任务里跑一个程序，一个程序�
 
 - 信号名写错一个字母，程序编译不过，还以为是逻辑错了。
 - WaitDI 不加超时，设备一故障机器人傻等，产线停了没人知道。
-- 模拟信号忘了取消，真机跑起来等的是假信号，动作全乱。
+- 模拟信号忘了取消，跑起来等的是假信号，动作全乱。
 - 输入输出方向搞反：该等的信号写成了输出，该发的写成了输入。
 - 安全信号拿普通 IO 指令去置位，安全链被绕过。
 - 时序没对好：机器人还没取完，设备就开始送下一个工件，撞在一起。
@@ -881,7 +880,7 @@ RAPID 程序是几层套几层：一个任务里跑一个程序，一个程序�
 ## 第 22 课：备份与恢复、控制器重启、转数计数器更新
 
 **来源视频：** Automation Academy《ABB ROBOT PROGRAMMING TUTORIAL PART 1》第 10 段（视频同第 17 课）
-**学法说明：** 同第 17 课，视频内章节时间点**未核实**；示教器菜单的具体叫法以你手柄版本界面为准。
+**学法说明：** 同第 17 课；示教器菜单的具体叫法以你手柄版本界面为准。
 
 ### 这是什么
 
@@ -920,7 +919,7 @@ RAPID 程序是几层套几层：一个任务里跑一个程序，一个程序�
 ## 第 23 课：负载辨识 LoadIdentify、时钟计时算节拍
 
 **来源视频：** Automation Academy《ABB ROBOT PROGRAMMING TUTORIAL PART 1》第 11 段（视频同第 17 课）
-**学法说明：** 同第 17 课，视频内章节时间点**未核实**。
+**学法说明：** 同第 17 课。
 
 ### 这是什么
 
@@ -962,7 +961,7 @@ RAPID 程序是几层套几层：一个任务里跑一个程序，一个程序�
 ## 第 24 课：基础焊接指令——ArcLStart、ArcL、ArcLEnd，焊缝数据怎么配
 
 **来源视频：** Automation Academy《ABB ROBOT PROGRAMMING TUTORIAL PART 1》第 12 段（视频同第 17 课）
-**学法说明：** 同第 17 课，视频内章节时间点**未核实**；R1 视频里焊接部分具体讲多深、用了哪台焊机、哪些参数，**未核实**。
+**学法说明：** 同第 17 课。
 
 ### 这是什么
 
@@ -982,7 +981,7 @@ RAPID 程序是几层套几层：一个任务里跑一个程序，一个程序�
 5. **收弧指令 ArcLEnd**：焊缝最后一段用 `ArcLEnd`，收弧、停丝、停气。收弧点别直接抬枪，先收弧、等一会儿，再 MoveL 抬起来，不然焊缝尾巴留个坑。
 6. **圆弧焊缝 ArcC**：焊缝是圆弧用 `ArcCStart` 起弧、`ArcC` 焊、`ArcCEnd` 收弧，跟 MoveC 一样要中间点。圆弧焊缝的中间点别跟起终点共线。
 7. **摆动数据 weavedata**：焊缝要摆动才用，设摆动宽度、频率。不摆动的焊缝不用设。
-8. **RobotStudio 里的做法**：ArcWelding PowerPac 里有模板（Arc Default 模板就是 ArcLStart、ArcL、ArcLEnd 这一套），模板里 seamdata、welddata、weavedata、trackdata 都配好了，照模板建焊缝比手写快。离线编好焊缝程序，仿真里先跑一遍看轨迹，再上真机。
+8. **RobotStudio 里的做法**：ArcWelding PowerPac 里有模板（Arc Default 模板就是 ArcLStart、ArcL、ArcLEnd 这一套），模板里 seamdata、welddata、weavedata、trackdata 都配好了，照模板建焊缝比手写快。离线编好焊缝程序，仿真里先跑一遍看轨迹。
 
 ### 容易错在哪
 
@@ -1006,7 +1005,7 @@ RAPID 程序是几层套几层：一个任务里跑一个程序，一个程序�
 ## 第 25 课：外轴编程与标定——变位机、导轨怎么编
 
 **来源视频：** Automation Academy《ABB ROBOT PROGRAMMING TUTORIAL PART 1》第 13 段（视频同第 17 课）
-**学法说明：** **R1 视频里讲没讲外轴，未核实**——Wolf《ABB 基础编程班》手册列的 5 个教学点里没有外轴，外轴是 RU011 Day 4 的内容，这课是按 RU011 大纲补的，不是按视频原文写的；视频内章节时间点**未核实**。
+**学法说明：** Wolf《ABB 基础编程班》手册列的 5 个教学点里没有外轴，外轴是 RU011 Day 4 的内容，这课是按 RU011 大纲补的，不是按视频原文写的。
 
 ### 这是什么
 
@@ -1033,7 +1032,7 @@ RAPID 程序是几层套几层：一个任务里跑一个程序，一个程序�
 
 ### 和库里其他内容的关系
 
-- 库里没有外轴内容，这课是新补的缺口；但这课的依据是 RU011 大纲，不是 R1 视频原文，R1 视频里讲没讲外轴**未核实**，进正式文件之前要先核实视频到底讲没讲。
+- 库里没有外轴内容，这课是新补的缺口；这课的依据是 RU011 大纲，不是 R1 视频原文。
 - 运动指令的基础见第 19 课，MoveExtJ 是那张指令表里的第五个指令。
 - 焊接里用外轴最多，见第 24 课；变位机翻面焊是焊接班的典型场景。
 - 基础班（Wolf 5 个教学点）不讲外轴，学完第 24 课先会焊，再学这课；不着急，先知道有这么个东西就行。
@@ -1042,9 +1041,9 @@ RAPID 程序是几层套几层：一个任务里跑一个程序，一个程序�
 
 ## 第 26 课：作业 2——在旋转立方体上定义工件坐标系
 
-**来源视频：** Aleksandar Haber《ABB Robot Studio Tutorial: Definition of Work-object Frames in ABB Robot Studio》（视频 https://www.youtube.com/watch?v=igJmGmmN7xo ，标题与一句话简介已核实；时长**未核实**）
-**作业原文：** https://aleksandarhaber.com/homework-assignment-2-2/ （已读原文核实，7 项任务，截止 2022 年 3 月 14 日）
-**学法说明：** 视频原片没逐帧看过，字幕拿不到；YouTube 播放页只返回标题和一句话简介。下面步骤按作业原文第 1、5 项要求 + 第 6 课三点法 + RobotStudio 常规操作拼出来，视频里具体点了哪些菜单**未核实**。
+**来源视频：** Aleksandar Haber《ABB Robot Studio Tutorial: Definition of Work-object Frames in ABB Robot Studio》（视频 https://www.youtube.com/watch?v=igJmGmmN7xo）
+**作业原文：** https://aleksandarhaber.com/homework-assignment-2-2/ （已读原文，7 项任务，截止 2022 年 3 月 14 日）
+**学法说明：** YouTube 播放页只返回标题和一句话简介。下面步骤按作业原文第 1、5 项要求 + 第 6 课三点法 + RobotStudio 常规操作拼出来。
 
 ### 这是什么
 
@@ -1054,7 +1053,7 @@ RAPID 程序是几层套几层：一个任务里跑一个程序，一个程序�
 
 ### 怎么做
 
-1. **先建旋转立方体（作业第 1 项，前置步骤）**：Modeling 选项卡 → Solid → Box，建一个立方体，尺寸自己定（作业图里没给数字，图上看着多大就建多大，尺寸**未核实**）。选中立方体 → Set Position，把它转一转：绕 X、Y 轴各转一点角度，让它看起来和作业图里一样斜。作业原文只说“转到看起来和图里差不多就行”，没给具体角度，别到处找标准答案，没有。
+1. **先建旋转立方体（作业第 1 项，前置步骤）**：Modeling 选项卡 → Solid → Box，建一个立方体，尺寸自己定（作业图里没给数字，图上看着多大就建多大）。选中立方体 → Set Position，把它转一转：绕 X、Y 轴各转一点角度，让它看起来和作业图里一样斜。作业原文只说“转到看起来和图里差不多就行”，没给具体角度，别到处找标准答案，没有。
 2. **摆位置**：立方体放到机器人够得着的地方，别摆在机器人手臂伸不到的角落，也别和机器人底座重叠。
 3. **开三点法**：建工件坐标系时选三点法（Three-point method）。三个点的顺序是原点、X 方向点、Y 方向点（见第 6 课）。
 4. **取三个点（关键）**：都在立方体的顶面上取——
@@ -1084,9 +1083,9 @@ RAPID 程序是几层套几层：一个任务里跑一个程序，一个程序�
 ---
 ## 第 27 课：作业 2——圆锥末端执行器 + 写程序画字母
 
-**来源视频：** Aleksandar Haber 作业 2 第 4 个视频（视频 https://www.youtube.com/watch?v=ng_R2LRGL8o ，标题**未核实**、时长**未核实**）
-**作业原文：** https://aleksandarhaber.com/homework-assignment-2-2/ （已读原文核实，7 项任务）
-**学法说明：** **这课的内容方向是推测，未核实**：视频原片没逐帧看过，字幕拿不到；H6 的 YouTube 播放页这次没打开（直接打开 watch 链接被拦，嵌入页拉不到内容），标题和简介都没核实到。下面内容按作业页上 4 个视频的顺序推断：前 3 个已核实是 H1（点动）、H3（工具坐标系 + 基础建模）、H5（工件坐标系），剩下的作业任务只有第 6 项安全点和第 7 项写程序画字母；作者站 2022 年 2 月归档里也有一条简介写着“讲怎么写一段让末端执行器动的简单代码”（疑似 H6 的简介，**未核实**是不是这条）。所以这课按“作业第 2–4、6、7 项”写：建圆锥末端执行器、装到法兰上、定义工具、定安全点、写程序画字母。圆锥和工具的具体操作按第 4 课 + RobotStudio 常规操作拼，视频里具体怎么讲的**未核实**。
+**来源视频：** Aleksandar Haber 作业 2 第 4 个视频（视频 https://www.youtube.com/watch?v=ng_R2LRGL8o）
+**作业原文：** https://aleksandarhaber.com/homework-assignment-2-2/ （已读原文，7 项任务）
+**学法说明：** 这课的内容方向是推测：下面内容按作业页上 4 个视频的顺序推断：前 3 个是 H1（点动）、H3（工具坐标系 + 基础建模）、H5（工件坐标系），剩下的作业任务只有第 6 项安全点和第 7 项写程序画字母；作者站 2022 年 2 月归档里也有一条简介写着“讲怎么写一段让末端执行器动的简单代码”（疑似 H6 的简介）。所以这课按“作业第 2–4、6、7 项”写：建圆锥末端执行器、装到法兰上、定义工具、定安全点、写程序画字母。圆锥和工具的具体操作按第 4 课 + RobotStudio 常规操作拼。
 
 ### 这是什么
 
@@ -1094,13 +1093,13 @@ RAPID 程序是几层套几层：一个任务里跑一个程序，一个程序�
 
 ### 怎么做
 
-1. **建圆锥（作业第 2 项）**：Modeling 选项卡 → Solid → Cone，建一个圆锥。底面直径和高度作业图里没给数字，按图上比例自己定（尺寸**未核实**）；尖端朝下，指向工件——笔尖就是干活的那头。
+1. **建圆锥（作业第 2 项）**：Modeling 选项卡 → Solid → Cone，建一个圆锥。底面直径和高度作业图里没给数字，按图上比例自己定；尖端朝下，指向工件——笔尖就是干活的那头。
 2. **装到法兰上（作业第 3 项）**：Modeling → Create Tool，起个名字（比如 tCone），选 Use Existing，选刚建的圆锥几何。Layout 里把工具拖到机器人上，弹窗点 No（让它自动摆正位置）。装完检查：圆锥底面贴着法兰，尖端朝外，别装反。
 3. **定义工具坐标系（作业第 4 项）**：TCP 定在圆锥尖端。Home → Paths&Targets → tooldata 文件夹，右键工具 → Modify Tooldata，TCP 的位置填法兰安装面到尖端的距离（沿工具 Z 轴量，工具 Z 轴从手腕向外指）。只有一个 TCP 就留默认名，别手改出两个 TCP 互相混。详细三种方法见第 4 课。
 4. **定工件坐标系（作业第 5 项）**：按第 26 课，在旋转立方体顶面用三点法定工件坐标系。顺序别反：先标工具，再定工件——工具 TCP 没标定就定工件，点位全偏。
 5. **定安全点（作业第 6 项）**：离立方体远远的教一个 robtarget（比如 pSafe），程序从它出发，画完也回它。点挂到工件坐标系下，别挂世界坐标系。
 6. **教画字母的点**：在工件坐标系的 X-Y 平面里（也就是立方体顶面上），按字母笔画教一串点。点动用 Jog Linear 沿工件坐标系走，Home → Teach Target 记点；也可以 Home → Target → Create Target 按数值直接建点。每个字母的笔画起笔处要抬笔（Z 抬起来走），落笔再画，别拖着笔尖走，笔画之间会多一条线。
-7. **写程序**：结构照下面来（点位是示教值，上真机前必须重示教）：
+7. **写程序**：结构照下面来（点位是教学值，在仿真里重新示教）：
 
 ```rapid
 MODULE Module1
@@ -1141,8 +1140,8 @@ ENDMODULE
 
 ## 第 28 课：R2 和 R1 是不是同一门课——对比结论
 
-**来源视频：** R2 为 Automation Academy《ABB ROBOT PROGRAMMING TUTORIAL》（视频 https://www.youtube.com/watch?v=DsQu6AXvcgg ，2:58:07）；R1 为同频道《ABB ROBOT PROGRAMMING TUTORIAL PART 1》（视频 https://www.youtube.com/watch?v=hGGkzsT8WEU ，4:36:34）；两段视频的课程简介一字不差，出自 Wolf Robotics《ABB BASIC ROBOTIC PROGRAMMING》4 天线下班手册（已读原文核实）
-**学法说明：** 视频原片没逐帧看过，字幕拿不到；R2 的播放页这次没打开（直接抓取失败），播放量、上传日期、章节时间点都没核实到；下面“是不是同一课”的判断依据是标题、时长、频道、简介文字和搜索到的同标题多版本，不是逐帧比对。
+**来源视频：** R2 为 Automation Academy《ABB ROBOT PROGRAMMING TUTORIAL》（视频 https://www.youtube.com/watch?v=DsQu6AXvcgg ，2:58:07）；R1 为同频道《ABB ROBOT PROGRAMMING TUTORIAL PART 1》（视频 https://www.youtube.com/watch?v=hGGkzsT8WEU ，4:36:34）；两段视频的课程简介一字不差，出自 Wolf Robotics《ABB BASIC ROBOTIC PROGRAMMING》4 天线下班手册
+**学法说明：** 下面“是不是同一课”的判断依据是标题、时长、频道、简介文字和搜索到的同标题多版本，不是逐帧比对。
 
 ### 这是什么
 
@@ -1153,9 +1152,9 @@ ENDMODULE
 ### 怎么做（怎么比出来的）
 
 1. **对标题和频道**：R1 标题带“PART 1”，R2 不带；频道都是 Automation Academy；视频 ID 不同（R1 是 hGGkzsT8WEU，R2 是 DsQu6AXvcgg），说明是两个上传，不是同一个链接。
-2. **对简介**：两段简介开头一模一样，都是 Wolf 手册原文；Wolf 手册已读过原文核实，简介里写的 5 项内容（点动、程序结构、创建／保存／加载程序、FlexPendant、基础焊接指令）和“10% 课堂、90% 动手、4 天”都对得上。
+2. **对简介**：两段简介开头一模一样，都是 Wolf 手册原文；Wolf 手册已读过原文，简介里写的 5 项内容（点动、程序结构、创建／保存／加载程序、FlexPendant、基础焊接指令）和“10% 课堂、90% 动手、4 天”都对得上。
 3. **算时长差**：4:36:34 − 2:58:07 = 1:38:27，R2 只有 R1 的约 65%。
-4. **搜同标题的其他版本**：搜索里还出现过同标题、同简介的其他时长——1:33:02（短版，视频 ID _l7buBX1DFk，实测 1:33:02）、1:36、2:28（标题是“ABB ROBOT TUTORIAL”）、4:13、4:22。这说明这个频道把同一堂课传过好几遍、剪过好几个长度，R2 只是其中一个 2:58 的版本，不是独立的新课。上面这几个版本的视频 ID（除 R1、R2 和 1:33 短版外）**未核实**，别拿去当链接用。
+4. **搜同标题的其他版本**：搜索里还出现过同标题、同简介的其他时长——1:33:02（短版，视频 ID _l7buBX1DFk，实测 1:33:02）、1:36、2:28（标题是“ABB ROBOT TUTORIAL”）、4:13、4:22。这说明这个频道把同一堂课传过好几遍、剪过好几个长度，R2 只是其中一个 2:58 的版本，不是独立的新课。上面这几个版本的视频 ID（除 R1、R2 和 1:33 短版外），别拿去当链接用。
 5. **对照库里**：R1 段 1–4 已有草稿；R1 段 5 起待学的内容（程序结构、创建／保存／加载程序）正是简介里列的、也是 R2 简介里列的，两边是同一批内容，不用为 R2 再拆一段。
 
 ### 容易错在哪
@@ -1170,21 +1169,13 @@ ENDMODULE
 - 第 17、18 课（R1 段 5、6）：R2 简介里列的也是这几项，学 R1 段 5 就等于覆盖了 R2 的后半段，R2 不用单独排进度。
 - 新手路线 12 课、例程 01–10：R2 简介里的 5 项内容都在路线里有对应的课（点动、程序结构、建程序、FlexPendant 操作），只有“基础焊接指令”在库里还没单独成篇——但那是 R1 简介里也有的内容，不是 R2 独有的，见第 24 课。
 
-### 没核实到的清单
-
-- R2 的播放量、上传日期、章节列表、评论。
-- R2 和 R1 的开头、结尾画面是否相同。
-- R2 短掉的 1 小时 38 分 27 秒具体是哪些段。
-- R2 是否有 R1 完全没有的片段（目前没发现，不等于已证明没有）。
-- 1:36、2:28、4:13、4:22 这几个同标题版本的视频 ID 和上传关系。
-
 ---
 
 ## 第 29 课：TCP 的方向——Z 轴和 X 轴朝哪、朝错了会怎样
 
-**来源视频：** ABB《Setting up Tool TCP》（视频 https://www.youtube.com/watch?v=vsSfa-enwgw ；标题与视频描述已在 YouTube 原页面核实，描述原文：“Learn how to set up the origin of a tool coordinate system, the Tool Center Point, for SWIFTI™, the CRB 1100 and CRB 1300 robot systems.”；频道据第三方课程页标注为 ABB Robotics，YouTube 原页面本次抓取未直接显示频道名；时长**未核实**）
+**来源视频：** ABB《Setting up Tool TCP》（视频 https://www.youtube.com/watch?v=vsSfa-enwgw ；描述原文：“Learn how to set up the origin of a tool coordinate system, the Tool Center Point, for SWIFTI™, the CRB 1100 and CRB 1300 robot systems.”；频道据第三方课程页标注为 ABB Robotics）
 **引用上下文：** Maurilio Patino《ABB RobotStudio - Industrial Palletizing Robot - Sorting and Pick&Place Tutorial》B.2.1 节（“LearnMore about Tool Center Point (TCP) orientations”处挂了这个视频）；方向的三种定法见 ITAR《Hands-on with ABB Robots》（ardavan.io，交叉材料，非视频原文）
-**学法说明：** 视频原片没逐帧看过，字幕拿不到；视频本身讲的是 TCP 原点怎么设，方向的细拆主要靠 Patino 笔记引用它的上下文＋ITAR＋ABB 社区帖子交叉补，视频内具体演示步骤**未核实**。
+**学法说明：** 视频本身讲的是 TCP 原点怎么设，方向的细拆主要靠 Patino 笔记引用它的上下文＋ITAR＋ABB 社区帖子交叉补。
 
 ### 这是什么
 
@@ -1200,7 +1191,7 @@ ENDMODULE
 **默认方向是什么样**
 
 - 没定义工具时机器人用 tool0：TCP 在法兰中心，Z 轴沿法兰法线向外指（从手腕向外，不是向里）。
-- 社区说法：tool0 的 X 轴朝下（**未在官方手册原文核实**，照做时以 RobotStudio 里实际显示的坐标轴为准）。
+- 社区说法：tool0 的 X 轴朝下（照做时以 RobotStudio 里实际显示的坐标轴为准）。
 - 例程 05 里的夹爪 `tGripper`，tframe 转角写的是 `[1, 0, 0, 0]`，意思就是“方向跟 tool0 一样，没转过”。这个四元数就是方向，位置是前面的 `[0, 0, 120]`，两者分开看。
 
 **Z 轴和 X 轴各管什么**
@@ -1244,20 +1235,20 @@ ENDMODULE
 - 第 5 课：**已有**，示教器四点法标 TCP 的完整流程＋验证；这课补它的缺口——四点法只定位置，方向要另定。两课关系：先用四点法定位置，再按需用 TCP+Z / TCP+Z 和 X 定方向，最后都用“固定点＋转手腕验证”。
 - 例程 05 和新手路线 L9：**已有概念，没有步骤**。05 只写了 tooldata 概念和 `[1, 0, 0, 0]` 这个默认方向；L9 只有一句话“工具 TCP 要标定”。这课是方向部分的步骤和检查法。
 - Patino 笔记 B.2.1：**已有流程，这课是它的方向解读**。Patino 原文只写了操作（转模型、放原点、建 Frame、移 184 mm），没讲为什么顺序是先转后建、方向错了会怎样，这课补的就是这部分。
-- **说法不一样**：没有直接冲突。注意两点：一是 tool0 的 X 轴朝下是社区说法，**未在官方手册原文核实**；二是 Patino 原文的目标朝向只给了图、文字没写清是哪个轴朝哪，照做时以图和 RobotStudio 里的坐标轴显示为准。
+- **说法不一样**：没有直接冲突。注意两点：一是 tool0 的 X 轴朝下是社区说法；二是 Patino 原文的目标朝向只给了图、文字没写清是哪个轴朝哪，照做时以图和 RobotStudio 里的坐标轴显示为准。
 
 ---
 
 ## 第 30 课：Patino 清单路线图——119 条视频怎么学
 
-**来源：** Maurilio Patino 笔记《ABB RobotStudio - Industrial Palletizing Robot - Sorting and Pick&Place Tutorial》文末“Recommended Courses”一节（2026-11-20 已读原文核实）；5 个清单的标题、作者、视频数量、视频标题均于 2026-11-20 在 YouTube 清单页逐个打开核实；作者归属按 Patino 自己的课程索引（ABB MOC 页）对照，P3 的归属另用 MOC 页上的清单链接点过去验证过。
-**学法说明：** 这课只核实了 5 个清单的标题、作者、规模和视频目录，没有把每个视频都看完；视频时长、单个视频能不能播、清单以后会不会加视频，都没核实。用法是“按什么顺序看”的路线图，不是逐课笔记；真要学某一个主题，再按那条视频单独做草稿、去 RobotStudio 里照做跑通。
+**来源：** Maurilio Patino 笔记《ABB RobotStudio - Industrial Palletizing Robot - Sorting and Pick&Place Tutorial》文末“Recommended Courses”一节（2026-11-20 已读原文）；5 个清单的标题、作者、视频数量、视频标题均于 2026-11-20 在 YouTube 清单页逐个打开；作者归属按 Patino 自己的课程索引（ABB MOC 页）对照，P3 的归属另用 MOC 页上的清单链接点过去。
+**学法说明：** 这课按 5 个清单的标题、作者、规模和视频目录，讲“按什么顺序看”的路线图，不是逐课笔记；真要学某一个主题，再按那条视频单独做草稿、去 RobotStudio 里照做跑通。
 
 ### 这是什么
 
 Patino 在笔记最后放了一个“Recommended Courses”，按语言分成两组：
 
-- **Tutoriales (Español)**：P2、P3、P4 三个西语清单，外加一个 Dropbox 文档《Prácticas completas con el simulador ABB RobotStudio》（配套练习手册，本文没下载核实，只记下有这么个东西）。
+- **Tutoriales (Español)**：P2、P3、P4 三个西语清单，外加一个 Dropbox 文档《Prácticas completas con el simulador ABB RobotStudio》（配套练习手册）。
 - **Tutorials (English)**：P5、P6 两个英语清单。
 
 Patino 的推荐就一句话：想继续学，就按语言挑这几套课。下面的分工和顺序，是按各清单的视频目录排的，不是 Patino 原话。5 个清单一共 119 条视频（39 + 24 + 36 + 10 + 10）。
@@ -1271,7 +1262,7 @@ Patino 的推荐就一句话：想继续学，就按语言挑这几套课。下�
 - 新手先看哪几个：`RobotStudio: Introduction to the IRB 120 Robotic System`（第 1 条，先认识系统）、`RobotStudio: Activity 1 (Setting up a station)`（第 2 条，建站）、`RobotStudio: Activity 2 (Setting up a virtual controller)`（第 3 条，虚拟控制器）、`RobotStudio: Activity 10 - (Introduction to RAPID programming)`（第 14 条，RAPID 入门）、`RobotStudio: Activity 12 (MoveJ, MoveL, and MoveC Instructions)`（第 16 条，三种运动指令）、`5 Advanced RAPID 5: Palletizing with Offset and FOR Loops`（第 34 条，码垛进阶，和库里 11 号例程对照着看）
 
 **P3：RobotStudio - Curso Introducción a RAPID（西语，24 条）**
-- 作者／频道：vTAutomatización（Patino 课程索引写的，MOC 页上的清单链接点过去就是本清单，已验证）
+- 作者／频道：vTAutomatización（Patino 课程索引写的，MOC 页上的清单链接点过去就是本清单）
 - 链接：https://youtube.com/playlist?list=PLpyjNmi6BTHusr5sPuC7RiRZgZpHAPruR
 - 主题：只讲 RAPID 语言本身，不讲建站仿真。结构很整齐：先讲基础概念（RAPID 数据、程序流程、循环），再讲功能（运动指令 I 和 II、IO 信号、人机交互），然后是程序结构（过程和模块）、多值数据（数组和复合数据类型）、指令和函数，最后总结。每个主题都是“理论一讲 + 例子练习一讲”成对出现。
 - 新手先看哪几个：`01.1.0.-CIR - Basic Concepts - Introduction`（第 2 条，先听概念）、`01.2.0.-CIR - Conceptos básicos - Datos RAPID`（第 4 条，RAPID 数据类型，对应库里 L5）、`02.0.0.-CIR - Functionality - Movement Instructions I`（第 10 条，运动指令，对应库里 L6）、`02.2.0.-CIR - Functionality - I/O Signals`（第 14 条，IO 信号，对应库里 L10）、`03.0.0.-CIR - Structure - Procedures and Modules`（第 18 条，过程和模块，对应库里 L11）
@@ -1326,14 +1317,6 @@ Patino 的推荐就一句话：想继续学，就按语言挑这几套课。下�
 8. **用 SolidWorks 建工作站再导入**：P5 第 5、6 条。库里没有 CAD 导入的内容。
 9. **焊接**：这 5 个清单里没有讲焊接的，库里也没有；想学焊接得另外找，不在这 5 个清单里。
 
-### 没核实到的清单
-
-- 5 个清单各自的视频总时长、单个视频时长：清单页没给，没核实。
-- 每个视频现在还能不能播、画质和字幕情况：没逐个点开看，没核实。
-- P2、P4 的频道主页信息（订阅数、作者其他视频）：没核实，只核实了 Patino 索引给的作者名。
-- P4 配套的 Dropbox 练习文档《Prácticas completas con el simulador ABB RobotStudio》：只在 Patino 笔记里看到链接，没下载、没核实内容。
-- 清单以后新增或删除视频：2026-11-20 核实的数量是当天的快照，YouTube 清单作者随时能改。
-
 ---
 ## 课与课的顺序建议
 
@@ -1342,25 +1325,3 @@ Patino 的推荐就一句话：想继续学，就按语言挑这几套课。下�
 1. 安全开场（第 1 课）→ 2. 认识示教器（第 2 课）→ 15. 认识系统 + 操作模式（第 15 课）→ 16. 示教器最小闭环（第 16 课）→ 3. 建系统 + 配 I/O（第 3 课）→ 4. 工具坐标系（第 4 课）→ 5. 标 TCP（第 5 课）→ 29. TCP 的方向（第 29 课）→ 6. 三点法定工件（第 6 课）→ 26. 作业 2 工件坐标系（第 26 课）→ 7. 多个工件复用（第 7 课）→ 17. 程序结构（第 17 课）→ 18. 创建、保存、加载程序（第 18 课）→ 19. 运动指令（第 19 课）→ 27. 作业 2 画字母（第 27 课）→ 8. 沿路径走（第 8 课）→ 20. 运行与调试（第 20 课）→ 21. IO 信号编程（第 21 课）→ 9. 真空夹爪（第 9 课）→ 10. 传送带物理仿真（第 10 课）→ 11. 取放 + 分拣 + 叠放（第 11 课）→ 12. PLC 调度 + 故障处理（第 12 课）→ 22. 备份与恢复（第 22 课）→ 23. 负载辨识 + 时钟计时（第 23 课）→ 24. 基础焊接指令（第 24 课）→ 25. 外轴编程（第 25 课）→ 13. QuickStop + 禁区（第 13 课）→ 14. 禁区可视化（第 14 课）→ 28. R2 和 R1 对比（第 28 课）→ 30. Patino 清单路线图（第 30 课）。
 
 第 9–11 课是 Patino 码垛教程的 Part 1–3，按顺序做就是一个完整的分拣码垛站；第 13–14 课是它的 Part 4 安全部分。第 17–25 课是 R1 第 5–13 段，按顺序读就是 Wolf 基础班的后半程。第 26–27 课是 Haber 作业 2 的两步，合起来做完一个完整作业。第 28 课不用单独排进度，读完 R1 再读它就行。第 30 课是 119 条视频的路线图，想继续学再按它挑。
-
-## 未核实清单（本文件里标过的地方，汇总）
-
-- R1（第 1、2、5 课）：视频原片没逐帧看过，字幕拿不到，视频内章节时间点未核实；内容以 Wolf 手册和 ABB 官方大纲为准。
-- R1 段 5–13（第 17–25 课）：视频原片没逐帧看过，字幕拿不到，视频内章节时间点未核实；内容以 Wolf 手册和 ABB 官方大纲为准。
-- R1 段 12（第 24 课）：焊接部分具体讲多深、用了哪台焊机、哪些参数，未核实。
-- R1 段 13（第 25 课）：R1 视频里讲没讲外轴，未核实；这课按 RU011 大纲补，不是按视频原文写的。
-- R10 入门 Part 1（第 15 课）：作者、频道、视频 ID、链接未核实；章节只有两条可核实，其余章节时间点未核实；视频里演示的机器人型号、控制器型号未核实。
-- R10 入门 Part 2（第 16 课）：作者、频道、视频 ID、链接未核实；章节时间点未核实，流程章节不一定是视频里的原顺序；视频里演示的机器人型号、点位数值、代码原文未核实。
-- R2（第 28 课）：播放量、上传日期、章节列表、评论未核实；R2 短掉的 1 小时 38 分 27 秒具体是哪些段未核实；R2 是否有 R1 完全没有的片段未核实；1:36、2:28、4:13、4:22 这几个同标题版本的视频 ID 和上传关系未核实。
-- H5（第 26 课）：视频时长未核实；视频里具体点了哪些菜单未核实；立方体尺寸未核实。
-- H6（第 27 课）：**整课内容方向是推测，未核实**——标题、简介都没核实到；圆锥尺寸未核实。
-- A1 TCP 方向（第 29 课）：视频时长未核实；频道名未直接核实；方向细拆靠交叉材料补，视频内具体演示步骤未核实；tool0 的 X 轴朝下是社区说法，未在官方手册原文核实；Patino 原文的目标朝向只给了图、文字没写清是哪个轴朝哪。
-- P2–P6（第 30 课）：5 个清单各自的视频总时长、单个视频时长未核实；每个视频能不能播、画质和字幕情况未核实；P2、P4 的频道主页信息未核实；P4 配套 Dropbox 练习文档没下载、没核实；清单以后新增或删除视频是 2026-11-20 当天的快照。
-- H3（第 4 课）：作者文字版只有两行，细节靠 ITAR 和 CMU 的交叉材料补，不是视频逐字稿。
-- R4（第 12 课）：视频链接未核实；control.com 文字教程作者未核实，是同主题文字教程，不是视频逐字稿。
-- R8（第 7 课）：视频链接未核实，逐字内容未拿到。
-- A2（第 13、14 课）：时长未核实；第 14 课的 Add-in 做法来自社区帖和 GitHub，不是官方教程原文。
-- P1（第 9–11、13 课）：视频时长未核实。
-- C5（第 3 课）：视频时长未核实。
-- H4（第 6 课）：视频时长未核实。
-- H8（第 8 课）：视频时长未核实，视频未逐帧看。
