@@ -72,7 +72,7 @@
 - 本次加深内容：`docs/mcp-install-6.08.md` 补 GitHub 仓库地址和 clone 命令。
 
 ### Q14 — 2026-11-20 13:29
-- 问题：用户发来本地路径 C:/Users/xie/Documents/Trae-CN/default/ABB-RobotStudio-MCP-安装报告.md
+- 问题：用户发来本地路径（Trae-CN 里的 ABB-RobotStudio-MCP-安装报告.md）
 - 回答要点：我这边读不到用户 Windows 电脑本地文件，只能请用户把报告内容贴过来或在聊天里上传文件，再复核安装结果。
 
 ### Q15 — 2026-11-20 13:34
