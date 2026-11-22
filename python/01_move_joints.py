@@ -1,6 +1,6 @@
 """01 Python 发关节运动：MoveAbsJ
 来源思路：rpiRobotics/abb_motion_program_exec（Apache-2.0）
-先在 RobotStudio 虚拟控制器上跑，不要直接上真机。
+先在 RobotStudio 虚拟控制器上跑。
 
 步骤：
 1. RobotStudio 里建站，启动虚拟控制器
