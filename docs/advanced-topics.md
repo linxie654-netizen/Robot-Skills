@@ -30,9 +30,9 @@ EGM 有两种用法（ABB 手册原话）：
 3. **电脑那边要有发数据的程序**：EGM 是电脑和控制器之间用 UDP + protobuf 通协议，电脑每 4 毫秒发一次。库里有现成的两套：`vendor/ABB_EGM_Python`（rparak，Python 发关节位置，测过 IRB 120 和 YuMi，MIT 协议）和 `vendor/abb_motion_program_exec`（rpiRobotics，EGM 三种模式都有，Apache-2.0）。
 4. **防火墙**：要关电脑防火墙，不然 UDP 包进不来（rparak 的 README 原话）。
 
-### 最小可跑的 RAPID 骨架（关节模式）
+### 最小 RAPID 例程（关节模式）
 
-骨架照 `vendor/ABB_EGM_Python` 里 IRB 120 的 `Module1.mod` 原文简化，点位是教学值：
+例程照 `vendor/ABB_EGM_Python` 里 IRB 120 的 `Module1.mod` 原文简化，点位是教学值：
 
 ```rapid
 MODULE ModuleEGM
@@ -121,7 +121,7 @@ client.stop_egm()  # 停掉 EGM，机器人回到程序控制
 
 ### 算会
 
-算会：骨架四步走通，电脑发数据、机器人跟着走；电脑断了报 ERR_UDPUC_COMM 能认出来。
+算会：例程四步走通，电脑发数据、机器人跟着走；电脑断了报 ERR_UDPUC_COMM 能认出来。
 
 ---
 ## 第 2 课：多任务——一个控制器同时跑几个程序
@@ -171,9 +171,9 @@ client.stop_egm()  # 停掉 EGM，机器人回到程序控制
 | 604-2 MultiMove Independent（独立） | 各台机器人大部分时间各干各的，只在约好的点互相等一等（`WaitSyncTask`） |
 | 604-1 MultiMove Coordinated（协调） | 所有动作全程同步，同时起、同时停；604-1 包含 604-2 的全部功能 |
 
-### 最小可跑的 RAPID 骨架（两台机器人抬东西）
+### 最小 RAPID 例程（两台机器人抬东西）
 
-骨架照 ABB YuMi 官方例子和 `vendor/abb_motion_program_exec` 的 `examples/multimove_example.py` 简化。两台机器人各一个任务，点位是教学值：
+例程照 ABB YuMi 官方例子和 `vendor/abb_motion_program_exec` 的 `examples/multimove_example.py` 简化。两台机器人各一个任务，点位是教学值：
 
 ```rapid
 ! 两个任务共用这几行，每个任务的模块里都要有
@@ -247,9 +247,9 @@ ENDPROC
 2. **程序里要先激活外轴**：动外轴之前，先用 `ActUnit` 把外轴的机械单元激活（比如 `ActUnit STN1;`，STN1 是机械单元的名字，按自己系统的名字改）。没激活就动外轴，控制器会报错。
 3. **点位里有外轴的值**：`robtarget` 和 `jointtarget` 里除了位置、姿态、关节姿态，还有一项外轴位置（`extjoint`，写成 `extax`）。点位教好后，检查外轴值对不对。
 
-### 最小可跑的 RAPID 骨架（变位机翻 90 度再焊）
+### 最小 RAPID 例程（变位机翻 90 度再焊）
 
-骨架照 ABB 社区焊接帖子的写法简化。变位机叫 STN1，点位是教学值：
+例程照 ABB 社区焊接帖子的写法简化。变位机叫 STN1，点位是教学值：
 
 ```rapid
 MODULE ModuleExt
@@ -274,7 +274,7 @@ MODULE ModuleExt
 ENDMODULE
 ```
 
-看懂骨架要记住三点：
+看懂例程要记住三点：
 
 - **`9E9` 的意思是“这根轴别管”**：`robtarget` 外轴那 6 个数里写 9E9，就是“这次不动外轴”；`jointtarget` 机器人六个轴写 9E9，就是“这次只动外轴，机器人不动”。
 - **`MoveExtJ` 只动外轴**：让外轴自己转到指定角度，不带 TCP 走。机器人和外轴的动作要分开写，别写在同一句里。
@@ -282,7 +282,7 @@ ENDMODULE
 
 ### 协调运动：机器人边焊、变位机边转
 
-上面骨架是“先焊一面、停下来翻个面、再焊另一面”，叫分开动。更难的是**协调运动**：焊缝要变位机边转、机器人边焊，两边同时动。
+上面例程是“先焊一面、停下来翻个面、再焊另一面”，叫分开动。更难的是**协调运动**：焊缝要变位机边转、机器人边焊，两边同时动。
 
 协调运动两种做法（ABB 社区原话）：
 

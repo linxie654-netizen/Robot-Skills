@@ -2,7 +2,7 @@
 
 选择 + 判断，考 RAPID 写法和 RobotStudio 操作。每道附答案和一句话解析。
 
-出题规矩：只用库里已经写明的东西（`docs/beginner-roadmap.md`、30 课 `skill/robot-rapid/references/beginner-lessons.md`、`docs/advanced-topics.md`、`rapid/` 例程）。不编不存在的指令和菜单名。点位、速度全是教学值。
+出题规矩：只用库里已经写明的东西（`docs/beginner-roadmap.md`、30 课 `skills/robot-rapid/references/beginner-lessons.md`、`docs/advanced-topics.md`、`rapid/` 例程）。不编不存在的指令和菜单名。点位、速度全是教学值。
 
 跑通的标准（所有项目通用）：程序在 RobotStudio 虚拟控制器里跑完一遍、没报错、轨迹对、碰撞检查过；再换一个条件（点位、速度、工件位置）跑一遍，照样通。
 
@@ -277,4 +277,4 @@ B. 2 台
 C. 4 台
 D. 10 台
 
-答案：C。解析：ABB 产品规格说一个控制器最多带 4 台机器人、最多 7 个运动任务；但这个数字是规格书上的，没在仿真里建过，真搭之前要在虚拟控制器里验证。
+答案：C。解析：ABB 产品规格说一个控制器最多带 4 台机器人、最多 7 个运动任务，数字出自 ABB 产品规格书。

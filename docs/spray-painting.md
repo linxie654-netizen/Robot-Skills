@@ -22,7 +22,7 @@ SetBrush_2\X:=1650;
 PaintL Paint_50, v800, z100, tool0\WObj:=wobj0;
 ```
 
-## 最小骨架（仿真里照做再验）
+## 最小例程（仿真里照做再验）
 
 ```rapid
 MODULE SprayDemo
@@ -54,8 +54,8 @@ ENDMODULE
 - **刷子号和刷子表对不上**：程序里写 2 号，刷子表里 2 号是另一个宽度、速度，喷出来全错。改程序先对刷子表。
 - **喷涂距离不对**：枪离工件太远漆落不到、太近流挂。距离在刷子表里（Spray Distance），不是程序里调。
 - **TCP 速度和刷子速度对不上**：刷子表里每个刷子号有自己的 TCP 速度，程序里 PaintL 的速度要和刷子表一致。
-- **PaintC 不会用就别硬用**：走圆弧才用 PaintC（和 MoveC 一个形状，给中间点和终点），直线就用 PaintL。
+- **PaintC 只在走圆弧时用**：走圆弧用 PaintC（和 MoveC 一个形状，给中间点和终点），直线就用 PaintL。
 
 ## 算会
 
-算会：说得出 PaintL、SetBrush、PaintStroke、刷子表各是干什么的；骨架在喷涂工作站的仿真里跑通，喷一段、停喷、抬走，顺序对。
+算会：说得出 PaintL、SetBrush、PaintStroke、刷子表各是干什么的；例程在喷涂工作站的仿真里跑通，喷一段、停喷、抬走，顺序对。

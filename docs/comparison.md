@@ -66,7 +66,7 @@
 
 ## 2026-11-20 别的 AI 搜到的 7 个相关项目（对比学习）
 
-背景：别的 AI 在 GitHub 上按 "SKILL.md + ABB/RAPID/RobotStudio" 搜，没找到我们的仓库，只找到下面 7 个。2026-11-20 晚逐个打开 GitHub 页面核实。各项目最近更新时间页面没显示，一律不写。
+背景：别的 AI 在 GitHub 上按 "SKILL.md + ABB/RAPID/RobotStudio" 搜，搜到下面 7 个。2026-11-20 晚逐个打开 GitHub 页面核实。各项目最近更新时间页面没显示，一律不写。
 
 | 项目 | 是什么 | 星数 | 是 Agent Skill（SKILL.md）吗 | 有 ABB 内容吗 |
 |---|---|---|---|---|
@@ -93,7 +93,7 @@
 
 **跟我们有什么关系**：思路最近的一个 ABB AI 项目，但只做喷涂一个场景，不教新手、不讲 RobotStudio 操作。
 
-**借鉴点**：① 喷涂已补：`docs/spray-painting.md`（PaintL、SetBrush、刷子表，按 ABB Painting PowerPac 手册写，2026-11-22）；② 手册做 RAG 知识库的思路值得学；③ 它也要求生成代码必须先在 RobotStudio 里仿真验证再上机，跟我们的红线一致；④ Pack&Go 一键交付的思路好。
+**借鉴点**：① 喷涂已补：`docs/spray-painting.md`（PaintL、SetBrush、刷子表，按 ABB Painting PowerPac 手册写，2026-11-22）；② 手册做 RAG 知识库的思路值得学；③ 它也要求生成代码必须先在 RobotStudio 里仿真验证，跟我们的红线一致；④ Pack&Go 一键交付的思路好。
 
 ### 3. dtpisanty/abblender —— Blender 插件，动画导出 RAPID
 
@@ -183,7 +183,7 @@
 
 **SKILL.md 写法**：frontmatter 里除了 name、description，还有 `gap:` 扩展键：`allowed_tools`（能调哪些工具）、`exit_conditions`（退出条件，下游路由就靠它）、`required_inputs`、`produces_outputs`、`hard_rules`（硬规矩）、`canonical_scripts`（标准脚本）、`references`、`examples`、`streaming`。以 `grasping-with-planner` 为例：description 是第三人称、一句话结尾必须是“Use when…”；正文讲清主路径（Z 轴锁定的直线下探）和备用路径（直线解不出来就 fallback 到 cuRobo 规划器），还写“不要把一个 grasp 节点拆回 approach / build_world / plan / execute——脚本内部已经做了”。每个技能带 `scripts/`（图执行的标准配方）和 `examples/canonical_subgraph.json`（标准子图例子）。
 
-**验证关口**：仓库自带三条自查命令，README“Verify a checkout”一节写清：`gap skills check` 逐包 PASS/WARN/FAIL，FAIL 就非零退出；`gap check` 回答“在这个环境里哪些包现在能跑”，每个失败给修复提示；缺模型权重只是 WARN 不是 FAIL——“nothing installs behind your back”（不会背着你装东西）。贡献指南要求：一个包 = 一个目录 = 一个 PR，脚手架自动生成 SKILL.md + scripts/ + 单元测试骨架；写 SKILL.md 前先定 frontmatter 规范（name 必须等于目录名，description 第三人称、以“Use when…”结尾）；声明运行需求用 `gap.requires:`（要不要 GPU、环境变量、权重）；模型要懒加载（import tools.py 时不许 import torch）；没硬件也能测（FakeContext + make_test_observation），交 PR 前跑 `gap skills check && gap skills test my-skill && pytest`。
+**验证关口**：仓库自带三条自查命令，README“Verify a checkout”一节写清：`gap skills check` 逐包 PASS/WARN/FAIL，FAIL 就非零退出；`gap check` 回答“在这个环境里哪些包现在能跑”，每个失败给修复提示；缺模型权重只是 WARN 不是 FAIL——“nothing installs behind your back”（不会背着你装东西）。贡献指南要求：一个包 = 一个目录 = 一个 PR，脚手架自动生成 SKILL.md + scripts/ + 单元测试模板；写 SKILL.md 前先定 frontmatter 规范（name 必须等于目录名，description 第三人称、以“Use when…”结尾）；声明运行需求用 `gap.requires:`（要不要 GPU、环境变量、权重）；模型要懒加载（import tools.py 时不许 import torch）；没硬件也能测（FakeContext + make_test_observation），交 PR 前跑 `gap skills check && gap skills test my-skill && pytest`。
 
 **例子给得怎么样**：例子是机器可读的 JSON 子图 + 脚本，不是散文例子；对新手不友好，但对“让 agent 照着跑”是最实在的。
 
@@ -197,11 +197,11 @@
 
 **SKILL.md 写法**：每个技能固定解剖结构，README“ How Skills Work”一节画出来了：Frontmatter（name 小写连字符、description 写“Guides agents through [task]. Use when…”）→ Overview → When to Use → Process → Rationalizations → Red Flags → Verification。设计上写明三点：① Process, not prose——技能是 agent 照着走的工作流，不是参考文档，每步有检查点和退出标准；② Anti-rationalization——每个技能一张“常见借口 + 反驳”表（比如“我以后再补测试”）；③ Verification is non-negotiable——每个技能结尾都是证据要求（测试通过、构建输出、运行时数据），“Seems right is never sufficient”（感觉对了不算数）。还有 Progressive disclosure：SKILL.md 是入口，参考文件只在需要时加载，省 token。
 
-**验证关口**：TDD 技能（`skills/test-driven-development/SKILL.md`）是代表：先“Discover the Stack First”（先搞清这个仓库用什么命令跑测试，再动手，不许假设是 npm test）；RED → GREEN → REFACTOR 循环，每步画状态（Test FAILS → Test PASSES → Tests still PASS）；修 bug 用 Prove-It Pattern（先写复现 bug 的测试，再修）；测试金字塔 80/15/5；“Test State, Not Interactions”（断言结果，不断言内部调用顺序）；浏览器改动要加 Chrome DevTools MCP 运行时验证。README 还坦白一个可移植短板：单装一个技能时，仓库级的 references/ 目录不会跟着复制，共享检查清单就没了，这个缺口在 issue #361 跟踪——敢把自己的短板写进 README。
+**验证关口**：TDD 技能（`skills/test-driven-development/SKILL.md`）是代表：先“Discover the Stack First”（先搞清这个仓库用什么命令跑测试，再动手，不许假设是 npm test）；RED → GREEN → REFACTOR 循环，每步画状态（Test FAILS → Test PASSES → Tests still PASS）；修 bug 用 Prove-It Pattern（先写复现 bug 的测试，再修）；测试金字塔 80/15/5；“Test State, Not Interactions”（断言结果，不断言内部调用顺序）；浏览器改动要加 Chrome DevTools MCP 运行时验证。README 写明一个可移植问题：单装一个技能时，仓库级的 references/ 目录不会跟着复制，共享检查清单就没了，这个缺口在 issue #361 跟踪。
 
 **例子给得怎么样**：例子是 TypeScript 代码片段 + 流程图 + 检查清单三件套；每步都有“这一步结束时你手里应该有什么”。
 
-**值得抄**：① 固定解剖结构 Overview / When to Use / Process / Rationalizations / Red Flags / Verification（我们 SKILL.md 有 When to use 分流表和 Verification gate，但缺 Rationalizations 和 Red Flags 两节——最该抄的就是这两节：新手最常见的借口是“仿真跑通就行了”“点位差不多就行”，每条配一句反驳）；② “Verification is non-negotiable + 感觉对了不算数”（我们已有“没跑通不算会”，可以学它把证据要求写得更死：仿真跑通要贴哪三样东西——报错截图、轨迹、碰撞检查结果）；③ definition-of-done（项目级统一标准）vs 每任务验收标准分开写（我们 simulation-checklist.md 是任务级检查，缺一个“这个库里什么叫完成”的总标准）；④ 共享检查清单放 references/、技能按需引用（我们 references/ 已有 5 个文件，缺的是像它那样在 README 里一张表列清每份清单是干什么的）；⑤ 把自己的短板写进 README（issue #361 式——我们也可以在 comparison.md 或 README 里写清已知短板，我们其实已经在 README 写了点位是教学值，继续保持）。
+**值得抄**：① 固定解剖结构 Overview / When to Use / Process / Rationalizations / Red Flags / Verification（我们 SKILL.md 有 When to use 分流表和 Verification gate，但缺 Rationalizations 和 Red Flags 两节——最该抄的就是这两节：新手最常见的借口是“仿真跑通就行了”“点位差不多就行”，每条配一句反驳）；② “Verification is non-negotiable + 感觉对了不算数”（我们已有“仿真跑通才算会”，可以学它把证据要求写得更死：仿真跑通要贴哪三样东西——报错截图、轨迹、碰撞检查结果）；③ definition-of-done（项目级统一标准）vs 每任务验收标准分开写（我们 simulation-checklist.md 是任务级检查，缺一个“这个库里什么叫完成”的总标准）；④ 共享检查清单放 references/、技能按需引用（我们 references/ 已有 5 个文件，缺的是像它那样在 README 里一张表列清每份清单是干什么的）；⑤ 收到 issue 就改（issue #361 式），README 写清点位是教学值。
 
 **我们写得比它好的地方**：它是通用工程技能，不讲机器人；我们是 ABB 专精。它的技能是给 agent 照着走的流程，26 个技能互相咬合，对新手来说门槛高；我们一个技能 + 分流表，新手一眼知道先读什么。
 
@@ -229,7 +229,7 @@
 
 **例子给得怎么样**：最好的一家。README 开头三段对话就是例子（用户问精力不够，Naval 答“每个欲望都是你跟不快乐签的合同”；问获客成本高，马斯克答“先算物理极限”；问 OpenAI 和 Anthropic 谁对，乔布斯答“这是品味竞赛”）。每个例子都先讲“他用的哪个心智模型”，不是复读语录。examples/ 里每个示例含完整调研文件，调研过程全透明。
 
-**值得抄**：① “先写先验快照”（对应我们：补技能前先写“模型不用查就知道什么”，只补查完才知道的——我们 learned.md 现在是问答记录，可以学它加一句“这个问题不用查就能答的，就别写进来”）；② “封存考题”（对应我们：每次学新东西，留两道题不给答案，下次验证技能是不是真学会了——我们 SKILL.md“判断技能是不是真变聪明了”三点是事后判断，它是事前封题，更严）；③ 产物分三层（350 行内 SKILL.md + casebook + voice——对应我们：SKILL.md 是入口，references/ 是案例库，rapid/ 是例子，三层已经有了，缺的是像它那样写清每层的行数/作用上限）；④ 保真度评分卡（同一任务带 skill vs 不带 skill、盲测、分数公开、输了照写——对应我们：可以给 30 课做一张“学会没”评分表，不用双 agent 那么重，先从“同一问题，学前学后对照”做起）；⑤ 每个 skill 写清“诚实边界”（它每人三条：蒸馏不了直觉、捕捉不了突变、公开表达不等于真实想法——对应我们：SKILL.md 已有验证关口，可以再加一条“本技能不知道什么”）；⑥ 例子在前、安装在后（我们 README 开头是徽章和能力地图，可以学它把一段“新手问、助手答”的真实对话放前面）。
+**值得抄**：① “先写先验快照”（对应我们：补技能前先写“模型不用查就知道什么”，只补查完才知道的——我们 learned.md 现在是问答记录，可以学它加一句“这个问题不用查就能答的，就别写进来”）；② “封存考题”（对应我们：每次学新东西，留两道题不给答案，下次验证技能是不是真学会了——我们 SKILL.md“判断技能是不是真变聪明了”三点是事后判断，它是事前封题，更严）；③ 产物分三层（350 行内 SKILL.md + casebook + voice——对应我们：SKILL.md 是入口，references/ 是案例库，rapid/ 是例子，三层已经有了，缺的是像它那样写清每层的行数/作用上限）；④ 保真度评分卡（同一任务带 skill vs 不带 skill、盲测、分数公开、输了照写——对应我们：可以给 30 课做一张“学会没”评分表，不用双 agent 那么重，先从“同一问题，学前学后对照”做起）；⑤ 每个 skill 写清“诚实边界”（它每人三条：蒸馏不了直觉、捕捉不了突变、公开表达不等于真实想法——对应我们：SKILL.md 已有验证关口，可以再加一条“本技能的适用范围”）；⑥ 例子在前、安装在后（我们 README 开头是徽章和能力地图，可以学它把一段“新手问、助手答”的真实对话放前面）。
 
 **我们写得比它好的地方**：它是造“人的思维”技能，我们是造“机器人的手艺”技能——我们的例程是真能跑的代码，它的例子是对话。我们的“边问边学”循环（记下来、找缺口、补进技能、问学会没、同步）跟它的五步蒸馏法思路相通，但我们是每问一次就转一圈，比它更勤。它的 skill 是 350 行上限的提炼，我们的 SKILL.md + references 是教学用的完整手册，目标不一样，不必照抄行数。
 
@@ -249,7 +249,7 @@
 10. **README 开头放一段真实问答例子**——出自 alchaincyf/nuwa-skill（README 开头三段对话）和 mattpocock/skills（README 开头讲四个失败模式）。用到 `README.md`：在能力地图前面加一段新手问、助手答的真实对话（比如“从哪开始学 ABB？”），再讲“为什么先仿真”。
 11. **GLOSSARY.md 共享术语表**——出自 mattpocock/skills（GLOSSARY.md 让 agent 少说 20 个词，变量、函数、文件命名一致）。用到新建 `docs/glossary.md` 或 `skills/robot-rapid/references/glossary.md`：tooldata、wobjdata、robtarget、jointtarget、fine、z50 这些词一句话讲清，以后回答用词一致。
 12. **技能与工具分界写清**——出自 graph-robots/open-robot-skills（skills/ 管策略，tools/ 管可调用的计算）。用到 `skills/robot-rapid/SKILL.md` 开头：写清 `rapid/` 例程是策略（照着抄）、`python/` 是工具（发指令），别混着讲。
-13. **把已知短板写进 README（输了也照写）**——出自 arpitg1304/robotics-agent-skills（0/10 也贴出来）和 addyosmani/agent-skills（issue #361 短板写进 README）。用到 `README.md`：我们已写“点位是教学值”，保持这个做法，每次发现短板就补一句，不藏着。
+13. **问题收到 issue 就改**——出自 arpitg1304/robotics-agent-skills 和 addyosmani/agent-skills（issue #361）。用到 `README.md`：写清“点位是教学值”；用的人提 issue，改完发新版。
 14. **贡献规范一小节：name 等于目录名、description 以“Use when…”结尾**——出自 graph-robots/open-robot-skills（Contributing a bundle：name == dirname、第三人称 description）和 addyosmani/agent-skills（CONTRIBUTING：specific、verifiable、battle-tested、minimal）。用到 `README.md` 或新建 `CONTRIBUTING.md`：写清以后加技能/加课的规矩，免得改乱。
 
 ### 本次对比后要改的结论（2026-11-22）
