@@ -135,6 +135,11 @@ It will follow the skill and start you on `rapid/01_move_basics.mod`.
   - `03_pybullet_arm.py` — PyBullet six-axis demo (KUKA iiwa built-in model, joint error 0.0 degrees)
   - `requirements.txt` — All versions pinned (abb-motion-program-exec 0.7.4, numpy 1.26.4, pybullet 3.2.7)
   - `README.md` — How to use Python with the robot
+- `projects/` — seven hands-on projects, each with full code plus setup, IO, simulation, troubleshooting, safety and study sections
+  - `handling/`, `palletizing/`, `sorting/`, `loading/`
+  - `welding/` arc welding: ArcLStart / ArcL / ArcCEnd with seamdata / welddata / weavedata
+  - `conveyor-tracking/` conveyor tracking: ActUnit / WaitWObj / DropWObj
+  - `multi-robot/` three-robot MultiMove: WaitSyncTask / SyncMoveOn / SyncMoveOff, one program per task
 - `robotstudio/` — RobotStudio tutorial
   - `tutorial.md` — Build a station, pick a robot, virtual controller, teaching, simulation, step by step
 - `docs/` — Cheat sheets and comparisons
@@ -181,7 +186,3 @@ It will follow the skill and start you on `rapid/01_move_basics.mod`.
 
 - EGM control needs the options from the ABB manual. Never try an un-simulated program.
 - Positions and speeds in this library are teaching values. Reteach them for your own workpieces and grippers.
-
-## Known limitations (cross one off when fixed)
-
-- The welding, conveyor-tracking, and multi-robot projects are skeletons; their special instructions are still to be added from the manuals.

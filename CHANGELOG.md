@@ -11,7 +11,7 @@ All notable changes to this repo are recorded here. Dates are in the user's loca
 ### Changed
 
 - README“社区与收录”加 Skill Harbor 一行（已提交，审核中）。
-- 七个实战项目口径：搬运、码垛、分拣、上下料 4 个含完整代码，焊接、输送带跟踪、三机器人联动 3 个是骨架（专用指令待按手册补）。
+- 七个实战项目都含完整代码：焊接用 ArcLStart / ArcL / ArcCEnd，输送带跟踪用 ActUnit / WaitWObj / DropWObj，三机器人联动用 WaitSyncTask / SyncMoveOn / SyncMoveOff。
 - 插件布局按 Claude 官方规范重组：技能从 `skill/robot-rapid/` 移到 `skills/robot-rapid/`，根目录加 `.claude-plugin/plugin.json`，marketplace.json 的 source 改为 `./`、补 version 字段。
 - `python/requirements.txt` 钉死版本（abb-motion-program-exec 0.7.4、numpy 1.26.4、pybullet 3.2.7，2026-11-22 实测已装的版本）。
 - `docs/spray-painting.md` 喷涂课（PaintL、SetBrush、刷子表，按 ABB Painting PowerPac 手册写）；`docs/evals.md` 加一次实数对照（两份搬运程序逐行数出来的）。
@@ -26,7 +26,7 @@ All notable changes to this repo are recorded here. Dates are in the user's loca
 
 ### Added
 
-- 七个实战项目（projects/）：搬运、码垛、分拣、焊接、上下料、输送带跟踪、三机器人联动，其中搬运、码垛、分拣、上下料 4 个含完整代码，焊接、输送带跟踪、三机器人联动 3 个是骨架（专用指令待按手册补）；每个含搭建步骤、IO 配置、仿真方法、故障分析、安全检查。
+- 七个实战项目（projects/）：搬运、码垛、分拣、焊接、上下料、输送带跟踪、三机器人联动，每个含完整代码、搭建步骤、IO 配置、仿真方法、故障分析、安全检查。
 - 教学支撑：docs/teaching-guide.md（八种教法）、docs/exam-practice.md（35 道练习题）、docs/progress-tracker.md（学习进度表）；skill/robot-rapid/SKILL.md 加“八种教法”一节。
 - docs/3d-simulation-research.md（Three.js、PyBullet、URDF 研究）+ python/03_pybullet_arm.py（PyBullet 六轴演示）+ docs/threejs-arm-demo.html（网页版六轴演示）。
 - checks/：代码、文档、依赖、Skill 安装测试、安全检查五项，一键跑。

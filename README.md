@@ -25,7 +25,7 @@
 
 中文，拆步骤，给完整能跑的代码，重要代码逐段讲。目标：Python + PLC + ABB 机器人联动，做工业自动化。
 
-> 新手问：“我是新手，从哪开始学 ABB？”——助手带你从 `rapid/01_move_basics.mod` 开始练：先在 RobotStudio 虚拟控制器里跑通，再换个点位验一遍。先仿真，不碰没跑过的程序。
+> 新手问：“我是新手，从哪开始学 ABB？”——助手带你从 `rapid/01_move_basics.mod` 开始练：先在 RobotStudio 虚拟控制器里跑通，再换个点位验一遍。每个程序都先在仿真里跑一遍。
 
 ## 🗺️ 能力地图：要干什么，找什么
 
@@ -130,6 +130,11 @@ git clone https://github.com/linxie654-netizen/Robot-Skills.git
   - `03_pybullet_arm.py` — PyBullet 六轴演示（KUKA iiwa 自带模型，关节角误差 0.0 度）
   - `requirements.txt` — 依赖都钉死版本（abb-motion-program-exec 0.7.4、numpy 1.26.4、pybullet 3.2.7）
   - `README.md` — Python 怎么用（辅助：生成 RAPID、批量、自动化）
+- `projects/` — 七个实战项目，每个都有完整代码和搭建、IO、仿真、故障、安全、学法六节
+  - `handling/` 搬运、`palletizing/` 码垛、`sorting/` 分拣、`loading/` 上下料
+  - `welding/` 弧焊：ArcLStart / ArcL / ArcCEnd + seamdata / welddata / weavedata
+  - `conveyor-tracking/` 输送带跟踪：ActUnit / WaitWObj / DropWObj
+  - `multi-robot/` 三机器人联动：WaitSyncTask / SyncMoveOn / SyncMoveOff，三个任务各一份程序
 - `robotstudio/` — RobotStudio 教程
   - `tutorial.md` — 建站、选机器人、虚拟控制器、示教、仿真，一步步来
 - `docs/` — 速查和对比
@@ -175,7 +180,3 @@ git clone https://github.com/linxie654-netizen/Robot-Skills.git
 
 - EGM 联动要按 ABB 手册开选项，不要直接试没仿真过的程序。
 - 本库例程里的点位、速度都是教学值，换到你的工件和夹具上必须重新示教。
-
-## 已知短板（修好一项划掉一项）
-
-- 焊接、输送带跟踪、三机器人联动 3 个项目是骨架，专用指令待按手册补。
