@@ -1,1 +1,15 @@
-{"description":"Robot-Skills，让 AI 更会写 RAPID。","name":"Robot-Skills","owner":{"name":"linxie654-netizen"},"plugins":[{"description":"Robot-Skills，让 AI 更会写 RAPID。","name":"robot-rapid","source":"./skill/robot-rapid"}]}
+{
+  "description": "Robot-Skills，让 AI 更会写 RAPID。",
+  "name": "Robot-Skills",
+  "owner": {
+    "name": "linxie654-netizen"
+  },
+  "plugins": [
+    {
+      "description": "Robot-Skills，让 AI 更会写 RAPID。",
+      "name": "robot-rapid",
+      "source": "./",
+      "version": "2.1.0"
+    }
+  ]
+}
