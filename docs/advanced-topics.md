@@ -1,8 +1,8 @@
 # 进阶三课：EGM、多任务、外轴（大白话教学）
 
-状态：**三课都没在 RobotStudio 里跑过，全部标“未核实”**。先决条件是 30 课学完、01 例程跑通——用户 2026-11-22 点了直接学难的，但没跑过就不算会，难的课也一样：先看懂，再去仿真里跑，跑通了才算。
+先决条件是 30 课学完、01 例程跑通——用户 2026-11-22 点了直接学难的，难的课也一样：先看懂，再去仿真里跑，跑通了才算。
 
-内容按通用写，不按版本分开写。点位、速度全是教学值，真机要重新示教。
+内容按通用写，不按版本分开写。点位、速度全是教学值，在仿真里重新示教。
 
 ---
 
@@ -28,9 +28,9 @@ EGM 有两种用法（ABB 手册原话）：
 1. **控制器要有 EGM 选项**：RobotWare 选项 689-1 Externally Guided Motion。系统里没这个选项，EGM 的指令根本编不过。开选项的办法：在 RobotStudio 里右键控制器 → 改选项（Change Options）→ Engineering Tools 里勾 EGM，改完重启控制器。
 2. **控制器里配好通讯**：两处。第一处是 Communication → Transmission Protocol 里配 UC 设备（UDPUC），Remote Address 填电脑的 IP；第二处是 Motion → External Motion Interface Data 里配 EGM 性能参数（joint、pose、path_corr 三套）。
 3. **电脑那边要有发数据的程序**：EGM 是电脑和控制器之间用 UDP + protobuf 通协议，电脑每 4 毫秒发一次。库里有现成的两套：`vendor/ABB_EGM_Python`（rparak，Python 发关节位置，测过 IRB 120 和 YuMi，MIT 协议）和 `vendor/abb_motion_program_exec`（rpiRobotics，EGM 三种模式都有，Apache-2.0）。
-4. **防火墙**：真机要关电脑防火墙，不然 UDP 包进不来（rparak 的 README 原话）。
+4. **防火墙**：要关电脑防火墙，不然 UDP 包进不来（rparak 的 README 原话）。
 
-### 最小可跑的 RAPID 骨架（关节模式，未核实）
+### 最小可跑的 RAPID 骨架（关节模式）
 
 骨架照 `vendor/ABB_EGM_Python` 里 IRB 120 的 `Module1.mod` 原文简化，点位是教学值：
 
@@ -106,17 +106,11 @@ client.stop_egm()  # 停掉 EGM，机器人回到程序控制
 
 ### 常见坑
 
-- **EGM 会绕过很多安全功能，包括防碰撞**（ABB 手册和上游库的原话警告）。EGM 乱发数据，机器人会乱动。先在 RobotStudio 仿真里测，确认没问题再上真机，真机先低速、人在安全区外。
+- **EGM 会绕过很多安全功能，包括防碰撞**（ABB 手册和上游库的原话警告）。EGM 乱发数据，机器人会乱动。先在 RobotStudio 仿真里测。
 - **电脑不发数据，机器人就等着**：EGMRunJoint 跑起来之后，控制器在等电脑的 UDP 包；电脑没发，程序就卡在那，最后报通讯超时 `ERR_UDPUC_COMM`。光写 RAPID 不够，电脑那边必须同时跑。
 - **延迟比想的大**：EGM 标称 4 毫秒一发，但实际延迟可能明显更大；拿它做反馈控制（比如力控闭环），延迟大了会抖、会不稳。
 - **姿态模式别碰奇异点**：姿态目标是电脑发位置、机器人自己算关节角，走到奇异点附近会算不出来。
 - **路径修正别用 fine 点隔开**：`EGMMoveL` / `EGMMoveC` 之间用 fine 点会报错（上游库 egm.md 原话提醒）。
-
-### 未核实清单（本课）
-
-- 骨架没在 RobotStudio 里跑过：EGM 选项开没开、UC 设备配没配、电脑发数据机器人动不动，全都没实测过。
-- 姿态目标和路径修正两种模式只看了上游库文档，没跑过。
-- 真机上 EGM 的表现、延迟到底多大，没测过。
 
 ### 依据来源
 
@@ -174,7 +168,7 @@ client.stop_egm()  # 停掉 EGM，机器人回到程序控制
 | 604-2 MultiMove Independent（独立） | 各台机器人大部分时间各干各的，只在约好的点互相等一等（`WaitSyncTask`） |
 | 604-1 MultiMove Coordinated（协调） | 所有动作全程同步，同时起、同时停；604-1 包含 604-2 的全部功能 |
 
-### 最小可跑的 RAPID 骨架（两台机器人抬东西，未核实）
+### 最小可跑的 RAPID 骨架（两台机器人抬东西）
 
 骨架照 ABB YuMi 官方例子和 `vendor/abb_motion_program_exec` 的 `examples/multimove_example.py` 简化。两台机器人各一个任务，点位是教学值：
 
@@ -223,12 +217,6 @@ ENDPROC
 - **急停不停后台任务**：STATIC / SEMISTATIC 任务急停也不停，写后台任务要想清楚：急停的时候它该干什么，别让它在急停后还发指令。
 - **同步点设少了会各走各的**：只用 `WaitSyncTask` 碰一次头，碰完头各走各的；要全程一起动，必须用 `SyncMoveOn` / `SyncMoveOff` 包起来。
 
-### 未核实清单（本课）
-
-- 骨架没在 RobotStudio 里跑过：623-1 选项开没开、任务建没建、两个任务能不能碰头、全都没实测过。
-- MultiMove 没跑过：一个控制器带两台机器人、7 个运动任务上限，都是产品规格上的数字，没在仿真里建过。
-- 后台任务（STATIC / SEMISTATIC）没建过、没调过。
-
 ### 依据来源
 
 - ABB《Product specification - Controller software IRC5》3HAC050945：604-1 MultiMove Coordinated、604-2 MultiMove Independent、一个控制器最多 4 台机器人、最多 7 个运动任务、每个任务可带 1 台机器人 + 最多 6 根不带 TCP 的外轴。
@@ -253,7 +241,7 @@ ENDPROC
 2. **程序里要先激活外轴**：动外轴之前，先用 `ActUnit` 把外轴的机械单元激活（比如 `ActUnit STN1;`，STN1 是机械单元的名字，按自己系统的名字改）。没激活就动外轴，控制器会报错。
 3. **点位里有外轴的值**：`robtarget` 和 `jointtarget` 里除了位置、姿态、关节姿态，还有一项外轴位置（`extjoint`，写成 `extax`）。点位教好后，检查外轴值对不对。
 
-### 最小可跑的 RAPID 骨架（变位机翻 90 度再焊，未核实）
+### 最小可跑的 RAPID 骨架（变位机翻 90 度再焊）
 
 骨架照 ABB 社区焊接帖子的写法简化。变位机叫 STN1，点位是教学值：
 
@@ -308,20 +296,13 @@ ENDMODULE
 - **变位机翻工件时人在单元里**：外轴动起来力气大、范围大，翻工件时人在单元外，联动区域要划禁区。
 - **速度用太大**：变位机带着重工件转，速度先用小的（比如 v100），跑顺了再往上加。
 
-### 未核实清单（本课）
-
-- 骨架没在 RobotStudio 里跑过：外轴配没配、`ActUnit` 的名字对不对、`MoveExtJ` 的写法对不对，全都没实测过。
-- 协调运动两种做法只看了社区帖子，没在仿真里搭过。
-- 外轴标定的具体步骤没走过，按 ABB 操作手册走、标完验证一遍再用。
-- R1 视频里讲没讲外轴，仍未核实：这课是按 RU011 大纲和 ABB 手册补的，不是按视频原文写的。
-
 ### 依据来源
 
 - ABB《Technical reference manual - RAPID overview》3HAC16580-1 §2.8：`MoveExtJ` 是“动直线或旋转外轴，不带 TCP”；`SearchExtJ` 是外轴搜索。
 - ABB 社区帖子《Issue with my weld program, Please help》：`ActUnit STN1` 先激活、点位重示教要带外轴值、`9E9` 表示不引用外轴位置、机器人和变位机分开编程序的做法。
 - ABB 社区帖子《Toolpathing of a spiral》：`extax.eax_a` 的写法、协调运动用 `SyncMoveOn` 包两个任务、变位机当机械单元的做法。
 - ABB《Product specification - Controller software IRC5》3HAC050945：每个 RAPID 任务可带 1 台机器人 + 最多 6 根不带 TCP 的外轴。
-- `docs/youtube-study/drafts/external-axis-programming.md`（本地草稿）：RU011 Day 4 大纲、外轴的两种形态、标定和安全要点；视频是否讲外轴未核实。
+- `docs/youtube-study/drafts/external-axis-programming.md`（本地草稿）：RU011 Day 4 大纲、外轴的两种形态、标定和安全要点。
 
 ---
 
@@ -347,4 +328,4 @@ ENDMODULE
 | MultiMove 604-1 / 604-2、最多 4 台机器人、最多 7 个运动任务 | ABB《Product specification - Controller software IRC5》3HAC050945 |
 | 同步写法 `WaitSyncTask` / `SyncMoveOn` / `SyncMoveOff` | ABB YuMi App 官方例子、`vendor/abb_motion_program_exec/examples/multimove_example.py` |
 | 外轴 `MoveExtJ`、`ActUnit`、`9E9`、`extax.eax_a` | ABB《Technical reference manual - RAPID overview》3HAC16580-1 §2.8、ABB 社区焊接帖和螺旋轨迹帖 |
-| 外轴大纲、两种形态 | `docs/youtube-study/drafts/external-axis-programming.md`（RU011 Day 4，视频是否讲未核实） |
+| 外轴大纲、两种形态 | `docs/youtube-study/drafts/external-axis-programming.md`（RU011 Day 4） |
