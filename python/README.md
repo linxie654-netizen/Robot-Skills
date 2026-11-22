@@ -63,7 +63,7 @@ python 01_move_joints.py
 算过：屏幕上打印出一段 RAPID，里面有你写的 MoveAbsJ，点位和速度跟你写的一致。
 
 **第 2 步：检查打印出来的 RAPID**
-对着看三样：点位对不对、速度对不对（v1000 / v500 / v200）、工具对不对。点位是教学值，真机要重新示教。
+对着看三样：点位对不对、速度对不对（v1000 / v500 / v200）、工具对不对。点位是教学值，在仿真里重新示教。
 算过：三样都对得上，没看不懂的行。
 
 **第 3 步：虚拟控制器里跑**
@@ -76,7 +76,7 @@ python 01_move_joints.py
 
 ## 规矩：别碰的线
 
-- **没仿真过不上真机**：所有程序先在虚拟控制器里跑通、查完碰撞，再低速手动验证。
+- **没仿真过不跑**：所有程序先在虚拟控制器里跑通、查完碰撞，再低速手动验证。
 - **EGM 先不碰**：上游库支持 EGM 实时控制，但需要 RobotWare EGM 选项，等 MoveJ / MoveL 在仿真里跑通再说。
 - **一次只改一处**：改完跑一遍；一次改五处，报错了不知道是哪处改坏的。
 - **点位、速度、工具都是教学值**：换到你的工件和夹具上必须重新示教。
@@ -101,19 +101,18 @@ C / C++ / C# 跟 ABB 机器人编程有关联，但**都是辅助且进阶，不
 
 | 关联点 | 是什么 | 结论 |
 | --- | --- | --- |
-| `abb_wrapper` / `abb_libegm` + `abb_librws` | C++ 库，连 EGM 和 RWS（见 `docs/comparison.md`） | 进阶 C++ 开发，不适合入门；协议未核实，以仓库为准 |
+| `abb_wrapper` / `abb_libegm` + `abb_librws` | C++ 库，连 EGM 和 RWS（见 `docs/comparison.md`） | 进阶 C++ 开发，不适合入门；以仓库为准 |
 | RobotComponents | Grasshopper 插件，Python / C# API | 有 Rhino 基础才用得上，否则先不动 |
 | C# 插件 | RobotStudio 插件、PC SDK 都是 C# / .NET 那边的 | 以前 MCP 路线用过 C# 插件，MCP 已停、相关文件已删 |
 | EGM | 实时控制要开 RobotWare EGM 选项 | 先不碰，等 MoveJ / MoveL 跑通再说 |
 
 一句话：C 那边是给进阶开发留的路，先把 RAPID + Python 联动跑通再说。
 
-## 未核实清单
+## 还没有的内容
 
-没核实的东西先写在这里，不编：
 
 - GUI 例程：库里暂无，方向是先从 Python 自带的 tkinter 入手，换框架等用户说。
 - PLC 直连的 Python 例程：库里暂无，先学 Python + ABB 联动。
 - 视觉 / AI 联动例程：库里暂无，方向先记下来。
-- 双机联动（Multi-Move）：上游库支持，库里没有例程，未核实。
-- C++ 的 `abb_libegm` / `abb_librws`：只在 comparison.md 里记了一行，未逐项核实。
+- 双机联动（Multi-Move）：上游库支持，库里没有例程。
+- C++ 的 `abb_libegm` / `abb_librws`：只在 comparison.md 里记了一行。
