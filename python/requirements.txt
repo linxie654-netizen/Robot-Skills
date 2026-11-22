@@ -1,2 +1,7 @@
-abb-motion-program-exec
-numpy
+# 依赖都钉死版本（2026-11-22 实测已装的版本）。
+# abb-motion-program-exec 0.7.4：PyPI 最新版，和 vendor/ 里的源码版本一致。
+# numpy 1.26.4：三个例程里都没用到它，留着是给以后数据处理用。
+# pybullet 3.2.7：03_pybullet_arm.py 用（六轴演示，KUKA iiwa 自带模型）。
+abb-motion-program-exec==0.7.4
+numpy==1.26.4
+pybullet==3.2.7
