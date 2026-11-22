@@ -105,6 +105,7 @@ git clone https://github.com/linxie654-netizen/Robot-Skills.git
 
 | 渠道 | 状态 | 备注 |
 |---|---|---|
+| Skill Harbor | 已提交，审核中 | 免费上架，审核通过后发布，最长 72 小时 |
 
 ---
 
