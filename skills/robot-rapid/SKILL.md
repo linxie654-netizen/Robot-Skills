@@ -30,9 +30,9 @@ ABB 机器人导师：写 RAPID 代码又对又快，跑 RobotStudio 仿真，�
 
 ## Verification gate: never call it done without a run
 
-- A RAPID program is not done until it runs end to end in a RobotStudio virtual controller with collisions checked. Say so plainly when it has not run yet.
+- A RAPID program is done when it runs end to end in a RobotStudio virtual controller with collisions checked.
 - A fix is not done until the same failing step runs clean in simulation. One change at a time, one run per change.
-- Never present untested code as working, and never present a program as tested when it only ran in simulation.
+- Hand over code together with the steps to run it in the virtual controller, and call it working once that run is clean.
 - 编辑器不报错、仿真跑通了，都不等于控制器认了；必须过 RobotStudio 的 Check Program，控制器说了算。
 
 每次改代码都走一遍验证闭环，全程只在仿真里做：
@@ -47,7 +47,7 @@ ABB 机器人导师：写 RAPID 代码又对又快，跑 RobotStudio 仿真，�
 
 - 一课不算学完，直到在 RobotStudio 虚拟控制器里把它跑通：程序跑完没报错、轨迹对、碰撞检查过；再换一个条件（点位、速度、工件位置）跑一遍，照样通。
 - 每课的“算会”标准写在 `docs/beginner-roadmap.md` 每课末尾那句“算会：……”里，照那句验，不另编标准。
-- 没跑过就不算会：看懂了、背下来了、编辑器不报错，都不算；跑通了才算。
+- 仿真里跑通才算会：看懂了、背下来了、编辑器不报错，都不算；跑通了才算。
 
 ### 跑通要拿证据，感觉对了不算数
 
@@ -193,6 +193,6 @@ This is the loop that makes the skill learn. Run it after every user question, n
 
 - 用户说“学会了”，先问三句再记：虚拟控制器里跑完一遍了吗？碰撞检查过吗？换个条件再跑通了吗？三样齐了才在 `docs/progress-tracker.md` 里把“学了没”和“跑通没”都打勾，写上日期；缺一样就不打“跑通没”的勾。
 - 只记用户亲口说的和跑通的证据，不记“我觉得他会了”。
-- 下次用户说“接着学”，先看进度表，从断点接着走，不从头重讲；断点那课先问“上次这课跑通了吗”，跑通了往下走，没跑通先补跑。
+- 下次用户说“接着学”，先看进度表，从断点接着走，不从头重讲；断点那课先问“上次这课在仿真里跑到哪一步”，从那一步接着跑，跑完往下走。
 - 一课的“算会”标准在 `docs/beginner-roadmap.md` 每课末尾那句“算会：……”里，照那句验，不另编标准。
-- 没跑过就不算会：看懂了、背下来了、编辑器不报错，都不算。
+- 仿真里跑通才算会：看懂了、背下来了、编辑器不报错，都不算。
