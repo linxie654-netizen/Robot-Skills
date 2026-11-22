@@ -1,88 +1,63 @@
-! 三机器人联动项目：三台机器人一个控制器，配合搬一件大工件
-! 思路照 docs/advanced-topics.md 第 2 课（多任务）写：
-! - 需要 623-1 Multitasking 选项；要全程一起动，还需要 MultiMove 选项
-! - 这是骨架：同步和协调动作的写法按手册补齐，补完在仿真里跑
-! - 三个任务：T_ROB1、T_ROB2、T_ROB3，各带一台机器人
-! - 同步靠 WaitSyncTask 碰头，协调动作靠 SyncMoveOn / SyncMoveOff 包起来，
-!   协调动作里每句 Move 都带 \ID，三台机器人相同 \ID 的动作是一对
-! - 下面一个文件里写了三个任务的 PROC，各任务的模块里只留自己那一份，
-!   main 里只调自己机器人的 PROC，别把三台的都调了
-! - 三台机器人怎么摆、工件多重、谁抬哪头，仿真里先搭再调
-! 点位是示例值，在自己的工作站里重新示教。
-! 流程：三台先碰头 -> 开始协调 -> 一起抬起工件 -> 一起搬到目标点 -> 一起放下 -> 协调结束
+! 三机器人联动项目：一个控制器带三台机器人（MultiMove），三台一起抬一件长工件、同步搬走
+! 点位均为教学值，在自己的工作站里重新示教。
+! 需要控制器选项：MultiMove Coordinated（604-1）；三台机器人各一个运动任务 T_ROB1 / T_ROB2 / T_ROB3
+! 指令写法按 ABB《Application manual - MultiMove》（3HAC089689-001 / 3HAC050961-001）第 6 章：
+!   WaitSyncTask 碰头（半协调）；SyncMoveOn ... SyncMoveOff 之间是同步运动，
+!   同步段里每句运动指令都带 \ID，三个任务里相同 \ID 的指令同时开始、同时到点
+! 本文件是 T_ROB1 的程序模块，三个文件分别载入三个任务
+! 流程：等工件 -> 三台碰头 -> 各自下到抓取点合爪 -> 同步抬起 -> 同步搬到目标 -> 同步放下 -> 松爪回原位
 
-MODULE MultiRobot
-  ! ===== 三个任务共用的同步点和任务名单（每个任务的模块里都要一模一样） =====
-  VAR syncident sync1; ! 碰头点 1：都到了再开始
-  VAR syncident sync2; ! 碰头点 2：开始协调动作
-  VAR syncident sync3; ! 碰头点 3：协调动作结束
-  ! 任务名单，名字必须和控制器里建的任务名一模一样，差一个字母就永远等不到对方
+MODULE MultiRobot_T1
+  ! ===== 三个任务一模一样的同步标识和任务名单 =====
+  VAR syncident sync1;
+  VAR syncident sync2;
+  VAR syncident sync3;
+  VAR syncident sync4;
+  ! 任务名必须和控制器里的任务名一模一样
   PERS tasks all_tasks{3} := [["T_ROB1"], ["T_ROB2"], ["T_ROB3"]];
 
-  ! ===== 工具（教学值，每台机器人按自己的工具改） =====
-  TASK PERS tooldata tGripper := [TRUE, [[0, 0, 120], [1, 0, 0, 0]], [0.5, [0, 0, 60], [1, 0, 0, 0], 0, 0, 0]];
+  ! ===== 工具和工件坐标系（教学值） =====
+  TASK PERS tooldata tGripper := [TRUE, [[0, 0, 120], [1, 0, 0, 0]], [2.0, [0, 0, 60], [1, 0, 0, 0], 0, 0, 0]];
+  ! wobjPart：本机器人看工件的坐标系，原点在本机器人负责的那一段工件顶面
+  TASK PERS wobjdata wobjPart := [FALSE, TRUE, "", [[-400, 0, 300], [1, 0, 0, 0]], [[0, 0, 0], [1, 0, 0, 0]]];
 
-  ! ===== 工件坐标系（教学值，三台共用一件大工件） =====
-  ! wobjPart：原点在工件左端顶面中心；下面 Move 句现在没写 \\WObj，走的是默认 wobj0，
-  ! 示教点位时改成 \\WObj:=wobjPart，并按工件实际位置重标
-  TASK PERS wobjdata wobjPart := [FALSE, TRUE, "", [[350, -150, 500], [1, 0, 0, 0]], [[0, 0, 0], [1, 0, 0, 0]]];
+  ! ===== 点位（教学值，在 wobjPart 里） =====
+  CONST robtarget pAbove := [[0, 0, 150], [0, 0.7071, 0, 0.7071], [0, 0, 0, 0], [9E9, 9E9, 9E9, 9E9, 9E9, 9E9]];
+  CONST robtarget pGrip := [[0, 0, 0], [0, 0.7071, 0, 0.7071], [0, 0, 0, 0], [9E9, 9E9, 9E9, 9E9, 9E9, 9E9]];
+  CONST robtarget pLift := [[0, 0, 200], [0, 0.7071, 0, 0.7071], [0, 0, 0, 0], [9E9, 9E9, 9E9, 9E9, 9E9, 9E9]];
+  CONST robtarget pCarry := [[0, 300, 200], [0, 0.7071, 0, 0.7071], [0, 0, 0, 0], [9E9, 9E9, 9E9, 9E9, 9E9, 9E9]];
+  CONST robtarget pPut := [[0, 300, 0], [0, 0.7071, 0, 0.7071], [0, 0, 0, 0], [9E9, 9E9, 9E9, 9E9, 9E9, 9E9]];
+  CONST robtarget pHome := [[0, 0, 400], [0, 0.7071, 0, 0.7071], [0, 0, 0, 0], [9E9, 9E9, 9E9, 9E9, 9E9, 9E9]];
 
-  ! ===== 点位（教学值） =====
-  ! 机器人 1 的点：抬工件左端
-  CONST robtarget p1Up := [[350, -150, 650], [0, 0.7071, 0, 0.7071], [0, 0, 0, 0], [9E9, 9E9, 9E9, 9E9, 9E9, 9E9]];
-  CONST robtarget p1Lift := [[350, -150, 500], [0, 0.7071, 0, 0.7071], [0, 0, 0, 0], [9E9, 9E9, 9E9, 9E9, 9E9, 9E9]];
-  CONST robtarget p1Target := [[350, 0, 500], [0, 0.7071, 0, 0.7071], [0, 0, 0, 0], [9E9, 9E9, 9E9, 9E9, 9E9, 9E9]];
-  ! 机器人 2 的点：抬工件中间
-  CONST robtarget p2Up := [[350, 0, 650], [0, 0.7071, 0, 0.7071], [0, 0, 0, 0], [9E9, 9E9, 9E9, 9E9, 9E9, 9E9]];
-  CONST robtarget p2Lift := [[350, 0, 500], [0, 0.7071, 0, 0.7071], [0, 0, 0, 0], [9E9, 9E9, 9E9, 9E9, 9E9, 9E9]];
-  CONST robtarget p2Target := [[350, 150, 500], [0, 0.7071, 0, 0.7071], [0, 0, 0, 0], [9E9, 9E9, 9E9, 9E9, 9E9, 9E9]];
-  ! 机器人 3 的点：抬工件右端
-  CONST robtarget p3Up := [[350, 150, 650], [0, 0.7071, 0, 0.7071], [0, 0, 0, 0], [9E9, 9E9, 9E9, 9E9, 9E9, 9E9]];
-  CONST robtarget p3Lift := [[350, 150, 500], [0, 0.7071, 0, 0.7071], [0, 0, 0, 0], [9E9, 9E9, 9E9, 9E9, 9E9, 9E9]];
-  CONST robtarget p3Target := [[350, 300, 500], [0, 0.7071, 0, 0.7071], [0, 0, 0, 0], [9E9, 9E9, 9E9, 9E9, 9E9, 9E9]];
-  CONST robtarget pHome := [[100, 100, 500], [0, 0.7071, 0, 0.7071], [0, 0, 0, 0], [9E9, 9E9, 9E9, 9E9, 9E9, 9E9]];
-
-  ! ===== 任务 T_ROB1 的主程序（只在 T_ROB1 里跑） =====
   PROC main()
-    ! 等工件就位再动手，没工件不抬
-    WaitDI diPartReady, 1;
-    ! 机器人 1 先合爪夹住工件左端（夹爪信号按自己系统对，见 README 的 IO 表）
-    SetDO doGrip, 1;
-    WaitTime 0.3;
-    Rob1Move;
+    SetDO doGrip1, 0;
+    MoveJ pHome, v1000, fine, tGripper\WObj:=wobjPart;
+    WHILE TRUE DO
+      ! 只由 T_ROB1 看工件到位信号，另外两台在碰头点等它
+      WaitDI diPartReady, 1;
+      LiftTogether;
+    ENDWHILE
   ENDPROC
 
-  ! 机器人 1：碰头 -> 协调抬起 -> 协调搬运 -> 协调放下 -> 结束
-  PROC Rob1Move()
+  PROC LiftTogether()
+    ! 碰头 1：三台都到了再一起下去（半协调，各走各的路）
     WaitSyncTask sync1, all_tasks;
+    MoveJ pAbove, v500, z20, tGripper\WObj:=wobjPart;
+    MoveL pGrip, v100, fine, tGripper\WObj:=wobjPart;
+    SetDO doGrip1, 1;
+    WaitTime 0.5;
+    ! 碰头 2 + 开始同步：三台都夹紧了才一起抬
     SyncMoveOn sync2, all_tasks;
-    MoveJ p1Up \ID:=10, v100, z10, tGripper;
-    MoveL p1Lift \ID:=20, v100, z10, tGripper;
-    MoveL p1Target \ID:=30, v100, z10, tGripper;
+    MoveL pLift \ID:=10, v100, fine, tGripper\WObj:=wobjPart;
+    MoveL pCarry \ID:=20, v200, z10, tGripper\WObj:=wobjPart;
+    MoveL pPut \ID:=30, v100, fine, tGripper\WObj:=wobjPart;
     SyncMoveOff sync3;
-    MoveJ pHome, v500, z50, tGripper;
-  ENDPROC
-
-  ! ===== 任务 T_ROB2 的动作（只在 T_ROB2 里跑，main 里调 Rob2Move） =====
-  ! \ID 必须和机器人 1、3 的一一对应，10 对 10，20 对 20，30 对 30
-  PROC Rob2Move()
-    WaitSyncTask sync1, all_tasks;
-    SyncMoveOn sync2, all_tasks;
-    MoveJ p2Up \ID:=10, v100, z10, tGripper;
-    MoveL p2Lift \ID:=20, v100, z10, tGripper;
-    MoveL p2Target \ID:=30, v100, z10, tGripper;
-    SyncMoveOff sync3;
-    MoveJ pHome, v500, z50, tGripper;
-  ENDPROC
-
-  ! ===== 任务 T_ROB3 的动作（只在 T_ROB3 里跑，main 里调 Rob3Move） =====
-  PROC Rob3Move()
-    WaitSyncTask sync1, all_tasks;
-    SyncMoveOn sync2, all_tasks;
-    MoveJ p3Up \ID:=10, v100, z10, tGripper;
-    MoveL p3Lift \ID:=20, v100, z10, tGripper;
-    MoveL p3Target \ID:=30, v100, z10, tGripper;
-    SyncMoveOff sync3;
-    MoveJ pHome, v500, z50, tGripper;
+    ! 同步结束后各自松爪
+    SetDO doGrip1, 0;
+    WaitTime 0.5;
+    MoveL pCarry, v200, z20, tGripper\WObj:=wobjPart;
+    MoveJ pHome, v1000, fine, tGripper\WObj:=wobjPart;
+    ! 碰头 3：三台都回原位才开始下一件
+    WaitSyncTask sync4, all_tasks;
   ENDPROC
 ENDMODULE
